@@ -40,7 +40,7 @@ export const routes: Routes = [
       },
       {
         path: "course/view/:id",
-        loadComponent: ()=> import('./features/user/demo-course/pages/course-view/course-view.component')
+        loadComponent: ()=> import('./features/user/course/pages/course-view/course-view.component')
       },
       {
         path: "course/:id",

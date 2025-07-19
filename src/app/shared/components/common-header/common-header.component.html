@@ -1,0 +1,12 @@
+<div class="flex items-center justify-between pb-7 pl-6 pr-2">
+  <h2 class="text-[28px] font-semibold text-black">{{label}}</h2>
+  @if(btn) {
+    <button
+      class="w-[375px] bg-[#3FC0DB] font-medium text-white rounded-xl flex justify-center gap-2.5 py-[13px]"
+      (click)="handleButtonClick()"
+      >
+      <p>{{btnLabel}}</p>
+      <span [class]="btnIcon"></span>
+    </button>
+  }
+</div>

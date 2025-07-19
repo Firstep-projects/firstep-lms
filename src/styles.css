@@ -1,2 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
 @import "tailwindcss";
+*{
+  font-family: 'Inter', sans-serif;
+}
+
+.p-accordion,
+.p-accordion .p-accordionheader,
+.p-accordion .p-accordioncontent-content {
+  background: transparent !important;
+  box-shadow: none !important;
+}

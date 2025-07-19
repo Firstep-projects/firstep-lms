@@ -1,24 +1,23 @@
 
-<div class="w-[1170px] mx-auto">
-  <div class="flex items-center justify-between mb-6">
-    <h2 class="text-2xl font-semibold text-gray-800 flex gap-2 ml-3">Kurslar</h2>
-  </div>
+<div class="w-[1170px] mx-auto border-x border-[#0208171A] pt-7">
+  <app-common-header label="Angular Fundamentals"></app-common-header>
 </div>
-<hr class="border-gray-200 mb-6" />
-<div class="w-[1170px] mx-auto">
+<hr class="border-gray-200"/>
+<div class="w-[1170px] mx-auto border-x border-[#0208171A] p-2">
   <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-    <div *ngFor="let course of courses" class="flex flex-col bg-white rounded-2xl overflow-hidden shadow-[0px_0px_20px_#4747474d] p-4">
+    <div *ngFor="let course of courses" class="flex flex-col bg-white rounded-2xl overflow-hidden shadow-[0px_10px_20px_#0208171A] p-4">
       <div class="mb-4 rounded-xl overflow-hidden">
         <img [src]="course.image" alt="{{ course.title }}"
-            class="h-64 w-full object-cover" />
+            class="h-[228px] w-full object-cover" />
       </div>
+
 
       <div class="flex flex-col grow">
         <h3 class="text-lg font-semibold text-[#0B181E] mb-2">{{ course.title }}</h3>
-        <p class="text-gray-600 text-sm mb-4">{{ course.description }}</p>
-        <div class="text-sm font-medium mb-8  flex items-center gap-2 grow">
-          <p class="bg-[#F5F5F5] py-2 px-4 rounded-3xl font-medium">{{ course.category }}</p>
-          <p class="bg-[#F5F5F5] py-2 px-4 rounded-3xl font-medium flex items-center gap-1">
+        <p class="text-[#747683] text-sm leading-5 mb-4">{{ course.description }}</p>
+        <div class="text-sm font-medium mb-4  flex items-center gap-2 grow">
+          <p class="bg-[#F5F5F5] py-1.5 px-2.5 rounded-3xl font-medium">{{ course.category }}</p>
+          <p class="bg-[#F5F5F5] py-1.5 px-2.5 rounded-3xl font-medium flex items-center gap-1">
             <!-- <span class="icon-lesson-len text-xl"></span>  ICONMOON-->
              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
               <rect x="2" y="2" width="16" height="16" rx="3" fill="white"/>
@@ -33,6 +32,7 @@
             </svg>
             {{ course.lessonLength }} ta darslar</p>
         </div>
+        <hr class="border-gray-200 mb-4"/>
 
         <a [routerLink]="'/course/view/' + course.id" class="flex justify-center w-full py-[13px] bg-[#3FC0DB] text-white font-medium rounded-xl cursor-pointer">
           Batafsil

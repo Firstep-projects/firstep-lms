@@ -1,0 +1,38 @@
+<div class="bg-[#F3F4F6] rounded-[20px] p-5">
+  <p-accordion value="0" [multiple]="true">
+    @for(module of modules; track module.id; let i=$index){
+      <p-accordion-panel [value]="i">
+          <p-accordion-header>
+            <div class="flex flex-col">
+              <p class="text-[#6C7583] text-[12px] font-medium">{{module.module}}</p>
+              <p class="text-[#121923] ">{{module.title}}</p>
+            </div>
+            <div class="grow flex items-center justify-end gap-3 mr-2.5">
+              <p class="flex items-center gap-1.5 bg-[#E3E8EF] py-1.5 px-2.5 rounded-lg text-sm text-[#4D5663] font-medium">
+                <img src="./src/svg/lesson.svg" alt="">
+                {{module.lessonCount}} ta dars
+              </p>
+              <p class="flex items-center gap-1.5 bg-[#E3E8EF] py-1.5 px-2.5 rounded-lg text-sm text-[#4D5663] font-medium">
+                <img src="./src/svg/clock.svg" alt="">
+                {{module.time}} soat
+              </p>
+            </div>
+          </p-accordion-header>
+          <p-accordion-content>
+              <div class="flex flex-col gap-4">
+                @for(lesson of module.lessons; track lesson.id){
+                  <div class="flex items-center gap-2">
+                    <div class="w-[6px] h-[6px] rounded-full bg-[#3FC0DB]"></div>
+                    <div>
+                      <p class="font-medium leading-5">{{lesson.title}}</p>
+                      <p class="text-[#6C7583] text-sx">{{lesson.time}}</p>
+                    </div>
+                  </div>
+                }
+              </div>
+          </p-accordion-content>
+        </p-accordion-panel>
+      }
+    </p-accordion>
+</div>
+
