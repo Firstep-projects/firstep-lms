@@ -19,7 +19,8 @@
         <div class="text-sm font-medium mb-8  flex items-center gap-2 grow">
           <p class="bg-[#F5F5F5] py-2 px-4 rounded-3xl font-medium">{{ course.category }}</p>
           <p class="bg-[#F5F5F5] py-2 px-4 rounded-3xl font-medium flex items-center gap-1">
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- <span class="icon-lesson-len text-xl"></span>  ICONMOON-->
+             <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
               <rect x="2" y="2" width="16" height="16" rx="3" fill="white"/>
               <path d="M10 2H15C16.6569 2 18 3.34315 18 5V15C18 16.6569 16.6569 18 15 18H10V2Z" fill="#D6D9E2"/>
               <rect x="2.75" y="2.75" width="14.5" height="14.5" rx="2.25" stroke="#282B32" stroke-width="1.5"/>
@@ -30,11 +31,10 @@
               <path d="M14 9.25C14 8.97386 14.2239 8.75 14.5 8.75L15 8.75C15.2761 8.75 15.5 8.97386 15.5 9.25L15.5 10.75C15.5 11.0261 15.2761 11.25 15 11.25L14.5 11.25C14.2239 11.25 14 11.0261 14 10.75L14 9.25Z" fill="#282B32"/>
               <path d="M14 5.25C14 4.97386 14.2239 4.75 14.5 4.75L15 4.75C15.2761 4.75 15.5 4.97386 15.5 5.25L15.5 6.75C15.5 7.02614 15.2761 7.25 15 7.25L14.5 7.25C14.2239 7.25 14 7.02614 14 6.75L14 5.25Z" fill="#282B32"/>
             </svg>
-            {{ course.lessonLength }} ta darslar
-          </p>
+            {{ course.lessonLength }} ta darslar</p>
         </div>
 
-        <a class="flex justify-center w-full py-[13px] bg-[#3FC0DB] text-white font-medium rounded-xl cursor-pointer">
+        <a [routerLink]="'/course/view/' + course.id" class="flex justify-center w-full py-[13px] bg-[#3FC0DB] text-white font-medium rounded-xl cursor-pointer">
           Batafsil
         </a>
       </div>
