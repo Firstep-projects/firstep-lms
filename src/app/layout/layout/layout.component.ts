@@ -1,17 +1,13 @@
 import { NgClass, NgIf } from '@angular/common';
 import { Component } from '@angular/core';
-import { RouterLink, RouterOutlet } from '@angular/router';
+import { RouterOutlet } from '@angular/router';
+import { HeaderComponent } from '../../shared/components/header/header.component';
 
 @Component({
   selector: 'app-layout',
-  imports: [RouterLink, RouterOutlet, NgClass, NgIf],
+  imports: [RouterOutlet, HeaderComponent],
   templateUrl: './layout.component.html',
   styleUrl: './layout.component.css'
 })
 export class LayoutComponent {
-  isSidebarCollapsed = false;
-
-  toggleSidebar() {
-    this.isSidebarCollapsed = !this.isSidebarCollapsed;
-  }
 }

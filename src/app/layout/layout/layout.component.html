@@ -1,56 +1,8 @@
-<!-- Весь layout -->
-<div class="relative bg-gray-100 min-h-screen overflow-x-hidden">
 
-  <!-- Sidebar -->
-  <nav
-    class="fixed top-0 left-0 h-screen bg-blue-600 shadow-[0_0_15px_black] rounded-br-4xl rounded-tr-4xl transition-all duration-300"
-    [ngClass]="{
-      'w-80': !isSidebarCollapsed,
-      'w-30': isSidebarCollapsed
-    }"
-  >
-    <!-- Toggle Button -->
-    <button
-      (click)="toggleSidebar()"
-      class="absolute top-1/2 right-0 translate-x-1/2 -translate-y-1/2 z-50 bg-white text-blue-600 border border-blue-600 rounded-full w-10 h-10 flex items-center justify-center shadow-lg hover:bg-blue-100 transition"
-    >
-      <span *ngIf="!isSidebarCollapsed">⮜</span>
-      <span *ngIf="isSidebarCollapsed">⮞</span>
-    </button>
+<header>
+  <app-header></app-header>
+</header>
 
-    <!-- Sidebar Content -->
-    <div class="p-6">
-      <h1 *ngIf="!isSidebarCollapsed" class="text-4xl font-extrabold text-white mb-10 tracking-wide">LMS Dashboard</h1>
-      <h1 *ngIf="isSidebarCollapsed" class="text-4xl font-extrabold text-white mb-10 tracking-wide">LMS</h1>
-      <ul class="space-y-3">
-        <li>
-          <a routerLink="/"
-             class="flex items-center px-3 py-3 text-lg font-medium text-white rounded-xl transition-all duration-200 hover:bg-white hover:text-blue-600 active:bg-blue-100 shadow-sm">
-            <span class="icon-books text-3xl"></span>
-            <span *ngIf="!isSidebarCollapsed" class="ml-4 text-2xl">Courses</span>
-          </a>
-        </li>
-        <li>
-          <a href="#"
-             class="flex items-center px-3 py-3 text-lg font-medium text-white rounded-xl transition-all duration-200 hover:bg-white hover:text-blue-600 active:bg-blue-100 shadow-sm">
-            <span class="icon-file-text text-3xl"></span>
-            <span *ngIf="!isSidebarCollapsed" class="ml-4 text-2xl">Progress</span>
-          </a>
-        </li>
-      </ul>
-    </div>
-  </nav>
-
-  <!-- Main Content -->
-  <div
-    class="transition-all duration-300"
-    [ngClass]="{
-      'ml-80': !isSidebarCollapsed,
-      'ml-30': isSidebarCollapsed
-    }"
-  >
-    <div class="py-10 px-4 md:px-10">
-      <router-outlet />
-    </div>
-  </div>
-</div>
+<main>
+  <router-outlet></router-outlet>
+</main>

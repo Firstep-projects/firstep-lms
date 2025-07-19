@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'icomoon';
-  src:  url('fonts/icomoon.eot?ijrlf1');
-  src:  url('fonts/icomoon.eot?ijrlf1#iefix') format('embedded-opentype'),
-    url('fonts/icomoon.ttf?ijrlf1') format('truetype'),
-    url('fonts/icomoon.woff?ijrlf1') format('woff'),
-    url('fonts/icomoon.svg?ijrlf1#icomoon') format('svg');
+  src:  url('fonts/icomoon.eot?nlxl9y');
+  src:  url('fonts/icomoon.eot?nlxl9y#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?nlxl9y') format('truetype'),
+    url('fonts/icomoon.woff?nlxl9y') format('woff'),
+    url('fonts/icomoon.svg?nlxl9y#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -26,29 +26,20 @@
 }
 
 .icon-books:before {
-  content: "\e920";
+  content: "\e900";
 }
-.icon-file-text:before {
-  content: "\e922";
+.icon-profile:before {
+  content: "\e901";
 }
-.icon-stopwatch:before {
-  content: "\e952";
+.icon-progress:before {
+  content: "\e902";
 }
-.icon-bubble:before {
-  content: "\e96b";
+.icon-FAQ:before {
+  content: "\e903";
 }
-.icon-user-tie:before {
-  content: "\e976";
+.icon-lesson-len:before {
+  content: "\e904";
 }
-.icon-checkmark:before {
-  content: "\ea10";
-}
-.icon-play:before {
-  content: "\ea15";
-}
-.icon-pause:before {
-  content: "\ea16";
-}
-.icon-checkbox-checked:before {
-  content: "\ea52";
+.icon-exit:before {
+  content: "\e905";
 }
