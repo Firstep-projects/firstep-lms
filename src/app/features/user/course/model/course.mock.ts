@@ -22,6 +22,8 @@ export interface ICourse {
     image: string;
     modules: IModule[];
     tags: string[];
+    mentor: string;
+    totalTime: string;
 }
 
 export const MockCourses: ICourse[] = [
@@ -33,6 +35,9 @@ export const MockCourses: ICourse[] = [
         category: 'IT',
         lessonLength: 9,
         image: './src/imgs/100 soniya ichida.png',
+        tags: ["Ma'lumotlar tuzilmasi", 'Xavfsizlik', 'Dasturlash'],
+        mentor: 'Odilbek Utamuratov',
+        totalTime: '20 daqiqa',
         modules: [
             {
                 id: 1,
@@ -95,16 +100,18 @@ export const MockCourses: ICourse[] = [
                 ],
             },
         ],
-        tags: ["Ma'lumotlar tuzilmasi", 'Xavfsizlik', 'Dasturlash'],
     },
     {
-        id: 1,
+        id: 2,
         title: 'Angular Fundamentals',
         description:
             'Kurs davomida siz Angular yordamida zamonaviy, tezkor va samarali veb-ilovalar yaratishni o‘rganasiz',
         category: 'Dasturlash',
         lessonLength: 16,
         image: './src/imgs/angular.png',
+        tags: ["Ma'lumotlar tuzilmasi", 'Xavfsizlik', 'Dasturlash'],
+        mentor: '',
+        totalTime: '1 soat 20 daqiqa',
         modules: [
             {
                 id: 1,
@@ -179,16 +186,18 @@ export const MockCourses: ICourse[] = [
                 ],
             },
         ],
-        tags: ["Ma'lumotlar tuzilmasi", 'Xavfsizlik', 'Dasturlash'],
     },
     {
-        id: 2,
+        id: 3,
         title: 'HTML/CSS',
         description:
             'Kurs davomida siz zamonaviy, tezkor va samarali veb-ilovalar yaratishni o‘rganasiz',
         category: 'Dasturlash',
         lessonLength: 23,
         image: './src/imgs/html.png',
+        mentor: '',
+        totalTime: '1 soat 20 daqiqa',
+        tags: ["Ma'lumotlar tuzilmasi", 'Xavfsizlik', 'Dasturlash'],
         modules: [
             {
                 id: 1,
@@ -255,16 +264,18 @@ export const MockCourses: ICourse[] = [
                 ],
             },
         ],
-        tags: ["Ma'lumotlar tuzilmasi", 'Xavfsizlik', 'Dasturlash'],
     },
     {
-        id: 3,
+        id: 4,
         title: 'UI/UX asoslari',
         description:
             'Kurs davomida siz dizayn yordamida zamonaviy, tezkor va samarali veb-ilovalar yaratishni o‘rganasiz',
         category: 'Dizayn',
         lessonLength: 8,
         image: './src/imgs/UI.png',
+        tags: ["Ma'lumotlar tuzilmasi", 'Xavfsizlik', 'Dasturlash'],
+        mentor: '',
+        totalTime: '1 soat 20 daqiqa',
         modules: [
             {
                 id: 1,
@@ -327,16 +338,18 @@ export const MockCourses: ICourse[] = [
                 ],
             },
         ],
-        tags: ["Ma'lumotlar tuzilmasi", 'Xavfsizlik', 'Dasturlash'],
     },
     {
-        id: 4,
+        id: 5,
         title: 'Node JS Backend',
         description:
             'Kurs davomida siz Nodejs yordamida zamonaviy, tezkor va samarali veb-ilovalar yaratishni o‘rganasiz',
         category: 'Dasturlash',
         lessonLength: 19,
         image: './src/imgs/node.png',
+        mentor: '',
+        totalTime: '1 soat 20 daqiqa',
+        tags: ["Ma'lumotlar tuzilmasi", 'Xavfsizlik', 'Dasturlash'],
         modules: [
             {
                 id: 1,
@@ -399,6 +412,5 @@ export const MockCourses: ICourse[] = [
                 ],
             },
         ],
-        tags: ["Ma'lumotlar tuzilmasi", 'Xavfsizlik', 'Dasturlash'],
     },
 ];

@@ -1,79 +1,81 @@
 <div class="max-w-[1170px] mx-auto border-x border-[#0208171A] pt-7">
-  <app-common-header
-    [label]="course.title"
-    [btn]="true"
-    btnLabel="Kursni boshlash"
-    btnIcon="icon-right"
-  ></app-common-header>
+    <app-common-header
+        [label]="course.title"
+        [btn]="true"
+        btnLabel="Kursni boshlash"
+        btnIcon="icon-right"
+    ></app-common-header>
 </div>
 <hr class="border-gray-200" />
 <div class="max-w-[1170px] mx-auto border-x border-[#0208171A] p-2">
-  <div class="grid grid-cols-12 gap-4">
-    <div class="col-start-1 col-end-5 flex flex-col gap-4">
-      <img src="./src/imgs/video-stop-cadr.png" alt="" />
-      <a
-        [routerLink]="'/course/view/'"
-        class="flex justify-center w-full py-[13px] bg-[#3FC0DB] text-white font-medium rounded-xl cursor-pointer"
-      >
-        <p>Kursni boshlash</p>
-      </a>
-    </div>
-    <div
-      class="col-start-5 col-end-13 flex flex-col gap-5! p-5 pt-6 rounded-[20px] bg-white"
-    >
-      <div class="flex flex-col gap-4">
-        <div class="flex items-center gap-4">
-          <p class="text-[#3FC0DB] font-medium leading-5">Mentor:</p>
-          <div class="flex items-center gap-2.5">
-            <img src="./src/imgs/mentor.png" alt="" />
-            <p class="font-medium leading-5">Odilbek Utamuratov</p>
-          </div>
-        </div>
-        <p class="max-w-[655px] leading-6 text-[#4D5663]">
-          {{ course.description }} {{ course.description }}
-          {{ course.description }}
-        </p>
-      </div>
-      <hr class="border-[#E3E8EF]" />
-      <div class="flex flex-col gap-4">
-        <p class="text-2xl font-semibold">Nimalar o’rganasiz</p>
-        <div class="flex gap-x-3 gap-y-2.5">
-          @for (tag of course.tags; track $index) {
-            <p
-              class="bg-[#F5F5F5] py-1.5 px-2.5 rounded-3xl text-sm text-[#4D5663] font-medium"
+    <div class="grid grid-cols-12 gap-4">
+        <div class="col-start-1 col-end-5 flex flex-col gap-4">
+            <img src="./src/imgs/video-stop-cadr.png" alt="" />
+            <a
+                [routerLink]="'/course/view/'"
+                class="flex justify-center w-full py-[13px] bg-[#3FC0DB] text-white font-medium rounded-xl cursor-pointer"
             >
-              {{ tag }}
-            </p>
-          }
+                <p>Kursni boshlash</p>
+            </a>
         </div>
-      </div>
-      <hr class="border-[#E3E8EF]" />
-      <div class="flex flex-col gap-4">
-        <p class="text-2xl font-semibold">Modullar</p>
-        <div class="flex items-center gap-5">
-          <p
-            class="flex items-center gap-1.5 bg-[#F5F5F5] py-1.5 px-2.5 rounded-3xl text-sm text-[#4D5663] font-medium"
-          >
-            <img src="./src/svg/lesson.svg" alt="" />
-            {{ course.lessonLength }} ta dars
-          </p>
-          <p
-            class="flex items-center gap-1.5 bg-[#F5F5F5] py-1.5 px-2.5 rounded-3xl text-sm text-[#4D5663] font-medium"
-          >
-            <img src="./src/svg/module.svg" alt="" />
-            {{ course.modules.length }} ta modul
-          </p>
-          <p
-            class="flex items-center gap-1.5 bg-[#F5F5F5] py-1.5 px-2.5 rounded-3xl text-sm text-[#4D5663] font-medium"
-          >
-            <img src="./src/svg/clock.svg" alt="" />
-            12soat 54minut
-          </p>
+        <div
+            class="col-start-5 col-end-13 flex flex-col gap-5! p-5 pt-6 rounded-[20px] bg-white"
+        >
+            <div class="flex flex-col gap-4">
+                <div class="flex items-center gap-4">
+                    <p class="text-[#3FC0DB] font-medium leading-5">Mentor:</p>
+                    <div class="flex items-center gap-2.5">
+                        <img src="./src/imgs/mentor.png" alt="" />
+                        <p class="font-medium leading-5">{{ course.mentor }}</p>
+                    </div>
+                </div>
+                <p class="max-w-[655px] leading-6 text-[#4D5663]">
+                    {{ course.description }} {{ course.description }}
+                    {{ course.description }}
+                </p>
+            </div>
+            <hr class="border-[#E3E8EF]" />
+            <div class="flex flex-col gap-4">
+                <p class="text-2xl font-semibold">Nimalar o’rganasiz</p>
+                <div class="flex gap-x-3 gap-y-2.5">
+                    @for (tag of course.tags; track $index) {
+                        <p
+                            class="bg-[#F5F5F5] py-1.5 px-2.5 rounded-3xl text-sm text-[#4D5663] font-medium"
+                        >
+                            {{ tag }}
+                        </p>
+                    }
+                </div>
+            </div>
+            <hr class="border-[#E3E8EF]" />
+            <div class="flex flex-col gap-4">
+                <p class="text-2xl font-semibold">Modullar</p>
+                <div class="flex items-center gap-5">
+                    <p
+                        class="flex items-center gap-1.5 bg-[#F5F5F5] py-1.5 px-2.5 rounded-3xl text-sm text-[#4D5663] font-medium"
+                    >
+                        <img src="./src/svg/lesson.svg" alt="" />
+                        {{ course.lessonLength }} ta dars
+                    </p>
+                    <p
+                        class="flex items-center gap-1.5 bg-[#F5F5F5] py-1.5 px-2.5 rounded-3xl text-sm text-[#4D5663] font-medium"
+                    >
+                        <img src="./src/svg/module.svg" alt="" />
+                        {{ course.modules.length }} ta modul
+                    </p>
+                    <p
+                        class="flex items-center gap-1.5 bg-[#F5F5F5] py-1.5 px-2.5 rounded-3xl text-sm text-[#4D5663] font-medium"
+                    >
+                        <img src="./src/svg/clock.svg" alt="" />
+                        {{ course.totalTime }}
+                    </p>
+                </div>
+                <div>
+                    <app-course-lessons
+                        [modules]="course.modules"
+                    ></app-course-lessons>
+                </div>
+            </div>
         </div>
-        <div>
-          <app-course-lessons [modules]="course.modules"></app-course-lessons>
-        </div>
-      </div>
     </div>
-  </div>
 </div>
