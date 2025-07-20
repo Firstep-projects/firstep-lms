@@ -1,18 +1,21 @@
 <div class="max-w-[1170px] mx-auto border-x border-[#0208171A] pt-7">
-    <app-common-header
-        [label]="course.title"
-        [btn]="true"
-        btnLabel="Kursni boshlash"
-        btnIcon="icon-right"
-    ></app-common-header>
+    <app-common-header [label]="course.title">
+        <button
+            class="cursor-pointer w-[375px] bg-[#3FC0DB] font-medium text-white rounded-xl flex justify-center gap-2.5 py-[13px]"
+            [routerLink]="['/course', course.id]"
+        >
+            <p>{{ 'Kursni boshlash' }}</p>
+            <span [class]="'icon-right'"></span>
+        </button>
+    </app-common-header>
 </div>
 <hr class="border-gray-200" />
 <div class="max-w-[1170px] mx-auto border-x border-[#0208171A] p-2">
     <div class="grid grid-cols-12 gap-4">
         <div class="col-start-1 col-end-5 flex flex-col gap-4">
-            <img src="./src/imgs/video-stop-cadr.png" alt="" />
+            <img [src]="course.image" class="rounded-lg" alt="" />
             <a
-                [routerLink]="'/course/view/'"
+                [routerLink]="['/course', course.id]"
                 class="flex justify-center w-full py-[13px] bg-[#3FC0DB] text-white font-medium rounded-xl cursor-pointer"
             >
                 <p>Kursni boshlash</p>
@@ -25,7 +28,16 @@
                 <div class="flex items-center gap-4">
                     <p class="text-[#3FC0DB] font-medium leading-5">Mentor:</p>
                     <div class="flex items-center gap-2.5">
-                        <img src="./src/imgs/mentor.png" alt="" />
+                        <div class="w-9 h-9 overflow-hidden rounded-full">
+                            <img
+                                [src]="
+                                    course.mentorAvatar ||
+                                    './src/imgs/mentors/anonym.webp'
+                                "
+                                alt=""
+                                class="w-full h-full object-cover"
+                            />
+                        </div>
                         <p class="font-medium leading-5">{{ course.mentor }}</p>
                     </div>
                 </div>

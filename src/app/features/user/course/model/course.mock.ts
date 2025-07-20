@@ -2,6 +2,8 @@ export interface ILesson {
     id: number;
     title: string;
     time: string;
+    isYoutube?: boolean;
+    videoUrl: string;
 }
 
 export interface IModule {
@@ -24,6 +26,7 @@ export interface ICourse {
     tags: string[];
     mentor: string;
     totalTime: string;
+    mentorAvatar?: string;
 }
 
 export const MockCourses: ICourse[] = [
@@ -38,6 +41,7 @@ export const MockCourses: ICourse[] = [
         tags: ["Ma'lumotlar tuzilmasi", 'Xavfsizlik', 'Dasturlash'],
         mentor: 'Odilbek Utamuratov',
         totalTime: '20 daqiqa',
+        mentorAvatar: './src/imgs/mentors/ou.jpg',
         modules: [
             {
                 id: 1,
@@ -46,21 +50,33 @@ export const MockCourses: ICourse[] = [
                 lessonCount: 4,
                 time: '10 daqiqa',
                 lessons: [
-                    { id: 1, title: 'Algoritm nima?', time: '2 minut' },
+                    {
+                        id: 1,
+                        title: 'Algoritm nima?',
+                        time: '2 minut',
+                        isYoutube: true,
+                        videoUrl: 'https://www.youtube.com/embed/A7qZickeHmI',
+                    },
                     {
                         id: 2,
                         title: 'Ikkilik qidiruv algoritmi',
                         time: '2 minut',
+                        isYoutube: true,
+                        videoUrl: 'https://www.youtube.com/embed/JZh35uHIHfA',
                     },
                     {
                         id: 3,
                         title: 'Ikkita sonni almashtirish algoritmi',
                         time: '2 minut',
+                        isYoutube: true,
+                        videoUrl: 'https://www.youtube.com/embed/m8SmHro2O3w',
                     },
                     {
                         id: 4,
                         title: "Ma'lumot, Axborot va Xotira",
                         time: '2 minut',
+                        isYoutube: true,
+                        videoUrl: 'https://www.youtube.com/embed/QY1jJwPbdgw',
                     },
                 ],
             },
@@ -72,16 +88,26 @@ export const MockCourses: ICourse[] = [
                 time: '6 daqiqa',
                 lessons: [
                     {
-                        id: 1,
+                        id: 5,
                         title: 'Dastur, Dasturchi va Dasturlash',
                         time: '2 minut',
+                        isYoutube: true,
+                        videoUrl: 'https://www.youtube.com/embed/I-MBvB73qhI',
                     },
                     {
-                        id: 2,
+                        id: 6,
                         title: "Dasturlash tillari. Qaysi biri zo'r?",
                         time: '2 minut',
+                        isYoutube: true,
+                        videoUrl: 'https://www.youtube.com/embed/yVibASZOql4',
                     },
-                    { id: 3, title: 'Vebsayt nima', time: '2 minut' },
+                    {
+                        id: 7,
+                        title: 'Vebsayt nima',
+                        time: '2 minut',
+                        isYoutube: true,
+                        videoUrl: 'https://www.youtube.com/embed/lMi7YbQY0oQ',
+                    },
                 ],
             },
             {
@@ -91,11 +117,19 @@ export const MockCourses: ICourse[] = [
                 lessonCount: 2,
                 time: '4 daqiqa',
                 lessons: [
-                    { id: 1, title: 'Kodlash va Shifrlash', time: '2 minut' },
                     {
-                        id: 2,
+                        id: 8,
+                        title: 'Kodlash va Shifrlash',
+                        time: '2 minut',
+                        isYoutube: true,
+                        videoUrl: 'https://www.youtube.com/embed/qh--nwj5uSo',
+                    },
+                    {
+                        id: 9,
                         title: 'Xavfsizlik va Foydalanuvchanlik',
                         time: '18 minut',
+                        isYoutube: true,
+                        videoUrl: 'https://www.youtube.com/embed/fPzn8dKqa2A',
                     },
                 ],
             },
@@ -120,17 +154,33 @@ export const MockCourses: ICourse[] = [
                 lessonCount: 4,
                 time: '1 soat',
                 lessons: [
-                    { id: 1, title: 'Angular nima?', time: '5 minut' },
-                    { id: 2, title: 'Angular arxitekturasi', time: '12 minut' },
+                    {
+                        id: 1,
+                        title: 'Angular nima?',
+                        time: '5 minut',
+                        isYoutube: true,
+                        videoUrl: '',
+                    },
+                    {
+                        id: 2,
+                        title: 'Angular arxitekturasi',
+                        time: '12 minut',
+                        isYoutube: true,
+                        videoUrl: '',
+                    },
                     {
                         id: 3,
                         title: 'Componentlar va modullar',
                         time: '30 minut',
+                        isYoutube: true,
+                        videoUrl: '',
                     },
                     {
                         id: 4,
                         title: 'Angular CLI bilan ishlash',
                         time: '18 minut',
+                        isYoutube: true,
+                        videoUrl: '',
                     },
                 ],
             },
@@ -141,14 +191,34 @@ export const MockCourses: ICourse[] = [
                 lessonCount: 4,
                 time: '1.5 soat ',
                 lessons: [
-                    { id: 1, title: 'Data binding turlari', time: '7 minut' },
-                    { id: 2, title: 'Directive va Pipe lar', time: '15 minut' },
+                    {
+                        id: 1,
+                        title: 'Data binding turlari',
+                        time: '7 minut',
+                        isYoutube: true,
+                        videoUrl: '',
+                    },
+                    {
+                        id: 2,
+                        title: 'Directive va Pipe lar',
+                        time: '15 minut',
+                        isYoutube: true,
+                        videoUrl: '',
+                    },
                     {
                         id: 3,
                         title: 'Service va Dependency Injection',
                         time: '25 minut',
+                        isYoutube: true,
+                        videoUrl: '',
                     },
-                    { id: 4, title: 'Routing asoslari', time: '20 minut' },
+                    {
+                        id: 4,
+                        title: 'Routing asoslari',
+                        time: '20 minut',
+                        isYoutube: true,
+                        videoUrl: '',
+                    },
                 ],
             },
             {
@@ -162,10 +232,30 @@ export const MockCourses: ICourse[] = [
                         id: 1,
                         title: 'Formalar va validatsiya',
                         time: '10 minut',
+                        isYoutube: true,
+                        videoUrl: '',
                     },
-                    { id: 2, title: 'HTTP bilan ishlash', time: '18 minut' },
-                    { id: 3, title: 'RxJS va Observables', time: '22 minut' },
-                    { id: 4, title: 'State management', time: '15 minut' },
+                    {
+                        id: 2,
+                        title: 'HTTP bilan ishlash',
+                        time: '18 minut',
+                        isYoutube: true,
+                        videoUrl: '',
+                    },
+                    {
+                        id: 3,
+                        title: 'RxJS va Observables',
+                        time: '22 minut',
+                        isYoutube: true,
+                        videoUrl: '',
+                    },
+                    {
+                        id: 4,
+                        title: 'State management',
+                        time: '15 minut',
+                        isYoutube: true,
+                        videoUrl: '',
+                    },
                 ],
             },
             {
@@ -175,14 +265,34 @@ export const MockCourses: ICourse[] = [
                 lessonCount: 4,
                 time: '1 soat',
                 lessons: [
-                    { id: 1, title: 'Testing va debugging', time: '12 minut' },
+                    {
+                        id: 1,
+                        title: 'Testing va debugging',
+                        time: '12 minut',
+                        isYoutube: true,
+                        videoUrl: '',
+                    },
                     {
                         id: 2,
                         title: 'Performance optimizatsiya',
                         time: '14 minut',
+                        isYoutube: true,
+                        videoUrl: '',
                     },
-                    { id: 3, title: 'Deployment va build', time: '20 minut' },
-                    { id: 4, title: 'Real loyihada Angular', time: '25 minut' },
+                    {
+                        id: 3,
+                        title: 'Deployment va build',
+                        time: '20 minut',
+                        isYoutube: true,
+                        videoUrl: '',
+                    },
+                    {
+                        id: 4,
+                        title: 'Real loyihada Angular',
+                        time: '25 minut',
+                        isYoutube: true,
+                        videoUrl: '',
+                    },
                 ],
             },
         ],
@@ -206,14 +316,34 @@ export const MockCourses: ICourse[] = [
                 lessonCount: 4,
                 time: '1 soat',
                 lessons: [
-                    { id: 1, title: 'HTML asoslari', time: '6 minut' },
+                    {
+                        id: 1,
+                        title: 'HTML asoslari',
+                        time: '6 minut',
+                        isYoutube: true,
+                        videoUrl: '',
+                    },
                     {
                         id: 2,
                         title: 'Elementlar va atributlar',
                         time: '10 minut',
+                        isYoutube: true,
+                        videoUrl: '',
                     },
-                    { id: 3, title: 'Semantik HTML', time: '15 minut' },
-                    { id: 4, title: 'Formalar va inputlar', time: '12 minut' },
+                    {
+                        id: 3,
+                        title: 'Semantik HTML',
+                        time: '15 minut',
+                        isYoutube: true,
+                        videoUrl: '',
+                    },
+                    {
+                        id: 4,
+                        title: 'Formalar va inputlar',
+                        time: '12 minut',
+                        isYoutube: true,
+                        videoUrl: '',
+                    },
                 ],
             },
             {
@@ -223,14 +353,34 @@ export const MockCourses: ICourse[] = [
                 lessonCount: 4,
                 time: '1 soat',
                 lessons: [
-                    { id: 1, title: 'CSS asoslari', time: '8 minut' },
+                    {
+                        id: 1,
+                        title: 'CSS asoslari',
+                        time: '8 minut',
+                        isYoutube: true,
+                        videoUrl: '',
+                    },
                     {
                         id: 2,
                         title: 'Selectorlar va xossalar',
                         time: '14 minut',
+                        isYoutube: true,
+                        videoUrl: '',
                     },
-                    { id: 3, title: 'Box model', time: '20 minut' },
-                    { id: 4, title: 'Flex va Grid', time: '18 minut' },
+                    {
+                        id: 3,
+                        title: 'Box model',
+                        time: '20 minut',
+                        isYoutube: true,
+                        videoUrl: '',
+                    },
+                    {
+                        id: 4,
+                        title: 'Flex va Grid',
+                        time: '18 minut',
+                        isYoutube: true,
+                        videoUrl: '',
+                    },
                 ],
             },
             {
@@ -240,10 +390,34 @@ export const MockCourses: ICourse[] = [
                 lessonCount: 4,
                 time: '1 soat',
                 lessons: [
-                    { id: 1, title: 'Media queries', time: '10 minut' },
-                    { id: 2, title: 'Mobilga moslash', time: '15 minut' },
-                    { id: 3, title: 'Adaptive dizayn', time: '12 minut' },
-                    { id: 4, title: 'Bootstrap asoslari', time: '20 minut' },
+                    {
+                        id: 1,
+                        title: 'Media queries',
+                        time: '10 minut',
+                        isYoutube: true,
+                        videoUrl: '',
+                    },
+                    {
+                        id: 2,
+                        title: 'Mobilga moslash',
+                        time: '15 minut',
+                        isYoutube: true,
+                        videoUrl: '',
+                    },
+                    {
+                        id: 3,
+                        title: 'Adaptive dizayn',
+                        time: '12 minut',
+                        isYoutube: true,
+                        videoUrl: '',
+                    },
+                    {
+                        id: 4,
+                        title: 'Bootstrap asoslari',
+                        time: '20 minut',
+                        isYoutube: true,
+                        videoUrl: '',
+                    },
                 ],
             },
             {
@@ -253,14 +427,34 @@ export const MockCourses: ICourse[] = [
                 lessonCount: 4,
                 time: '1 soat',
                 lessons: [
-                    { id: 1, title: 'Landing page yaratish', time: '25 minut' },
-                    { id: 2, title: 'Portfolio sayt', time: '30 minut' },
+                    {
+                        id: 1,
+                        title: 'Landing page yaratish',
+                        time: '25 minut',
+                        isYoutube: true,
+                        videoUrl: '',
+                    },
+                    {
+                        id: 2,
+                        title: 'Portfolio sayt',
+                        time: '30 minut',
+                        isYoutube: true,
+                        videoUrl: '',
+                    },
                     {
                         id: 3,
                         title: 'Formani stilizatsiya qilish',
                         time: '18 minut',
+                        isYoutube: true,
+                        videoUrl: '',
                     },
-                    { id: 4, title: 'Animatsiyalar', time: '20 minut' },
+                    {
+                        id: 4,
+                        title: 'Animatsiyalar',
+                        time: '20 minut',
+                        isYoutube: true,
+                        videoUrl: '',
+                    },
                 ],
             },
         ],
@@ -284,11 +478,19 @@ export const MockCourses: ICourse[] = [
                 lessonCount: 2,
                 time: '1 soat',
                 lessons: [
-                    { id: 1, title: 'UI nima?', time: '8 minut' },
+                    {
+                        id: 1,
+                        title: 'UI nima?',
+                        time: '8 minut',
+                        isYoutube: true,
+                        videoUrl: '',
+                    },
                     {
                         id: 2,
                         title: 'Foydalanuvchi interfeysi elementlari',
                         time: '12 minut',
+                        isYoutube: true,
+                        videoUrl: '',
                     },
                 ],
             },
@@ -299,11 +501,19 @@ export const MockCourses: ICourse[] = [
                 lessonCount: 2,
                 time: '1 soat',
                 lessons: [
-                    { id: 1, title: 'UX nima?', time: '10 minut' },
+                    {
+                        id: 1,
+                        title: 'UX nima?',
+                        time: '10 minut',
+                        isYoutube: true,
+                        videoUrl: '',
+                    },
                     {
                         id: 2,
                         title: 'Foydalanuvchi tajribasi',
                         time: '15 minut',
+                        isYoutube: true,
+                        videoUrl: '',
                     },
                 ],
             },
@@ -314,11 +524,19 @@ export const MockCourses: ICourse[] = [
                 lessonCount: 2,
                 time: '1 soat',
                 lessons: [
-                    { id: 1, title: 'Wireframe va prototip', time: '14 minut' },
+                    {
+                        id: 1,
+                        title: 'Wireframe va prototip',
+                        time: '14 minut',
+                        isYoutube: true,
+                        videoUrl: '',
+                    },
                     {
                         id: 2,
                         title: 'Testlash va iteratsiya',
                         time: '10 minut',
+                        isYoutube: true,
+                        videoUrl: '',
                     },
                 ],
             },
@@ -329,88 +547,96 @@ export const MockCourses: ICourse[] = [
                 lessonCount: 2,
                 time: '1 soat',
                 lessons: [
-                    { id: 1, title: 'Real loyiha dizayni', time: '20 minut' },
+                    {
+                        id: 1,
+                        title: 'Real loyiha dizayni',
+                        time: '20 minut',
+                        isYoutube: true,
+                        videoUrl: '',
+                    },
                     {
                         id: 2,
                         title: 'Feedback va optimizatsiya',
                         time: '12 minut',
+                        isYoutube: true,
+                        videoUrl: '',
                     },
                 ],
             },
         ],
     },
-    {
-        id: 5,
-        title: 'Node JS Backend',
-        description:
-            'Kurs davomida siz Nodejs yordamida zamonaviy, tezkor va samarali veb-ilovalar yaratishni o‘rganasiz',
-        category: 'Dasturlash',
-        lessonLength: 19,
-        image: './src/imgs/node.png',
-        mentor: '',
-        totalTime: '1 soat 20 daqiqa',
-        tags: ["Ma'lumotlar tuzilmasi", 'Xavfsizlik', 'Dasturlash'],
-        modules: [
-            {
-                id: 1,
-                title: 'Node.js asoslari',
-                module: '1-Module',
-                lessonCount: 4,
-                time: '1 soat',
-                lessons: [
-                    { id: 1, title: 'Node.js nima?', time: '7 minut' },
-                    { id: 2, title: 'Event loop', time: '15 minut' },
-                    { id: 3, title: 'Module system', time: '18 minut' },
-                    { id: 4, title: 'NPM bilan ishlash', time: '10 minut' },
-                ],
-            },
-            {
-                id: 2,
-                title: 'Express.js',
-                module: '2-Module',
-                lessonCount: 4,
-                time: '1 soat',
-                lessons: [
-                    { id: 1, title: 'Express asoslari', time: '12 minut' },
-                    { id: 2, title: 'Routing', time: '14 minut' },
-                    { id: 3, title: 'Middleware', time: '16 minut' },
-                    { id: 4, title: 'REST API yaratish', time: '20 minut' },
-                ],
-            },
-            {
-                id: 3,
-                title: "Ma'lumotlar bazasi",
-                module: '3-Module',
-                lessonCount: 4,
-                time: '1 soat',
-                lessons: [
-                    { id: 1, title: 'MongoDB asoslari', time: '15 minut' },
-                    { id: 2, title: 'CRUD operatsiyalar', time: '18 minut' },
-                    {
-                        id: 3,
-                        title: 'Mongoose bilan ishlash',
-                        time: '20 minut',
-                    },
-                    { id: 4, title: 'Authentication', time: '22 minut' },
-                ],
-            },
-            {
-                id: 4,
-                title: 'Node.jsda yakuniy bosqich',
-                module: '4-Module',
-                lessonCount: 4,
-                time: '1 soat',
-                lessons: [
-                    { id: 1, title: 'Testing', time: '12 minut' },
-                    { id: 2, title: 'Deployment', time: '14 minut' },
-                    {
-                        id: 3,
-                        title: 'Performance optimizatsiya',
-                        time: '16 minut',
-                    },
-                    { id: 4, title: 'Real loyiha', time: '25 minut' },
-                ],
-            },
-        ],
-    },
+    // {
+    //     id: 5,
+    //     title: 'Node JS Backend',
+    //     description:
+    //         'Kurs davomida siz Nodejs yordamida zamonaviy, tezkor va samarali veb-ilovalar yaratishni o‘rganasiz',
+    //     category: 'Dasturlash',
+    //     lessonLength: 19,
+    //     image: './src/imgs/node.png',
+    //     mentor: '',
+    //     totalTime: '1 soat 20 daqiqa',
+    //     tags: ["Ma'lumotlar tuzilmasi", 'Xavfsizlik', 'Dasturlash'],
+    //     modules: [
+    //         {
+    //             id: 1,
+    //             title: 'Node.js asoslari',
+    //             module: '1-Module',
+    //             lessonCount: 4,
+    //             time: '1 soat',
+    //             lessons: [
+    //                 { id: 1, title: 'Node.js nima?', time: '7 minut' },
+    //                 { id: 2, title: 'Event loop', time: '15 minut' },
+    //                 { id: 3, title: 'Module system', time: '18 minut' },
+    //                 { id: 4, title: 'NPM bilan ishlash', time: '10 minut' },
+    //             ],
+    //         },
+    //         {
+    //             id: 2,
+    //             title: 'Express.js',
+    //             module: '2-Module',
+    //             lessonCount: 4,
+    //             time: '1 soat',
+    //             lessons: [
+    //                 { id: 1, title: 'Express asoslari', time: '12 minut' },
+    //                 { id: 2, title: 'Routing', time: '14 minut' },
+    //                 { id: 3, title: 'Middleware', time: '16 minut' },
+    //                 { id: 4, title: 'REST API yaratish', time: '20 minut' },
+    //             ],
+    //         },
+    //         {
+    //             id: 3,
+    //             title: "Ma'lumotlar bazasi",
+    //             module: '3-Module',
+    //             lessonCount: 4,
+    //             time: '1 soat',
+    //             lessons: [
+    //                 { id: 1, title: 'MongoDB asoslari', time: '15 minut' },
+    //                 { id: 2, title: 'CRUD operatsiyalar', time: '18 minut' },
+    //                 {
+    //                     id: 3,
+    //                     title: 'Mongoose bilan ishlash',
+    //                     time: '20 minut',
+    //                 },
+    //                 { id: 4, title: 'Authentication', time: '22 minut' },
+    //             ],
+    //         },
+    //         {
+    //             id: 4,
+    //             title: 'Node.jsda yakuniy bosqich',
+    //             module: '4-Module',
+    //             lessonCount: 4,
+    //             time: '1 soat',
+    //             lessons: [
+    //                 { id: 1, title: 'Testing', time: '12 minut' },
+    //                 { id: 2, title: 'Deployment', time: '14 minut' },
+    //                 {
+    //                     id: 3,
+    //                     title: 'Performance optimizatsiya',
+    //                     time: '16 minut',
+    //                 },
+    //                 { id: 4, title: 'Real loyiha', time: '25 minut' },
+    //             ],
+    //         },
+    //     ],
+    // },
 ];
