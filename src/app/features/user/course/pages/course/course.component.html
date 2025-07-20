@@ -20,7 +20,7 @@
         >
             @for (module of course.modules; track $index) {
                 <h2 class="text-xl font-bold mb-4">{{ module.module }}</h2>
-                <ul class="space-y-2">
+                <ul class="space-y-2 mb-6">
                     <li
                         *ngFor="let lesson of module.lessons"
                         (click)="selectVideo(lesson)"
