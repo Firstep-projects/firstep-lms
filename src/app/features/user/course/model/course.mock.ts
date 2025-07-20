@@ -21,7 +21,6 @@ export interface ITest{
       name: string;
       isRight: boolean;
     }[]
-
 }
 
 export interface ICourse {
@@ -954,14 +953,14 @@ export const MockCourses: ICourse[] = [
               videoUrl: 'https://www.youtube.com/embed/JgVyxM8cv5I?si=cakk-3Pm1teXzxn7',
             },
             {
-              id: 2,
+              id: 3,
               title: 'Veb-dizayn. 2- dars. Dizayn va uning vazifasi',
               time: '11 minut',
               isYoutube: true,
               videoUrl: 'https://www.youtube.com/embed/7gGPfHRT_CQ?si=OUD_VIm4BtxNfYkG',
             },
             {
-              id: 2,
+              id: 4,
               title: 'Veb-dizayn. 3- dars. Veb dizayner kim? Uning vazifasi nimadan iborat?',
               time: '8 minut',
               isYoutube: true,
@@ -1025,21 +1024,21 @@ export const MockCourses: ICourse[] = [
           time: '29 minut',
           lessons: [
             {
-              id: 1,
+              id: 5,
               title: 'Veb-dizayn. 4- dars. Veb dizaynerning qobiliyatlari',
               time: '13 minut',
               isYoutube: true,
               videoUrl: 'https://www.youtube.com/embed/cJKShWw0Wdo?si=JeNLuKoDdpf5f9f4',
             },
             {
-              id: 2,
+              id: 6,
               title: 'Veb-dizayn. 5- dars. Veb-sayt qanday bo\'lishi kerak?',
               time: '9 minut',
               isYoutube: true,
               videoUrl: 'https://www.youtube.com/embed/aCI75Q88gkQ?si=l13T525Oxu8A4Jhv',
             },
             {
-              id: 2,
+              id: 7,
               title: 'Veb-dizayn. 6- dars. Foydalanuvchi psixologiyasi',
               time: '7 minut',
               isYoutube: true,
@@ -1103,49 +1102,49 @@ export const MockCourses: ICourse[] = [
           time: '2 soat 32 minut',
           lessons: [
             {
-              id: 1,
+              id: 8,
               title: 'Veb-dizayn. 7- dars. Veb dizayn dasturlari va imkoniyatlari',
               time: '10 minut',
               isYoutube: true,
               videoUrl: 'https://www.youtube.com/embed/ZGee8k7t2D8?si=Cv-DTbIbYB0M7IXD',
             },
             {
-              id: 2,
+              id: 9,
               title: 'Veb-dizayn. 8- dars. Figma dasturini o\'rnatish va ro\'yxatdan o\'tish',
               time: '8 minut',
               isYoutube: true,
               videoUrl: 'https://www.youtube.com/embed/QTGaXskIfyw?si=n8vYAmoy8VzslPBA',
             },
             {
-              id: 2,
+              id: 10,
               title: 'Veb-dizayn. 9- dars. Figma dasturining interfeys imkoniyatlari',
               time: '18 minut',
               isYoutube: true,
               videoUrl: 'https://www.youtube.com/embed/x83dadqrZVw?si=AKGzAWa_Dm8EBhWb',
             },
             {
-              id: 2,
+              id: 11,
               title: 'Veb-dizayn. 10- dars. Figma o\'quvchi tarifiga ega bo\'lish',
               time: '9 minut',
               isYoutube: true,
               videoUrl: 'https://www.youtube.com/embed/Fx_ziTp0MtY?si=h7boSOrqBwdg0zz1',
             },
             {
-              id: 2,
+              id: 12,
               title: 'Veb-dizayn. 11- dars. Figma dizayn muhiti va instrumentlari',
               time: '28 minut',
               isYoutube: true,
               videoUrl: 'https://www.youtube.com/embed/moI7-SuScGY?si=cuiNRh3JkOtY6lNF',
             },
             {
-              id: 2,
+              id: 13,
               title: 'Veb-dizayn. 12- dars. Komponentlar, stillar va variant bilan ishlash',
               time: '34 minut',
               isYoutube: true,
               videoUrl: 'https://www.youtube.com/embed/moI7-SuScGY?si=cuiNRh3JkOtY6lNF',
             },
             {
-              id: 2,
+              id: 14,
               title: 'Veb-dizayn. 13- dars. Figma dasturida amaliyot qilish',
               time: '54 minut',
               isYoutube: true,

@@ -4,7 +4,8 @@ import { SafeUrlPipe } from '../../../../../shared/pipes/safe-url.pipe';
 import CustomVideoPlayerComponent from '../../../../../shared/components/custom-video-player-component/custom-video-player.component';
 import { CommonHeaderComponent } from '../../../../../shared/components/common-header/common-header.component';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ICourse, ILesson, MockCourses } from '../../model/course.mock';
+import { ICourse, ILesson, IModule, MockCourses } from '../../model/course.mock';
+import { FormsModule } from '@angular/forms';
 
 @Component({
     selector: 'app-course',
@@ -13,6 +14,7 @@ import { ICourse, ILesson, MockCourses } from '../../model/course.mock';
         CustomVideoPlayerComponent,
         SafeUrlPipe,
         CommonHeaderComponent,
+        FormsModule
     ],
     templateUrl: './course.component.html',
     styleUrl: './course.component.css',
@@ -22,8 +24,11 @@ export default class CourseComponent {
     private router: Router = inject(Router);
 
     selectedLesson!: ILesson;
-
     course!: ICourse;
+    isSolcveTest: boolean = false;
+    testModule!: IModule;
+    currentTestIndex: number = 0;
+    answers: string[] = [];
 
     // videos = [
     //     {
@@ -76,5 +81,30 @@ export default class CourseComponent {
 
     selectVideo(lesson: any) {
         this.selectedLesson = lesson;
+    }
+
+    openTest(module: IModule){
+      this.isSolcveTest = true;
+      this.testModule = module;
+      this.currentTestIndex = 0;
+      this.answers = new Array(module.tests.length).fill('');
+    }
+
+    nextTest() {
+      if (this.currentTestIndex < this.testModule.tests.length - 1) {
+        this.currentTestIndex++;
+      }
+    }
+
+    prevTest() {
+      if (this.currentTestIndex > 0) {
+        this.currentTestIndex--;
+      }
+    }
+
+    submitAnswers() {
+      // Здесь обработка ответов
+      console.log('Ответы:', this.answers);
+      // Можно добавить логику проверки и вывода результата
     }
 }
