@@ -38,26 +38,13 @@
       <div class="flex flex-col gap-4">
         <p class="text-2xl font-semibold">Nimalar o’rganasiz</p>
         <div class="flex gap-x-3 gap-y-2.5">
-          <p
-            class="bg-[#F5F5F5] py-1.5 px-2.5 rounded-3xl text-sm text-[#4D5663] font-medium"
-          >
-            Angular CLI
-          </p>
-          <p
-            class="bg-[#F5F5F5] py-1.5 px-2.5 rounded-3xl text-sm text-[#4D5663] font-medium"
-          >
-            Componentlar
-          </p>
-          <p
-            class="bg-[#F5F5F5] py-1.5 px-2.5 rounded-3xl text-sm text-[#4D5663] font-medium"
-          >
-            Data Binding
-          </p>
-          <p
-            class="bg-[#F5F5F5] py-1.5 px-2.5 rounded-3xl text-sm text-[#4D5663] font-medium"
-          >
-            Directive’lar
-          </p>
+          @for (tag of course.tags; track $index) {
+            <p
+              class="bg-[#F5F5F5] py-1.5 px-2.5 rounded-3xl text-sm text-[#4D5663] font-medium"
+            >
+              {{ tag }}
+            </p>
+          }
         </div>
       </div>
       <hr class="border-[#E3E8EF]" />
