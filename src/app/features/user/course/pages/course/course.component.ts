@@ -81,6 +81,7 @@ export default class CourseComponent {
 
     selectVideo(lesson: any) {
         this.selectedLesson = lesson;
+        this.isSolcveTest = false;
     }
 
     openTest(module: IModule){
