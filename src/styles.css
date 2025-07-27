@@ -1,12 +1,21 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 @import "tailwindcss";
 *{
   font-family: 'Inter', sans-serif;
 }
+
 
 .p-accordion,
 .p-accordion .p-accordionheader,
 .p-accordion .p-accordioncontent-content {
   background: transparent !important;
   box-shadow: none !important;
+}
+.p-accordionpanel-active{
+  transition: all 0.2s;
+  background-color: #F4F5F6 !important;
+}
+.p-accordionheader{
+  padding: 20px !important;
 }

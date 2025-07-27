@@ -1,45 +1,91 @@
-<div class="max-w-[1170px] mx-auto border-x border-[#0208171A] pt-7">
-    <app-common-header [label]="course.title">
-        <button
-            class="cursor-pointer w-[375px] bg-[#3FC0DB] font-medium text-white rounded-xl flex justify-center gap-2.5 py-[13px]"
-            [routerLink]="['/course', course.id]"
-        >
-            <p>{{ 'Kursni boshlash' }}</p>
-            <span [class]="'icon-right'"></span>
-        </button>
-    </app-common-header>
+<div class="bg-[#F3F5F6]">
+  <div class="max-w-[1175px] mx-auto border-x border-[#0208171A]">
+    <app-common-header [label]="course.title"></app-common-header>
+  </div>
 </div>
+
 <hr class="border-gray-200" />
-<div class="max-w-[1170px] mx-auto border-x border-[#0208171A] p-2">
-    <div class="grid grid-cols-12 gap-4">
-        <div class="col-start-1 col-end-5 flex flex-col gap-4">
-            <img [src]="course.image" class="rounded-lg" alt="" />
-            <a
-                [routerLink]="['/course', course.id]"
-                class="flex justify-center w-full py-[13px] bg-[#3FC0DB] text-white font-medium rounded-xl cursor-pointer"
-            >
-                <p>Kursni boshlash</p>
+
+<div class="max-w-[1175px] mx-auto border-x border-[#0208171A] ">
+    <div class="grid grid-cols-12">
+        <div class="col-start-1 col-end-5 flex flex-col gap-4 border-r border-[#E1E3E5]">
+            <img [src]="course.image" class="" alt="" />
+            <div class="px-5 py-6">
+              <div class="flex flex-col gap-3 mb-6">
+                <div class="flex items-center justify-between">
+                  <p class="text-[#0E141B] font-semibold leading-6">Reyting</p>
+                  <div class="flex items-center gap-3">
+                    <p class="text-[#42474D] leading-6">4.9</p>
+                    <div class="flex items-center gap-1">
+                      <svg width="18" height="19" viewBox="0 0 18 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M10.0002 12.656L12.8172 14.376L12.0512 11.166L14.5582 9.019L11.2682 8.755L10.0002 5.708L15.5 8L13 15.5L10.0002 12.656ZM10.0002 15L4.12223 18.59L5.72023 11.89L0.490234 7.41L7.35523 6.86L10.0002 0.5L12.6452 6.86L19.5112 7.41L14.2802 11.89L15.8782 18.59L10.0002 15Z" fill="#FFCC01"/>
+                      </svg>
+                      <svg width="18" height="19" viewBox="0 0 18 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M10.0002 12.656L12.8172 14.376L12.0512 11.166L14.5582 9.019L11.2682 8.755L10.0002 5.708L15.5 8L13 15.5L10.0002 12.656ZM10.0002 15L4.12223 18.59L5.72023 11.89L0.490234 7.41L7.35523 6.86L10.0002 0.5L12.6452 6.86L19.5112 7.41L14.2802 11.89L15.8782 18.59L10.0002 15Z" fill="#FFCC01"/>
+                      </svg>
+                      <svg width="18" height="19" viewBox="0 0 18 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M10.0002 12.656L12.8172 14.376L12.0512 11.166L14.5582 9.019L11.2682 8.755L10.0002 5.708L15.5 8L13 15.5L10.0002 12.656ZM10.0002 15L4.12223 18.59L5.72023 11.89L0.490234 7.41L7.35523 6.86L10.0002 0.5L12.6452 6.86L19.5112 7.41L14.2802 11.89L15.8782 18.59L10.0002 15Z" fill="#FFCC01"/>
+                      </svg>
+                      <svg width="18" height="19" viewBox="0 0 18 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M10.0002 12.656L12.8172 14.376L12.0512 11.166L14.5582 9.019L11.2682 8.755L10.0002 5.708L15.5 8L13 15.5L10.0002 12.656ZM10.0002 15L4.12223 18.59L5.72023 11.89L0.490234 7.41L7.35523 6.86L10.0002 0.5L12.6452 6.86L19.5112 7.41L14.2802 11.89L15.8782 18.59L10.0002 15Z" fill="#FFCC01"/>
+                      </svg>
+                      <svg width="18" height="19" viewBox="0 0 18 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M10.0002 12.656L12.8172 14.376L12.0512 11.166L14.5582 9.019L11.2682 8.755L10.0002 5.708L15.5 8L13 15.5L10.0002 12.656ZM10.0002 15L4.12223 18.59L5.72023 11.89L0.490234 7.41L7.35523 6.86L10.0002 0.5L12.6452 6.86L19.5112 7.41L14.2802 11.89L15.8782 18.59L10.0002 15Z" fill="#FFCC01"/>
+                      </svg>
+                    </div>
+
+                  </div>
+                </div>
+                <hr class="border-[#E1E3E5]">
+                <div class="flex items-center justify-between">
+                  <p class="text-[#0E141B] font-semibold leading-6">Daraja</p>
+                  <div class="flex items-center gap-3">
+                    <p class="text-[#42474D] leading-6">Beginner</p>
+                  </div>
+                </div>
+                <hr class="border-[#E1E3E5]">
+                <div class="flex items-center justify-between">
+                  <p class="text-[#0E141B] font-semibold leading-6">Yil</p>
+                  <div class="flex items-center gap-3">
+                    <p class="text-[#42474D] leading-6">2025</p>
+                  </div>
+                </div>
+                <hr class="border-[#E1E3E5]">
+              </div>
+              <a
+              [routerLink]="['/course', course.id]"
+              class="flex justify-center w-full py-[11px] bg-[linear-gradient(180deg,_#489FFE_0%,_#017AFF_59.62%,_#0072F0_96.15%)]
+                    border-2 border-[#002C5D25] text-white font-medium rounded-xl cursor-pointer shadow-[inset_0px_3px_1px_0px_#FFFFFF33] shadow-[0px_1px_3px_0px_#0064D380]"
+                    style="text-shadow: 0px -1.5px 0px #0000001A"
+              >
+              <p>Sotib olish</p>
             </a>
+          </div>
         </div>
         <div
-            class="col-start-5 col-end-13 flex flex-col gap-5! p-5 pt-6 rounded-[20px] bg-white"
+            class="col-start-5 col-end-13 flex flex-col gap-9! p-8 pt-6 rounded-[20px] bg-white"
         >
-            <div class="flex flex-col gap-4">
-                <div class="flex items-center gap-4">
-                    <p class="text-[#3FC0DB] font-medium leading-5">Mentor:</p>
-                    <div class="flex items-center gap-2.5">
-                        <div class="w-9 h-9 overflow-hidden rounded-full">
-                            <img
-                                [src]="
-                                    course.mentorAvatar ||
-                                    './src/imgs/mentors/anonym.webp'
-                                "
-                                alt=""
-                                class="w-full h-full object-cover"
-                            />
-                        </div>
-                        <p class="font-medium leading-5">{{ course.mentor }}</p>
+            <div class="flex flex-col gap-6">
+                <div class="flex items-center justify-between">
+                  <div class="flex items-center gap-4">
+                    <div class="w-9 h-9 overflow-hidden rounded-full">
+                      <img [src]="
+                              course.mentorAvatar ||
+                              './src/imgs/mentors/anonym.webp'
+                          "
+                          alt=""
+                          class="w-full h-full object-cover"
+                      />
                     </div>
+                    <div class="flex flex-col gap-0.5">
+                      <p class="text-[#017AFF] text-sm font-medium leading-5">Mentor</p>
+                      <p class="font-semibold leading-5">{{ course.mentor }}</p>
+                    </div>
+                  </div>
+                  <div class="flex flex-col items-end gap-0.5">
+                    <p class="text-black text-4xl font-semibold leading-10">2 mln so’m</p>
+                    <p class="text-[#017AFF] text-sm font-medium leading-5">Kurs narxi</p>
+                  </div>
                 </div>
                 <p class="max-w-[655px] leading-6 text-[#4D5663]">
                     {{ course.fullDescription }}
@@ -47,39 +93,30 @@
             </div>
             <hr class="border-[#E3E8EF]" />
             <div class="flex flex-col gap-4">
-                <p class="text-2xl font-semibold">Nimalar o’rganasiz</p>
-                <div class="flex gap-x-3 gap-y-2.5">
+                <p class="text-xl font-semibold leading-7">Nimalar o’rganasiz</p>
+                <div class="flex flex-col flex-wrap items-start gap-x-20 gap-y-3 max-h-33">
                     @for (tag of course.tags; track $index) {
+                      <div class="flex items-center gap-5">
+                        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M1 7L4.81887 10.8189C4.91088 10.9109 5.06485 10.8919 5.13179 10.7803L11 1" stroke="#017AFF" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+
                         <p
-                            class="bg-[#F5F5F5] py-1.5 px-2.5 rounded-3xl text-sm text-[#4D5663] font-medium"
+                            class="text-[#0E141B] font-semibold"
                         >
                             {{ tag }}
                         </p>
+                      </div>
                     }
                 </div>
             </div>
             <hr class="border-[#E3E8EF]" />
             <div class="flex flex-col gap-4">
-                <p class="text-2xl font-semibold">Modullar</p>
+                <p class="text-xl font-semibold leading-7">Modullar</p>
                 <div class="flex items-center gap-5">
-                    <p
-                        class="flex items-center gap-1.5 bg-[#F5F5F5] py-1.5 px-2.5 rounded-3xl text-sm text-[#4D5663] font-medium"
-                    >
-                        <img src="./src/svg/lesson.svg" alt="" />
-                        {{ course.lessonLength }} ta dars
-                    </p>
-                    <p
-                        class="flex items-center gap-1.5 bg-[#F5F5F5] py-1.5 px-2.5 rounded-3xl text-sm text-[#4D5663] font-medium"
-                    >
-                        <img src="./src/svg/module.svg" alt="" />
-                        {{ course.modules.length }} ta modul
-                    </p>
-                    <p
-                        class="flex items-center gap-1.5 bg-[#F5F5F5] py-1.5 px-2.5 rounded-3xl text-sm text-[#4D5663] font-medium"
-                    >
-                        <img src="./src/svg/clock.svg" alt="" />
-                        {{ course.totalTime }}
-                    </p>
+                  <app-info-block label="{{ course.lessonLength }} ta dars" iconLink="./src/svg/lesson.svg"></app-info-block>
+                  <app-info-block label="{{ course.modules.length }} ta modul" iconLink="./src/svg/module.svg"></app-info-block>
+                  <app-info-block label="{{ course.totalTime }}" iconLink="./src/svg/clock.svg"></app-info-block>
                 </div>
                 <div>
                     <app-course-lessons

@@ -3,11 +3,12 @@ import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { CommonHeaderComponent } from '../../../../../shared/components/common-header/common-header.component';
 import { CourseLessonsComponent } from '../../components/course-lessons/course-lessons.component';
 import { ICourse, MockCourses } from '../../model/course.mock';
+import { InfoBlockComponent } from '../../../../../shared/components/info-block/info-block.component';
 
 
 @Component({
   selector: 'app-course-view',
-  imports: [RouterLink, CommonHeaderComponent, RouterLink, CourseLessonsComponent],
+  imports: [RouterLink, CommonHeaderComponent, RouterLink, CourseLessonsComponent, InfoBlockComponent],
   templateUrl: './course-view.component.html',
   styleUrl: './course-view.component.css'
 })
