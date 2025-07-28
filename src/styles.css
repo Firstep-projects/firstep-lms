@@ -6,6 +6,20 @@
 }
 
 
+@theme {
+
+  --color-main: #017AFF;
+
+  --color-main-black: #000000;
+
+  --color-main-grey-100: #F4F5F6;
+  --color-main-grey-200: #EBEDEF;
+  --color-main-grey-300: #E1E3E5;
+  --color-main-grey-600: #686D73;
+  --color-main-grey-700: #42474D;
+  --color-main-grey-900: #0E141B;
+}
+
 .p-accordion,
 .p-accordion .p-accordionheader,
 .p-accordion .p-accordioncontent-content {
