@@ -1,0 +1,27 @@
+<div class="min-h-screen bg-gray-50 flex items-center justify-center px-4">
+  <div class="max-w-md w-full text-center">
+    <div class="mb-8">
+      <!-- 401 Icon -->
+      <div class="mx-auto h-20 w-20 bg-red-100 rounded-full flex items-center justify-center mb-6">
+        <i data-lucide="shield-x" class="h-10 w-10 text-red-600"></i>
+      </div>
+
+      <div class="space-y-4">
+        <h1 class="text-6xl font-bold text-red-600">403</h1>
+        <h2 class="text-2xl font-bold text-gray-900">Доступ запрещен</h2>
+        <p class="text-gray-600">
+          У вас нет доступа к этому сайту
+        </p>
+      </div>
+    </div>
+
+    <!-- Кнопки действий -->
+    <div class="space-y-3">
+      <button
+        (click)="logout()"
+        class="w-full bg-red-600 text-white py-3 px-6 rounded-lg font-medium hover:bg-red-700 transition-colors">
+        Войти
+      </button>
+    </div>
+  </div>
+</div>

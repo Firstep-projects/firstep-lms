@@ -1,0 +1,181 @@
+<div class="max-w-[900px]! m-6 xl:mx-auto p-5 rounded-2xl bg-white flex flex-col">
+  <a routerLink="/admin/courses" class="self-start flex items-center gap-2 px-3 py-2 rounded-xl hover:bg-gray-100 transition-all duration-300 mb-5 w-auto">
+    <span class="pi pi-arrow-left"></span>
+    <p class="text-lg">Назад</p>
+  </a>
+  <form [formGroup]="courseForm" (ngSubmit)="onSubmit()" class="space-y-6">
+    <div class="space-y-2">
+      <label for="name" class="block text-sm font-semibold text-gray-700">
+        Название курса <span class="text-red-500">*</span>
+      </label>
+      <input
+        id="name"
+        pInputText
+        type="text"
+        formControlName="name"
+        placeholder="Введите название курса"
+        class="w-full transition-colors duration-200"
+        [class]="getInputClasses('name')"
+      />
+      @if(courseForm.get('name')?.invalid && courseForm.get('name')?.touched){
+        <div class="text-red-500 text-xs mt-1 min-h-[16px]">
+          @if(courseForm.get('name')?.errors?.['required']){
+            <span>
+              Название курса обязательно для заполнения
+            </span>
+          }
+          @if(courseForm.get('name')?.errors?.['minlength']){
+            <span>
+              Название должно содержать минимум 3 символа
+            </span>
+          }
+        </div>
+      }
+    </div>
+
+    <!-- Описание -->
+    <div class="space-y-2">
+      <label for="description" class="block text-sm font-semibold text-gray-700">
+        Описание <span class="text-red-500">*</span>
+      </label>
+      <textarea
+        id="description"
+        pInputTextarea
+        formControlName="description"
+        placeholder="Введите подробное описание курса"
+        rows="4"
+        class="w-full resize-none transition-colors duration-200 placeholder:text-gray-500 border-[0.1px]!"
+        [class]="getInputClasses('description')">
+      </textarea>
+      @if(courseForm.get('description')?.invalid && courseForm.get('description')?.touched){
+        <div class="text-red-500 text-xs mt-1 min-h-[16px]">
+          @if(courseForm.get('description')?.errors?.['required']){
+            <span>
+              Описание обязательно для заполнения
+            </span>
+          }
+          @if(courseForm.get('description')?.errors?.['minlength']){
+            <span>
+              Описание должно содержать минимум 10 символов
+            </span>
+          }
+        </div>
+      }
+    </div>
+
+    <!-- Преподаватель -->
+    <div class="space-y-2">
+      <label for="instructor" class="block text-sm font-semibold text-gray-700">
+        Преподаватель <span class="text-red-500">*</span>
+      </label>
+      <p-select
+        id="instructor"
+        [options]="instructors"
+        formControlName="instructor"
+        placeholder="Выберите преподавателя"
+        optionLabel="name"
+        optionValue="name"
+        [showClear]="true"
+        class="w-full"
+        [class]="getDropdownClasses('instructor')">
+      </p-select>
+      @if(courseForm.get('instructor')?.invalid && courseForm.get('instructor')?.touched){
+        <div class="text-red-500 text-xs mt-1 min-h-[16px]">
+          Выберите преподавателя из списка
+        </div>
+      }
+    </div>
+
+    <!-- Длительность и цена в одной строке -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div class="space-y-2">
+        <label for="duration" class="block text-sm font-semibold text-gray-700">
+          Длительность (часы) <span class="text-red-500">*</span>
+        </label>
+        <p-inputNumber
+          id="duration"
+          formControlName="duration"
+          mode="decimal"
+          [min]="1"
+          [max]="2000"
+          placeholder="Количество часов"
+          class="w-full"
+          [class]="getInputNumberClasses('duration')">
+        </p-inputNumber>
+        @if(courseForm.get('duration')?.invalid && courseForm.get('duration')?.touched){
+          <div class="text-red-500 text-xs mt-1 min-h-[16px]">
+            @if(courseForm.get('duration')?.errors?.['required']){
+              <span>
+                Укажите длительность курса
+              </span>
+            }
+            @if(courseForm.get('duration')?.errors?.['min'] || courseForm.get('duration')?.errors?.['max']){
+              <span>
+                Длительность от 1 до 2000 часов
+              </span>
+            }
+          </div>
+        }
+      </div>
+
+      <div class="space-y-2">
+        <label for="price" class="block text-sm font-semibold text-gray-700">
+          Цена (USD) <span class="text-red-500">*</span>
+        </label>
+        <p-inputNumber
+          id="price"
+          formControlName="price"
+          mode="currency"
+          currency="USD"
+          [min]="0"
+          placeholder="$0.00"
+          class="w-full"
+          [class]="getInputNumberClasses('price')">
+        </p-inputNumber>
+        @if(courseForm.get('price')?.invalid && courseForm.get('price')?.touched){
+          <div class="text-red-500 text-xs mt-1 min-h-[16px]">
+            @if(courseForm.get('price')?.errors?.['required']){
+              <span>
+                Укажите цену курса
+              </span>
+            }
+            @if(courseForm.get('price')?.errors?.['min']){
+              <span>
+                Цена не может быть отрицательной
+              </span>
+            }
+          </div>
+        }
+      </div>
+    </div>
+
+    <!-- Статус -->
+    <div class="space-y-2">
+      <label for="status" class="block text-sm font-semibold text-gray-700">
+        Статус <span class="text-red-500">*</span>
+      </label>
+      <p-select
+        id="status"
+        [options]="statusOptions"
+        formControlName="status"
+        placeholder="Выберите статус"
+        optionLabel="label"
+        optionValue="value"
+        class="w-full">
+      </p-select>
+    </div>
+
+    <div class="flex justify-end space-x-3 pt-4 border-t border-gray-200">
+      <a routerLink="/admin/courses" class="flex items-center gap-2 rounded-2xl bg-gray-500 py-3 px-4 hover:shadow-lg cursor-pointer">
+        <span class="pi pi-times text-white"></span>
+        <p class= "text-white font-semibold">Отмена</p>
+      </a>
+      <button type="submit"  class="flex items-center gap-2 rounded-2xl bg-blue-500 py-3 px-4 hover:shadow-lg cursor-pointer">
+        <span class="pi pi-check text-white"></span>
+        <p class= "text-white font-semibold">Сохранить курс</p>
+      </button>
+    </div>
+  </form>
+</div>
+
+<p-toast></p-toast>

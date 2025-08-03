@@ -1,0 +1,138 @@
+<div class="m-6 p-5 rounded-2xl bg-white">
+  <div class="flex justify-between items-center mb-6 gap-4 flex-wrap">
+    <div class="flex-1 max-w-md">
+      <div class="flex items-center gap-2 w-full px-4 py-3 rounded-xl border border-gray-600">
+        <i class="pi pi-search"></i>
+        <input
+          type="text"
+          placeholder="Поиск курсов..."
+          [(ngModel)]="searchTerm"
+          (input)="onSearchChange()"
+          class="w-full outline-0"
+        />
+      </div>
+    </div>
+
+    <div class="flex-shrink-0">
+      <a routerLink="create" class="flex items-center gap-2 rounded-2xl bg-blue-500 py-3 px-4 hover:shadow-lg">
+        <span class="pi pi-plus text-white"></span>
+        <p class="text-white">Добавить курс</p>
+      </a>
+    </div>
+  </div>
+
+  <!-- Таблица курсов -->
+  <div class="bg-white rounded-xl border border-gray-200 overflow-hidden">
+    <p-table
+      [value]="filteredCourses"
+      [paginator]="true"
+      [rows]="10"
+      [rowsPerPageOptions]="[10, 25, 50]"
+      [paginatorDropdownAppendTo]="'body'"
+      [loading]="loading"
+      responsiveLayout="scroll">
+
+      <ng-template pTemplate="header">
+        <tr class="bg-gray-50">
+          <th class="text-left py-0! px-4 font-semibold text-gray-700 border-b border-gray-200" pSortableColumn="id">
+            ID <p-sortIcon field="id"></p-sortIcon>
+          </th>
+          <th class="text-left py-2! px-4 font-semibold text-gray-700 border-b border-gray-200" pSortableColumn="name">
+            Название <p-sortIcon field="name"></p-sortIcon>
+          </th>
+          <th class="text-left py-2! px-4 font-semibold text-gray-700 border-b border-gray-200">
+            Описание
+          </th>
+          <th class="text-left py-2! px-4 font-semibold text-gray-700 border-b border-gray-200" pSortableColumn="instructor">
+            Преподаватель <p-sortIcon field="instructor"></p-sortIcon>
+          </th>
+          <th class="text-left py-2! px-4 font-semibold text-gray-700 border-b border-gray-200" pSortableColumn="duration">
+            Длительность <p-sortIcon field="duration"></p-sortIcon>
+          </th>
+          <th class="text-left py-2! px-4 font-semibold text-gray-700 border-b border-gray-200" pSortableColumn="price">
+            Цена <p-sortIcon field="price"></p-sortIcon>
+          </th>
+          <th class="text-left py-2! px-4 font-semibold text-gray-700 border-b border-gray-200" pSortableColumn="status">
+            Статус <p-sortIcon field="status"></p-sortIcon>
+          </th>
+          <th class="text-center py-2! px-4 font-semibold text-gray-700 border-b border-gray-200">
+            Действия
+          </th>
+        </tr>
+      </ng-template>
+
+      <ng-template pTemplate="body" let-course let-rowIndex="rowIndex">
+        <tr class="hover:bg-gray-50 transition-colors duration-150" [class.bg-gray-25]="rowIndex % 2 === 0">
+          <td class="py-0! px-4 text-sm text-gray-600 border-b border-gray-100">
+            {{ course.id }}
+          </td>
+          <td class="py-0! px-4 border-b border-gray-100">
+            <div class="font-semibold text-gray-900 text-sm">{{ course.name }}</div>
+          </td>
+          <td class="py-0! px-4 border-b border-gray-100">
+            <span
+              class="text-sm text-gray-600"
+              [title]="course.description">
+              {{ course.description | slice:0:50 }}{{ course.description.length > 50 ? '...' : '' }}
+            </span>
+          </td>
+          <td class="py-0! px-4 text-sm text-gray-700 border-b border-gray-100">
+            {{ course.instructor }}
+          </td>
+          <td class="py-0! px-4 text-sm text-gray-600 border-b border-gray-100">
+            <span class="inline-flex items-center">
+              <i class="pi pi-clock mr-1 text-xs"></i>
+              {{ course.duration }} ч
+            </span>
+          </td>
+          <td class="py-0! px-4 text-sm font-semibold text-gray-900 border-b border-gray-100">
+            {{ course.price | currency:'USD':'symbol':'1.0-0' }}
+          </td>
+          <td class="py-0! px-4 border-b border-gray-100">
+            <p-tag
+              [value]="getStatusLabel(course.status)"
+              [severity]="getStatusSeverity(course.status)"
+              class="text-xs">
+            </p-tag>
+          </td>
+          <td class="py-2! px-4 border-b border-gray-100">
+            <div class="flex justify-start items-center gap-2">
+              <a [routerLink]="'edit/' + course.id" class="px-3 py-2 bg-blue-500 rounded-lg cursor-pointer">
+                <span class="pi pi-pencil text-white"></span>
+              </a>
+              <button class="px-3 py-2 bg-red-500 rounded-lg cursor-pointer" (click)="deleteCourse(course)">
+                <span class="pi pi-trash text-white"></span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </ng-template>
+
+      <ng-template pTemplate="emptymessage">
+        <tr>
+          <td colspan="8" class="text-center py-12">
+            <div class="flex flex-col items-center justify-center text-gray-500">
+              <i class="pi pi-search text-4xl mb-3 text-gray-400"></i>
+              <h3 class="text-lg font-medium text-gray-700 mb-1">Курсы не найдены</h3>
+              <p class="text-sm text-gray-500">Попробуйте изменить критерии поиска</p>
+            </div>
+          </td>
+        </tr>
+      </ng-template>
+
+      <ng-template pTemplate="loadingbody">
+        <tr>
+          <td colspan="8" class="text-center py-12">
+            <div class="flex flex-col items-center justify-center">
+              <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600 mb-3"></div>
+              <p class="text-sm text-gray-500">Загрузка курсов...</p>
+            </div>
+          </td>
+        </tr>
+      </ng-template>
+
+    </p-table>
+  </div>
+</div>
+
+<p-toast></p-toast>
