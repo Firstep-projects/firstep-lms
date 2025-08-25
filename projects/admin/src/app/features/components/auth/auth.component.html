@@ -1,4 +1,5 @@
-<div class="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+<div
+  class="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
   <div class="max-w-md w-full space-y-8">
 
     <!-- Login Form -->
@@ -6,34 +7,29 @@
       <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="space-y-6">
 
         <!-- Error Message -->
-         @if(error){
-           <div class="bg-red-50 border border-red-200 text-red-600 px-4 py-3 rounded-lg text-sm">
-             <div class="flex items-center space-x-2">
-               <i data-lucide="alert-circle" class="h-4 w-4"></i>
-               <span>{{ error }}</span>
-             </div>
-           </div>
-         }
+        @if(error){
+        <div class="bg-red-50 border border-red-200 text-red-600 px-4 py-3 rounded-lg text-sm">
+          <div class="flex items-center space-x-2">
+            <i data-lucide="alert-circle" class="h-4 w-4"></i>
+            <span>{{ error }}</span>
+          </div>
+        </div>
+        }
 
-        <!-- Email Field -->
+        <!-- Username Field -->
         <div>
-          <label for="email" class="block text-sm font-medium text-gray-700 mb-2">
-            Email адрес
+          <label for="username" class="block text-sm font-medium text-gray-700 mb-2">
+            Имя пользователя (Email)
           </label>
           <div class="relative">
-            <input
-              id="email"
-              type="email"
-              formControlName="email"
-              placeholder="admin@example.com"
+            <input id="username" type="email" formControlName="username" placeholder="admin@example.com"
               class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
-              [class.border-red-300]="getFieldError('email')"
-              [class.focus:ring-red-500]="getFieldError('email')">
+              [class.border-red-300]="getFieldError('username')" [class.focus:ring-red-500]="getFieldError('username')">
           </div>
-          @if(getFieldError('email')){
-            <p class="mt-1 text-sm text-red-600">
-              {{ getFieldError('email') }}
-            </p>
+          @if(getFieldError('username')){
+          <p class="mt-1 text-sm text-red-600">
+            {{ getFieldError('username') }}
+          </p>
           }
         </div>
 
@@ -43,45 +39,58 @@
             Пароль
           </label>
           <div class="relative">
-            <input
-              id="password"
-              type="password"
-              formControlName="password"
-              placeholder="password"
+            <input id="password" type="password" formControlName="password" placeholder="Введите пароль"
               class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 placeholder:text-gray-400"
-              [class.border-red-300]="getFieldError('password')"
-              [class.focus:ring-red-500]="getFieldError('password')">
+              [class.border-red-300]="getFieldError('password')" [class.focus:ring-red-500]="getFieldError('password')">
           </div>
           @if(getFieldError('password')){
-            <p class="mt-1 text-sm text-red-600">
-              {{ getFieldError('password') }}
-            </p>
+          <p class="mt-1 text-sm text-red-600">
+            {{ getFieldError('password') }}
+          </p>
           }
         </div>
 
+        <!-- Remember Me -->
+        <div class="flex items-center justify-between">
+          <div class="flex items-center">
+            <input id="rememberMe" type="checkbox" formControlName="rememberMe"
+              class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded">
+            <label for="rememberMe" class="ml-2 block text-sm text-gray-700">
+              Запомнить меня
+            </label>
+          </div>
+        </div>
+
         <!-- Submit Button -->
-        <button
-          type="submit"
-          [disabled]="loading || loginForm.invalid"
+        <button type="submit" [disabled]="loading || loginForm.invalid"
           class="w-full bg-gradient-to-r from-blue-500 to-purple-600 text-white py-3 px-4 rounded-lg font-medium transition-all duration-200 hover:from-blue-600 hover:to-purple-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed">
 
           @if(!loading){
-            <span class="flex items-center justify-center space-x-2">
-              <span>Войти</span>
-              <i data-lucide="arrow-right" class="h-4 w-4"></i>
-            </span>
+          <span class="flex items-center justify-center space-x-2">
+            <span>Войти</span>
+            <i data-lucide="arrow-right" class="h-4 w-4"></i>
+          </span>
           }
 
           @if(loading){
-            <span class="flex items-center justify-center space-x-2">
-              <svg class="animate-spin h-4 w-4 text-white" fill="none" viewBox="0 0 24 24">
-                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-              </svg>
-              <span>Вход...</span>
-            </span>
+          <span class="flex items-center justify-center space-x-2">
+            <svg class="animate-spin h-4 w-4 text-white" fill="none" viewBox="0 0 24 24">
+              <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+              <path class="opacity-75" fill="currentColor"
+                d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z">
+              </path>
+            </svg>
+            <span>Вход...</span>
+          </span>
           }
         </button>
+
+        <!-- Development Info -->
+        <div class="mt-6 p-4 bg-gray-50 rounded-lg text-xs text-gray-600">
+          <div class="font-semibold mb-2">Тестовые данные:</div>
+          <div>Username: adminexample.com</div>
+          <div>Password: (ваш пароль)</div>
+        </div>
 
       </form>
     </div>

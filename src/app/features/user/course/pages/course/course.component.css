@@ -1,0 +1,9 @@
+::ng-deep .p-accordionpanel-active{
+  background: none !important;
+}
+::ng-deep .p-progressbar{
+  max-height: 5px !important;
+}
+::ng-deep .p-progressbar-value{
+  background-color: #017AFF !important;
+}

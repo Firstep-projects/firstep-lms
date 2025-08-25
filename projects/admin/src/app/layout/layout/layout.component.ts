@@ -15,6 +15,8 @@ export class LayoutComponent {
   menuItems = [
     { icon: 'pi pi-home', label: 'Главная', link: "home" },
     { icon: 'pi pi-users', label: 'Курсы', link: "courses"},
+    { icon: 'pi pi-users', label: 'Категории', link: "categories"},
+    { icon: 'pi pi-users', label: 'Авторы', link: "author"},
   ];
 
   private readonly activatedRoute: ActivatedRoute = inject(ActivatedRoute);

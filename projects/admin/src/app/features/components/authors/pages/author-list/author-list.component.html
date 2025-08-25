@@ -3,7 +3,7 @@
     <div class="flex-1 max-w-md">
       <div class="flex items-center gap-2 w-full px-4 py-3 rounded-xl border border-gray-600">
         <i class="pi pi-search"></i>
-        <input type="text" placeholder="Поиск курсов..." [(ngModel)]="searchTerm" (input)="onSearchChange()"
+        <input type="text" placeholder="Поиск авторов..." [(ngModel)]="searchTerm" (input)="onSearchChange()"
           class="w-full outline-0" />
         <button *ngIf="searchTerm" (click)="clearFilters()" class="p-1 hover:bg-gray-100 rounded"
           title="Очистить поиск">
@@ -13,7 +13,7 @@
     </div>
 
     <div class="flex items-center gap-2">
-      <button (click)="refreshCourses()"
+      <button (click)="refreshAuthors()"
         class="flex items-center gap-2 rounded-2xl bg-gray-500 py-3 px-4 hover:shadow-lg" [disabled]="loading"
         title="Обновить список">
         <span class="pi pi-refresh text-white" [class.pi-spin]="loading"></span>
@@ -22,14 +22,15 @@
 
       <a routerLink="create" class="flex items-center gap-2 rounded-2xl bg-blue-500 py-3 px-4 hover:shadow-lg">
         <span class="pi pi-plus text-white"></span>
-        <p class="text-white">Добавить курс</p>
+        <p class="text-white">Добавить автора</p>
       </a>
     </div>
   </div>
 
-  <!-- Таблица курсов -->
+
+  <!-- Таблица авторов -->
   <div class="bg-white rounded-xl border border-gray-200 overflow-hidden">
-    <p-table [value]="courses" [paginator]="true" [rows]="rows" [totalRecords]="totalRecords"
+    <p-table [value]="authors" [paginator]="true" [rows]="rows" [totalRecords]="totalRecords"
       [rowsPerPageOptions]="[10, 25, 50]" [paginatorDropdownAppendTo]="'body'" [loading]="loading" [lazy]="true"
       (onLazyLoad)="onPageChange($event)" responsiveLayout="scroll" dataKey="id">
 
@@ -39,22 +40,16 @@
             ID
           </th>
           <th class="text-left py-2! px-4 font-semibold text-gray-700 border-b border-gray-200">
-            Название
+            Изображение
+          </th>
+          <th class="text-left py-2! px-4 font-semibold text-gray-700 border-b border-gray-200">
+            Имя автора
           </th>
           <th class="text-left py-2! px-4 font-semibold text-gray-700 border-b border-gray-200">
             Описание
           </th>
           <th class="text-left py-2! px-4 font-semibold text-gray-700 border-b border-gray-200">
-            Автор
-          </th>
-          <th class="text-left py-2! px-4 font-semibold text-gray-700 border-b border-gray-200">
-            Категория
-          </th>
-          <th class="text-left py-2! px-4 font-semibold text-gray-700 border-b border-gray-200">
-            Язык
-          </th>
-          <th class="text-left py-2! px-4 font-semibold text-gray-700 border-b border-gray-200">
-            Создан
+            Контент
           </th>
           <th class="text-center py-2! px-4 font-semibold text-gray-700 border-b border-gray-200">
             Действия
@@ -62,52 +57,49 @@
         </tr>
       </ng-template>
 
-      <ng-template pTemplate="body" let-course let-rowIndex="rowIndex">
+      <ng-template pTemplate="body" let-author let-rowIndex="rowIndex">
         <tr class="hover:bg-gray-50 transition-colors duration-150" [class.bg-gray-25]="rowIndex % 2 === 0">
           <td class="py-3! px-4 text-sm text-gray-600 border-b border-gray-100">
-            {{ course.id }}
+            {{ author.id }}
           </td>
           <td class="py-3! px-4 border-b border-gray-100">
-            <div class="flex items-center gap-3">
-              <img *ngIf="course.image" [src]="'http://167.86.71.210:4002/api/' + course.image" [alt]="course.title"
-                class="w-10 h-10 rounded-lg object-cover">
-              <div>
-                <div class="font-semibold text-gray-900 text-sm">{{ course.title }}</div>
-                <div class="text-xs text-gray-500">ID: {{ course.id }}</div>
+            <div class="flex items-center">
+              <img *ngIf="author.imageLink" [src]="'http://167.86.71.210:4002/api/' + author.imageLink"
+                [alt]="author.name" class="w-12 h-12 rounded-full object-cover">
+              <div *ngIf="!author.imageLink"
+                class="w-12 h-12 rounded-full bg-gray-200 flex items-center justify-center">
+                <i class="pi pi-user text-gray-400"></i>
               </div>
             </div>
           </td>
           <td class="py-3! px-4 border-b border-gray-100">
-            <span class="text-sm text-gray-600" [title]="course.description">
-              {{ course.description | slice:0:80 }}{{ course.description.length > 80 ? '...' : '' }}
+            <div class="font-semibold text-gray-900 text-sm">{{ author.name }}</div>
+            <div class="text-xs text-gray-500">ID: {{ author.id }}</div>
+          </td>
+          <td class="py-3! px-4 border-b border-gray-100">
+            <span class="text-sm text-gray-600" [title]="author.content">
+              {{ author.content | slice:0:80 }}{{ author.content.length > 80 ? '...' : '' }}
             </span>
           </td>
-          <td class="py-3! px-4 text-sm text-gray-700 border-b border-gray-100">
-            {{ getAuthorName(course) }}
-          </td>
-          <td class="py-3! px-4 text-sm text-gray-700 border-b border-gray-100">
-            {{ getCategoryName(course) }}
-          </td>
-          <td class="py-3! px-4 text-sm text-gray-600 border-b border-gray-100">
-            <span class="inline-flex items-center px-2 py-1 rounded-full text-xs bg-blue-100 text-blue-800">
-              {{ course.languageCode?.toUpperCase() || 'N/A' }}
-            </span>
-          </td>
-          <td class="py-3! px-4 text-sm text-gray-600 border-b border-gray-100">
-            <div class="flex flex-col">
-              <span>{{ course.createdAt | date:'dd.MM.yyyy' }}</span>
-              <span class="text-xs text-gray-400">{{ course.createdAt | date:'HH:mm' }}</span>
+          <td class="py-3! px-4 border-b border-gray-100">
+            <div class="text-sm">
+              <div class="font-medium text-gray-900 mb-1">
+                Всего: {{ getTotalContent(author) }}
+              </div>
+              <div class="text-xs text-gray-500">
+                {{ getContentSummary(author) }}
+              </div>
             </div>
           </td>
           <td class="py-3! px-4 border-b border-gray-100">
             <div class="flex justify-start items-center gap-2">
-              <a [routerLink]="'edit/' + course.id"
+              <a [routerLink]="'edit/' + author.id"
                 class="px-3 py-2 bg-blue-500 rounded-lg cursor-pointer hover:bg-blue-600 transition-colors"
                 title="Редактировать">
                 <span class="pi pi-pencil text-white"></span>
               </a>
               <button class="px-3 py-2 bg-red-500 rounded-lg cursor-pointer hover:bg-red-600 transition-colors"
-                (click)="deleteCourse(course)" [disabled]="loading" title="Удалить">
+                (click)="deleteAuthor(author)" [disabled]="loading" title="Удалить">
                 <span class="pi pi-trash text-white"></span>
               </button>
             </div>
@@ -117,14 +109,14 @@
 
       <ng-template pTemplate="emptymessage">
         <tr>
-          <td colspan="9" class="text-center py-12">
+          <td colspan="8" class="text-center py-12">
             <div class="flex flex-col items-center justify-center text-gray-500">
               <i class="pi pi-search text-4xl mb-3 text-gray-400"></i>
               <h3 class="text-lg font-medium text-gray-700 mb-1">
-                {{ searchTerm ? 'Курсы не найдены' : 'Нет курсов' }}
+                {{ searchTerm ? 'Авторы не найдены' : 'Нет авторов' }}
               </h3>
               <p class="text-sm text-gray-500">
-                {{ searchTerm ? 'Попробуйте изменить критерии поиска' : 'Создайте первый курс' }}
+                {{ searchTerm ? 'Попробуйте изменить критерии поиска' : 'Создайте первого автора' }}
               </p>
               <button *ngIf="searchTerm" (click)="clearFilters()"
                 class="mt-3 px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors">
@@ -137,10 +129,10 @@
 
       <ng-template pTemplate="loadingbody">
         <tr>
-          <td colspan="9" class="text-center py-12">
+          <td colspan="8" class="text-center py-12">
             <div class="flex flex-col items-center justify-center">
               <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600 mb-3"></div>
-              <p class="text-sm text-gray-500">Загрузка курсов...</p>
+              <p class="text-sm text-gray-500">Загрузка авторов...</p>
             </div>
           </td>
         </tr>

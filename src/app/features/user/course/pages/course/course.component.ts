@@ -2,10 +2,16 @@ import { NgFor } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { SafeUrlPipe } from '../../../../../shared/pipes/safe-url.pipe';
 import CustomVideoPlayerComponent from '../../../../../shared/components/custom-video-player-component/custom-video-player.component';
-import { CommonHeaderComponent } from '../../../../../shared/components/common-header/common-header.component';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ICourse, ILesson, IModule, MockCourses } from '../../model/course.mock';
+import {
+    ICourse,
+    ILesson,
+    IModule,
+    MockCourses,
+} from '../../model/course.mock';
 import { FormsModule } from '@angular/forms';
+import { AccordionModule } from 'primeng/accordion';
+import { ProgressBar } from 'primeng/progressbar';
 
 @Component({
     selector: 'app-course',
@@ -13,8 +19,9 @@ import { FormsModule } from '@angular/forms';
         NgFor,
         CustomVideoPlayerComponent,
         SafeUrlPipe,
-        CommonHeaderComponent,
-        FormsModule
+        FormsModule,
+        AccordionModule,
+        ProgressBar,
     ],
     templateUrl: './course.component.html',
     styleUrl: './course.component.css',
@@ -29,43 +36,7 @@ export default class CourseComponent {
     testModule!: IModule;
     currentTestIndex: number = 0;
     answers: string[] = [];
-
-    // videos = [
-    //     {
-    //         id: 1,
-    //         title: 'Introduction to JavaScript',
-    //         duration: '10:32',
-    //         embedUrl: './src/videos/1.3.mp4',
-    //         description:
-    //             'In this video we cover the basics of JavaScript including variables, types and syntax.',
-    //         homework: ['Create 3 variables', 'Write a simple if-else block'],
-    //     },
-    //     {
-    //         id: 2,
-    //         title: 'Functions and Scope',
-    //         duration: '08:20',
-    //         embedUrl: './src/videos/1.4.mp4',
-    //         description:
-    //             'Understand how functions work and the importance of scope in JS.',
-    //         homework: [
-    //             'Create 2 functions with different scope',
-    //             'Call them with arguments',
-    //         ],
-    //     },
-    //     {
-    //         id: 3,
-    //         title: 'DOM Manipulation',
-    //         duration: '15:10',
-    //         embedUrl:
-    //             './src/videos/[MEGASLIV.BIZ] 1. Ввведение в многопоточность.mp4',
-    //         description:
-    //             'Learn how to manipulate DOM elements using JavaScript.',
-    //         homework: [
-    //             'Change DOM content using JS',
-    //             'Add/remove elements dynamically',
-    //         ],
-    //     },
-    // ];
+    breadcrumbs: string[] = [];
 
     ngOnInit() {
         let courseId = this.activatedRoute.snapshot.params['id'];
@@ -73,6 +44,11 @@ export default class CourseComponent {
         let course = MockCourses.find((course) => course.id === +courseId);
         if (course) {
             this.course = course;
+            this.breadcrumbs = [
+                course.title,
+                course.modules[0].title,
+                course.modules[0].lessons[0].title,
+            ];
             this.selectedLesson = course.modules[0]?.lessons[0];
         } else {
             this.router.navigateByUrl('/courses');
@@ -80,32 +56,40 @@ export default class CourseComponent {
     }
 
     selectVideo(lesson: any) {
+        this.breadcrumbs[2] = lesson.title;
+        this.course.modules.forEach((module) => {
+            module.lessons.forEach((l) => {
+                if (l.id === lesson.id) {
+                    this.breadcrumbs[1] = module.title;
+                }
+            });
+        });
         this.selectedLesson = lesson;
         this.isSolcveTest = false;
     }
 
-    openTest(module: IModule){
-      this.isSolcveTest = true;
-      this.testModule = module;
-      this.currentTestIndex = 0;
-      this.answers = new Array(module.tests.length).fill('');
+    openTest(module: IModule) {
+        this.isSolcveTest = true;
+        this.testModule = module;
+        this.currentTestIndex = 0;
+        this.answers = new Array(module.tests.length).fill('');
     }
 
     nextTest() {
-      if (this.currentTestIndex < this.testModule.tests.length - 1) {
-        this.currentTestIndex++;
-      }
+        if (this.currentTestIndex < this.testModule.tests.length - 1) {
+            this.currentTestIndex++;
+        }
     }
 
     prevTest() {
-      if (this.currentTestIndex > 0) {
-        this.currentTestIndex--;
-      }
+        if (this.currentTestIndex > 0) {
+            this.currentTestIndex--;
+        }
     }
 
     submitAnswers() {
-      // Здесь обработка ответов
-      console.log('Ответы:', this.answers);
-      // Можно добавить логику проверки и вывода результата
+        // Здесь обработка ответов
+        console.log('Ответы:', this.answers);
+        // Можно добавить логику проверки и вывода результата
     }
 }

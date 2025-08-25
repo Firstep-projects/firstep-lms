@@ -8,53 +8,135 @@ import { UnauthorizedComponent } from './shared/components/unauthorized/unauthor
 import { ForbiddenComponent } from './shared/components/forbidden/forbidden.component';
 
 export const routes: Routes = [
-  { path: '', redirectTo: '/login', pathMatch: 'full' },
-  { path: 'login', component: AuthComponent },
-  {
-    path: 'admin',
-    component: LayoutComponent,
-    canActivate: [AuthGuard, AdminGuard],
-    data: {
-      title: "Admin"
-    },
-    children: [
-      {
-        path: "home",
-        loadComponent: () => import("./features/components/home/pages/home/home.component"),
+    { path: '', redirectTo: '/login', pathMatch: 'full' },
+    { path: 'login', component: AuthComponent },
+    {
+        path: 'admin',
+        component: LayoutComponent,
+        canActivate: [AuthGuard],
         data: {
-          title: "Главный"
-        }
-      },
-      {
-        path: "courses",
+            title: 'Admin',
+        },
         children: [
-          {
-            path: "",
-            loadComponent: () => import("./features/components/courses/pages/course-list/course-list.component"),
-            data: {
-              title: "Курсы"
+            {
+                path: 'home',
+                loadComponent: () =>
+                    import(
+                        './features/components/home/pages/home/home.component'
+                    ),
+                data: {
+                    title: 'Главный',
+                },
             },
-          },
-          {
-            path: "create",
-            loadComponent: () => import("./features/components/courses/pages/edit-course/edit-course.component"),
-            data: {
-              title: "Создать Курс"
+            {
+                path: 'courses',
+                children: [
+                    {
+                        path: '',
+                        loadComponent: () =>
+                            import(
+                                './features/components/courses/pages/course-list/course-list.component'
+                            ),
+                        data: {
+                            title: 'Курсы',
+                        },
+                    },
+                    {
+                        path: 'create',
+                        loadComponent: () =>
+                            import(
+                                './features/components/courses/pages/edit-course/edit-course.component'
+                            ),
+                        data: {
+                            title: 'Создать Курс',
+                        },
+                    },
+                    {
+                        path: 'edit/:id',
+                        loadComponent: () =>
+                            import(
+                                './features/components/courses/pages/edit-course/edit-course.component'
+                            ),
+                        data: {
+                            title: 'Изменить Курс',
+                        },
+                    },
+                ],
             },
-          },
-          {
-            path: "edit/:id",
-            loadComponent: () => import("./features/components/courses/pages/edit-course/edit-course.component"),
-            data: {
-              title: "Изменить Курс"
+            {
+                path: 'categories',
+                children: [
+                    {
+                        path: '',
+                        loadComponent: () =>
+                            import(
+                                './features/components/categories/pages/category-list/category-list.component'
+                            ),
+                        data: {
+                            title: 'Категории',
+                        },
+                    },
+                    {
+                        path: 'create',
+                        loadComponent: () =>
+                            import(
+                                './features/components/categories/pages/edit-category/edit-category.component'
+                            ),
+                        data: {
+                            title: 'Создать категорию',
+                        },
+                    },
+                    {
+                        path: 'edit/:id',
+                        loadComponent: () =>
+                            import(
+                                './features/components/categories/pages/edit-category/edit-category.component'
+                            ),
+                        data: {
+                            title: 'Изменить категорию',
+                        },
+                    },
+                ],
             },
-          }
-        ]
-      },
-    ]
-  },
-  { path: '401', component: UnauthorizedComponent },
-  { path: 'unauthorized', redirectTo: '/401' },
-  { path: '403', component: ForbiddenComponent },
-  { path: '**', component: NotFoundComponent }
+            {
+                path: 'author',
+                children: [
+                    {
+                        path: '',
+                        loadComponent: () =>
+                            import(
+                                './features/components/authors/pages/author-list/author-list.component'
+                            ),
+                        data: {
+                            title: 'Авторы',
+                        },
+                    },
+                    {
+                        path: 'create',
+                        loadComponent: () =>
+                            import(
+                                './features/components/authors/pages/edit-author/edit-author.component'
+                            ),
+                        data: {
+                            title: 'Создать категорию',
+                        },
+                    },
+                    {
+                        path: 'edit/:id',
+                        loadComponent: () =>
+                            import(
+                                './features/components/authors/pages/edit-author/edit-author.component'
+                            ),
+                        data: {
+                            title: 'Изменить категорию',
+                        },
+                    },
+                ],
+            },
+        ],
+    },
+    { path: '401', component: UnauthorizedComponent },
+    { path: 'unauthorized', redirectTo: '/401' },
+    { path: '403', component: ForbiddenComponent },
+    { path: '**', component: NotFoundComponent },
 ];

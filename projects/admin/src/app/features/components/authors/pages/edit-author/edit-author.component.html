@@ -1,0 +1,154 @@
+<div class="max-w-[900px]! m-6 xl:mx-auto p-5 rounded-2xl bg-white flex flex-col">
+  <a routerLink="/admin/author"
+    class="self-start flex items-center gap-2 px-3 py-2 rounded-xl hover:bg-gray-100 transition-all duration-300 mb-5 w-auto">
+    <span class="pi pi-arrow-left"></span>
+    <p class="text-lg">Назад</p>
+  </a>
+
+  <form [formGroup]="authorForm" (ngSubmit)="onSubmit()" class="space-y-6">
+
+    <!-- Изображение -->
+    <div class="space-y-2">
+      <label class="block text-sm font-semibold text-gray-700">
+        Изображение
+      </label>
+
+      <div class="flex flex-col items-start">
+        <!-- Превью -->
+        <div *ngIf="previewUrl" class="mb-3">
+          <img [src]="previewUrl" alt="Preview" class="w-40 h-40 object-cover rounded-xl border shadow-sm" />
+        </div>
+
+        <!-- Кнопка загрузки/изменения -->
+        <button type="button" (click)="fileInput.click()"
+          class="flex items-center gap-2 rounded-xl bg-blue-500 py-2 px-4 text-white hover:bg-blue-600 transition-all shadow-sm">
+          <span class="pi pi-upload"></span>
+          {{ previewUrl ? 'Изменить изображение' : 'Загрузить изображение' }}
+        </button>
+
+        <!-- Скрытое поле выбора файла -->
+        <input #fileInput id="image" type="file" (change)="onFileSelected($event)" accept="image/*" class="hidden" />
+      </div>
+    </div>
+
+    <!-- Имя автора -->
+    <div class="space-y-2">
+      <label for="name" class="block text-sm font-semibold text-gray-700">
+        Имя автора <span class="text-red-500">*</span>
+      </label>
+      <input id="name" pInputText type="text" formControlName="name" placeholder="Введите имя автора" class="w-full"
+        [class]="getInputClasses('name')" />
+      @if(authorForm.get('name')?.invalid && authorForm.get('name')?.touched){
+      <div class="text-red-500 text-xs mt-1">
+        Имя автора обязательно для заполнения
+      </div>
+      }
+    </div>
+
+    <!-- Контент/Описание -->
+    <div class="space-y-2">
+      <label for="content" class="block text-sm font-semibold text-gray-700">
+        Описание автора <span class="text-red-500">*</span>
+      </label>
+      <textarea id="content" pInputTextarea formControlName="content" placeholder="Введите описание автора" rows="4"
+        class="w-full resize-none transition-colors duration-200" [class]="getInputClasses('content')">
+      </textarea>
+      @if(authorForm.get('content')?.invalid && authorForm.get('content')?.touched){
+      <div class="text-red-500 text-xs mt-1">
+        Описание автора обязательно для заполнения
+      </div>
+      }
+    </div>
+
+    <!-- Статистика контента -->
+    <div class="space-y-4">
+      <h3 class="text-lg font-semibold text-gray-800">Статистика контента</h3>
+
+      <!-- Курсы -->
+      <div class="space-y-2">
+        <label for="courseCount" class="block text-sm font-semibold text-gray-700">
+          Количество курсов <span class="text-red-500">*</span>
+        </label>
+        <p-inputnumber id="courseCount" formControlName="courseCount" [min]="0" [max]="999999" placeholder="0"
+          class="w-full" styleClass="w-full">
+        </p-inputnumber>
+        @if(authorForm.get('courseCount')?.invalid && authorForm.get('courseCount')?.touched){
+        <div class="text-red-500 text-xs mt-1">
+          Количество курсов не может быть отрицательным
+        </div>
+        }
+      </div>
+
+      <!-- Короткие видео -->
+      <div class="space-y-2">
+        <label for="shortVideoCount" class="block text-sm font-semibold text-gray-700">
+          Количество коротких видео <span class="text-red-500">*</span>
+        </label>
+        <p-inputnumber id="shortVideoCount" formControlName="shortVideoCount" [min]="0" [max]="999999" placeholder="0"
+          class="w-full" styleClass="w-full">
+        </p-inputnumber>
+        @if(authorForm.get('shortVideoCount')?.invalid && authorForm.get('shortVideoCount')?.touched){
+        <div class="text-red-500 text-xs mt-1">
+          Количество коротких видео не может быть отрицательным
+        </div>
+        }
+      </div>
+
+      <!-- Семинарские видео -->
+      <div class="space-y-2">
+        <label for="seminarVideoCount" class="block text-sm font-semibold text-gray-700">
+          Количество семинарских видео <span class="text-red-500">*</span>
+        </label>
+        <p-inputnumber id="seminarVideoCount" formControlName="seminarVideoCount" [min]="0" [max]="999999"
+          placeholder="0" class="w-full" styleClass="w-full">
+        </p-inputnumber>
+        @if(authorForm.get('seminarVideoCount')?.invalid && authorForm.get('seminarVideoCount')?.touched){
+        <div class="text-red-500 text-xs mt-1">
+          Количество семинарских видео не может быть отрицательным
+        </div>
+        }
+      </div>
+
+      <!-- Статьи -->
+      <div class="space-y-2">
+        <label for="articleCount" class="block text-sm font-semibold text-gray-700">
+          Количество статей <span class="text-red-500">*</span>
+        </label>
+        <p-inputnumber id="articleCount" formControlName="articleCount" [min]="0" [max]="999999" placeholder="0"
+          class="w-full" styleClass="w-full">
+        </p-inputnumber>
+        @if(authorForm.get('articleCount')?.invalid && authorForm.get('articleCount')?.touched){
+        <div class="text-red-500 text-xs mt-1">
+          Количество статей не может быть отрицательным
+        </div>
+        }
+      </div>
+    </div>
+
+    <!-- Статус -->
+    <div class="space-y-2">
+      <label for="status" class="block text-sm font-semibold text-gray-700">
+        Статус <span class="text-red-500">*</span>
+      </label>
+      <p-select id="status" [options]="statusOptions" formControlName="status" placeholder="Выберите статус"
+        optionLabel="label" optionValue="value" class="w-full">
+      </p-select>
+    </div>
+
+    <!-- Кнопки -->
+    <div class="flex justify-end space-x-3 pt-4 border-t border-gray-200">
+      <a routerLink="/admin/authors"
+        class="flex items-center gap-2 rounded-2xl bg-gray-500 py-3 px-4 hover:shadow-lg cursor-pointer">
+        <span class="pi pi-times text-white"></span>
+        <p class="text-white font-semibold">Отмена</p>
+      </a>
+      <button type="submit"
+        class="flex items-center gap-2 rounded-2xl bg-blue-500 py-3 px-4 hover:shadow-lg cursor-pointer">
+        <span class="pi pi-check text-white"></span>
+        <p class="text-white font-semibold">Сохранить</p>
+      </button>
+    </div>
+  </form>
+</div>
+
+<p-toast></p-toast>

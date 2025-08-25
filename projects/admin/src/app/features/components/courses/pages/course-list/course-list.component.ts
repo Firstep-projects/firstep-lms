@@ -1,88 +1,172 @@
-import { Component, inject } from '@angular/core';
-import { Course } from '../../course.model';
+import { Component, inject, OnInit, OnDestroy } from '@angular/core';
+import { Subject, takeUntil, debounceTime, distinctUntilChanged } from 'rxjs';
+import { Course } from '../../../../models/course.model';
+import { CourseService } from '../../../../services/course.service';
 import { TableModule } from 'primeng/table';
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
-import { Tag } from 'primeng/tag';
 import { ToastModule } from 'primeng/toast';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { CurrencyPipe, SlicePipe } from '@angular/common';
-import { MessageService } from 'primeng/api';
+import { SlicePipe, DatePipe, NgIf } from '@angular/common';
+import { MessageService, ConfirmationService } from 'primeng/api';
 import { RouterLink } from '@angular/router';
-import { CoursesMock } from '../../course.mock';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { ProgressSpinnerModule } from 'primeng/progressspinner';
 
 @Component({
-  selector: 'app-course-list',
-  imports: [SlicePipe, CurrencyPipe,TableModule, Tag, ButtonModule, InputTextModule, ToastModule, ReactiveFormsModule, FormsModule, RouterLink],
-  providers: [MessageService],
-  templateUrl: './course-list.component.html',
-  styleUrl: './course-list.component.css'
+    selector: 'app-course-list',
+    imports: [
+        SlicePipe,
+        DatePipe,
+        TableModule,
+        ButtonModule,
+        InputTextModule,
+        ToastModule,
+        ReactiveFormsModule,
+        FormsModule,
+        RouterLink,
+        ConfirmDialogModule,
+        ProgressSpinnerModule,
+        NgIf,
+    ],
+    providers: [MessageService, ConfirmationService],
+    templateUrl: './course-list.component.html',
+    styleUrl: './course-list.component.css',
 })
-export default class CourseListComponent {
-  courses: Course[] = [];
-  filteredCourses: Course[] = [];
-  searchTerm: string = '';
-  loading: boolean = false;
+export default class CourseListComponent implements OnInit, OnDestroy {
+    courses: Course[] = [];
+    totalRecords: number = 0;
+    loading: boolean = false;
+    searchTerm: string = '';
 
-  private readonly messageService: MessageService = inject(MessageService);
+    first: number = 0;
+    rows: number = 10;
+    currentPage: number = 0;
 
-  ngOnInit() {
-    this.loadCourses();
-  }
+    private readonly destroy$ = new Subject<void>();
+    private readonly searchSubject = new Subject<string>();
+    private readonly courseService = inject(CourseService);
+    private readonly confirmationService = inject(ConfirmationService);
 
-  loadCourses() {
-    this.loading = true;
-    setTimeout(() => {
-      this.courses = CoursesMock;
-      this.filteredCourses = [...this.courses];
-      this.loading = false;
-    }, 200);
-  }
-
-  onSearchChange() {
-    if (!this.searchTerm.trim()) {
-      this.filteredCourses = [...this.courses];
-      return;
+    ngOnInit() {
+        this.setupSearch();
+        this.loadCourses();
     }
 
-    const searchLower = this.searchTerm.toLowerCase();
-    this.filteredCourses = this.courses.filter(course =>
-      course.name.toLowerCase().includes(searchLower) ||
-      course.description.toLowerCase().includes(searchLower) ||
-      course.instructor.toLowerCase().includes(searchLower)
-    );
-  }
-
-  getStatusLabel(status: string): string {
-    const statusLabels: { [key: string]: string } = {
-      'active': 'Активный',
-      'inactive': 'Неактивный',
-      'draft': 'Черновик'
-    };
-    return statusLabels[status] || status;
-  }
-
-  getStatusSeverity(status: string): string {
-    const severityMap: { [key: string]: string } = {
-      'active': 'success',
-      'inactive': 'danger',
-      'draft': 'warning'
-    };
-    return severityMap[status] || 'info';
-  }
-
-  deleteCourse(course: Course) {
-    const index = CoursesMock.findIndex(c => c.id === course.id);
-    if (index !== -1) {
-      CoursesMock.splice(index, 1);
-      this.messageService.add({
-        severity: 'success',
-        summary: 'Успешно',
-        detail: 'Курс был успешно удален',
-        life: 3000
-      });
+    ngOnDestroy() {
+        this.destroy$.next();
+        this.destroy$.complete();
     }
-    this.loadCourses();
-  }
 
+    private setupSearch() {
+        this.searchSubject
+            .pipe(
+                debounceTime(500),
+                distinctUntilChanged(),
+                takeUntil(this.destroy$),
+            )
+            .subscribe((searchTerm) => {
+                this.first = 0;
+                this.loadCourses();
+            });
+    }
+
+    loadCourses() {
+        this.loading = true;
+
+        const params = {
+            Skip: this.currentPage,
+            Take: this.rows,
+            search: this.searchTerm.trim() || undefined,
+        };
+
+        this.courseService
+            .getCourses(params)
+            .pipe(takeUntil(this.destroy$))
+            .subscribe({
+                next: (response) => {
+                    if (response.code == 200) {
+                        this.courses = response.content;
+                        this.totalRecords = 100;
+                    } else {
+                    }
+                    this.loading = false;
+                },
+                error: () => {
+                    this.loading = false;
+                },
+            });
+    }
+
+    onSearchChange() {
+        this.searchSubject.next(this.searchTerm);
+    }
+
+    onPageChange(event: any) {
+        this.first = event.first;
+        this.rows = event.rows;
+        this.currentPage = event.first / event.rows;
+        this.loadCourses();
+    }
+
+    getCategoryName(course: Course): string {
+        if (course.category?.title) {
+            const title = course.category.title;
+            return (
+                title['ru'] ||
+                title['uz'] ||
+                title['en'] ||
+                Object.values(title)[0] ||
+                'Без категории'
+            );
+        }
+        return 'Без категории';
+    }
+
+    getAuthorName(course: Course): string {
+        return course.author?.name || 'Неизвестный автор';
+    }
+
+    deleteCourse(course: Course) {
+        this.confirmationService.confirm({
+            message: `Вы действительно хотите удалить курс "${course.title}"?`,
+            header: 'Подтверждение удаления',
+            icon: 'pi pi-exclamation-triangle',
+            acceptLabel: 'Да, удалить',
+            rejectLabel: 'Отмена',
+            accept: () => {
+                this.performDelete(course);
+            },
+        });
+    }
+
+    private performDelete(course: Course) {
+        this.loading = true;
+
+        this.courseService
+            .deleteCourse(course.id)
+            .pipe(takeUntil(this.destroy$))
+            .subscribe({
+                next: (response) => {
+                    if (response.success) {
+                        this.loadCourses();
+                    } else {
+                    }
+                    this.loading = false;
+                },
+                error: () => {
+                    this.loading = false;
+                },
+            });
+    }
+
+    refreshCourses() {
+        this.loadCourses();
+    }
+
+    clearFilters() {
+        this.searchTerm = '';
+        this.first = 0;
+        this.loadCourses();
+    }
 }

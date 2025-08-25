@@ -1,62 +1,52 @@
 <div class="min-h-screen bg-gray-50 flex">
-  <!-- Sidebar -->
   <aside class="flex flex-col bg-white shadow-xl border-r border-gray-200 transition-all duration-300 ease-in-out"
-         [ngClass]="sidebarOpen ? 'w-64' : 'w-20'">
+    [ngClass]="sidebarOpen ? 'w-64' : 'w-20'">
 
-    <!-- Logo -->
     <div class="h-16 flex items-center justify-between px-6 border-b border-gray-200">
-      <div class="flex items-center space-x-3"
-           [ngClass]="{ 'justify-center': !sidebarOpen }">
+      <div class="flex items-center space-x-3" [ngClass]="{ 'justify-center': !sidebarOpen }">
         <div class="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
           <span class="text-white font-bold text-sm">A</span>
         </div>
         @if(sidebarOpen){
-          <span class="text-xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-            AdminPanel
-          </span>
+        <span class="text-xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+          AdminPanel
+        </span>
         }
       </div>
     </div>
 
-    <!-- Navigation -->
     <nav class="mt-8 px-4">
       <ul class="space-y-2">
         @for(item of menuItems; track $index){
-          <li>
-            <a [routerLink]="item.link"
-                routerLinkActive="bg-gradient-to-r from-blue-500 to-purple-600 text-white "
-               class="flex items-center space-x-3 px-4 h-11 rounded-xl transition-all duration-200 group">
+        <li>
+          <a [routerLink]="item.link" routerLinkActive="bg-gradient-to-r from-blue-500 to-purple-600 text-white "
+            class="flex items-center space-x-3 px-4 h-11 rounded-xl transition-all duration-200 group">
 
-              <i [class]="item.icon" class="text-gray-500 " routerLinkActive="text-white"></i>
+            <i [class]="item.icon" class="text-gray-500 " routerLinkActive="text-white"></i>
 
-              @if(sidebarOpen){
-                <span class="font-medium flex-1 text-black" routerLinkActive="text-white">{{ item.label }}</span>
-              }
-            </a>
-          </li>
+            @if(sidebarOpen){
+            <span class="font-medium flex-1 text-black" routerLinkActive="text-white">{{ item.label }}</span>
+            }
+          </a>
+        </li>
         }
       </ul>
     </nav>
-    <!-- [ngClass]="item.active
-                 ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white shadow-lg'
-                 : 'text-gray-600 hover:bg-gray-100 hover:text-gray-900'" -->
 
-    <!-- User Profile -->
-     @if(sidebarOpen){
-       <div class="grow w-full! flex items-end px-4 pb-4">
-         <div class="w-full bg-gradient-to-r from-blue-50 to-purple-50 rounded-xl p-4 border border-blue-100">
-           <div class="flex items-center space-x-3">
-             <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=40&h=40&fit=crop&crop=face"
-                  alt="Profile"
-                  class="w-10 h-10 rounded-full border-2 border-white shadow-sm">
-             <div class="flex-1 min-w-0">
-               <p class="text-sm font-medium text-gray-900 truncate">Админ</p>
-               <p class="text-xs text-gray-500 truncate">adminexample.com</p>
-             </div>
-           </div>
-         </div>
-       </div>
-     }
+    @if(sidebarOpen){
+    <div class="grow w-full! flex items-end px-4 pb-4">
+      <div class="w-full bg-gradient-to-r from-blue-50 to-purple-50 rounded-xl p-4 border border-blue-100">
+        <div class="flex items-center space-x-3">
+          <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=40&h=40&fit=crop&crop=face"
+            alt="Profile" class="w-10 h-10 rounded-full border-2 border-white shadow-sm">
+          <div class="flex-1 min-w-0">
+            <p class="text-sm font-medium text-gray-900 truncate">Админ</p>
+            <p class="text-xs text-gray-500 truncate">adminexample.com</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    }
   </aside>
 
   <!-- Main Content -->
@@ -64,13 +54,8 @@
     <!-- Header -->
     <header class="h-16 bg-white shadow-sm border-b border-gray-200 flex items-center justify-between px-6">
       <div class="flex items-center space-x-4">
-        <button (click)="toggleSidebar()"
-                class=" p-2 rounded-lg hover:bg-gray-100 transition-colors">
-          @if(sidebarOpen){
-            <i class="pi pi-arrow-left w-5 h-5 text-gray-600"></i>
-          }@else{
-            <i class="pi pi-arrow-right w-5 h-5 text-gray-600"></i>
-          }
+        <button (click)="toggleSidebar()" class=" p-2 rounded-lg hover:bg-gray-100 transition-colors">
+          <i class="pi pi-bars w-5 h-5 text-gray-600"></i>
         </button>
 
         <div class="">
@@ -81,8 +66,8 @@
     </header>
 
     <main>
-      <div >
-        <router-outlet/>
+      <div>
+        <router-outlet />
       </div>
     </main>
   </div>
