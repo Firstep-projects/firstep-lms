@@ -1,0 +1,16 @@
+.to-up{
+  animation: toUp 5s infinite linear ;
+}
+
+.to-bottom{
+  animation: toUp 5s infinite linear reverse;
+}
+
+@keyframes toUp {
+  0%{
+    transform: translateY(-34%);
+  }
+  100%{
+    transform: translateY(0%);
+  }
+}

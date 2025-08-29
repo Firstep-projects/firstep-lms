@@ -1,0 +1,83 @@
+<div
+    class="min-h-screen grid gap-[22px] grid-cols-3 bg-[#F4F5F6] items-start justify-center overflow-hidden"
+>
+    <div class="to-up w-full h-[150%] grid gap-[22px] translate-y-[0%]">
+        <div
+            class="w-full h-full bg-[#F5F7F8] shadow-[0px_0px_20px_#0000000D] rounded-[20px]"
+        ></div>
+        <div
+            class="w-full h-full bg-[#F5F7F8] shadow-[0px_0px_20px_#0000000D] rounded-[20px]"
+        ></div>
+        <div
+            class="w-full h-full bg-[#F5F7F8] shadow-[0px_0px_20px_#0000000D] rounded-[20px]"
+        ></div>
+    </div>
+    <div class="w-full h-full flex flex-col gap-[22px]">
+        <div
+            class="w-full h-full bg-[#F5F7F8] shadow-[0px_0px_20px_#0000000D] rounded-b-3xl"
+        ></div>
+        <div class="grow w-full h-full">
+            <div
+                class="w-full h-full bg-white rounded-2xl shadow-xl border border-gray-100"
+            >
+                <div class="flex flex-col items-center pt-10 pb-18">
+                    <div class="mb-5">
+                        <img src="./src/imgs/only-logo.png" alt="" />
+                    </div>
+                    <div
+                        class="flex flex-col gap-2 items-center leading-8 mb-10"
+                    >
+                        <h2 class="text-2xl text-[#0E141B] font-semibold">
+                            Firstepga kirish
+                        </h2>
+                        <p class="leading-6">
+                            <span class="text-[#017AFF]">&#64;firstepbot</span>
+                            orqali kodni oling va kiriting
+                        </p>
+                    </div>
+                    <!-- (ngSubmit)="onSubmit()" -->
+                    <form
+                        [formGroup]="loginForm"
+                        class="w-full bg-[linear-gradient(90deg,rgba(255,255,255,0)_0%,#F9FAFB_20%,rgba(255,255,255,0)_50%,#F9FAFB_79.78%,rgba(255,255,255,0)_100%)]"
+                    >
+                        <div class="flex py-6 justify-center gap-3">
+                            @for (
+                                a of [0, 0, 0, 0, 0, 0];
+                                track i;
+                                let i = $index
+                            ) {
+                                <div>
+                                    <input
+                                        #otpInput
+                                        type="text"
+                                        [formControlName]="
+                                            'password-' + (i + 1)
+                                        "
+                                        maxlength="1"
+                                        placeholder="0"
+                                        (input)="onInput($event, i)"
+                                        class="w-12 h-12 text-center rounded-xl bg-white shadow-[0px_1px_3px_0px_#2F2B431A] border border-[#0E141B1A] focus:border-blue-400 transition-all duration-200 placeholder:text-gray-400"
+                                    />
+                                </div>
+                            }
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div
+            class="w-full h-full bg-[#F5F7F8] shadow-[0px_0px_20px_#0000000D] rounded-t-3xl"
+        ></div>
+    </div>
+    <div class="to-bottom w-full h-[150%] grid gap-[22px] translate-y-[0%]">
+        <div
+            class="w-full h-full bg-[#F5F7F8] shadow-[0px_0px_20px_#0000000D] rounded-[20px]"
+        ></div>
+        <div
+            class="w-full h-full bg-[#F5F7F8] shadow-[0px_0px_20px_#0000000D] rounded-[20px]"
+        ></div>
+        <div
+            class="w-full h-full bg-[#F5F7F8] shadow-[0px_0px_20px_#0000000D] rounded-[20px]"
+        ></div>
+    </div>
+</div>
