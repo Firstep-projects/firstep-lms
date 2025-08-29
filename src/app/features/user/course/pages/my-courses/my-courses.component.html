@@ -1,72 +1,85 @@
 <div class="bg-[#F3F5F6]">
-  <div class="max-w-[1175px] mx-auto border-x border-[#0208171A]">
-      <app-common-header label="Mining kurslarim"></app-common-header>
-  </div>
+    <div class="max-w-[1175px] mx-auto border-x border-[#0208171A]">
+        <app-common-header label="Mining kurslarim"></app-common-header>
+    </div>
 </div>
 <hr class="border-gray-200" />
 <div class="max-w-[1175px] mx-auto border-x border-[#0208171A] px-5 py-6">
     <div class="flex flex-col gap-5">
-      @for(course of courses; track $index){
-        <div class="rounded-xl p-1 bg-[#F4F5F6]">
-          <div
-              class="flex bg-white rounded-2xl overflow-hidden border border-[#1119221A] px-3 py-4
-              shadow-[0px_4px_8px_0px_#0208171A] shadow-[0px_1px_3px_0px_#0208171A] shadow-[inset_0px_-1px_0px_0px_#00000012]"
-          >
-              <div class="grow flex rounded-xl overflow-hidden bg-white borde">
-                <div class="rounded-lg overflow-hidden">
-                  <img
-                      [src]="course.image"
-                      alt="{{ course.title }}"
-                      class="h-[212px] aspect-3/2 object-cover"
-                  />
+        @for (course of courses; track $index) {
+            <div class="rounded-xl p-1 bg-[#F4F5F6]">
+                <div
+                    class="flex bg-white rounded-2xl overflow-hidden border border-[#1119221A] px-3 py-4 shadow-[0px_4px_8px_0px_#0208171A] shadow-[0px_1px_3px_0px_#0208171A] shadow-[inset_0px_-1px_0px_0px_#00000012]"
+                >
+                    <div
+                        class="grow flex rounded-xl overflow-hidden bg-white borde"
+                    >
+                        <div class="rounded-lg overflow-hidden">
+                            <img
+                                [src]="course.image"
+                                alt="{{ course.title }}"
+                                class="h-[212px] aspect-3/2 object-cover"
+                            />
+                        </div>
+                        <div class="flex flex-col pt-2 pl-6 pb-1">
+                            <h3
+                                class="text-lg font-semibold text-[#0B181E] mb-2"
+                            >
+                                {{ course.title }}
+                            </h3>
+                            <p class="text-[#747683] text-sm leading-5 mb-4">
+                                Muallif: {{ course.mentor }}
+                            </p>
+                            <div class="w-[512px]">
+                                <div class="mb-1.5">
+                                    <p-progressbar [value]="50">
+                                        <ng-template #content let-value>
+                                        </ng-template>
+                                    </p-progressbar>
+                                </div>
+                                <div class="flex justify-between">
+                                    <p class="text-[12px] font-medium">4/18</p>
+                                    <p class="text-[12px] font-medium">
+                                        23% o’zlashtirilgan
+                                    </p>
+                                </div>
+                            </div>
+                            <div
+                                class="text-sm font-medium flex items-end gap-2 grow"
+                            >
+                                <div
+                                    class="flex flex-col items-end justify-end"
+                                >
+                                    <a
+                                        [routerLink]="
+                                            '/my-course-info/' + course.id
+                                        "
+                                        class="flex justify-center gap-2.5 w-full py-[11px] px-[22px] bg-[linear-gradient(180deg,_#489FFE_0%,_#017AFF_59.62%,_#0072F0_96.15%)] border-2 border-[#002C5D25] text-white font-medium rounded-xl cursor-pointer hover:shadow-[0px_0px_10px_#0064D380] hover:-translate-y-1 ease-linear duration-100 shadow-[0px_1px_3px_0px_#0064D380]"
+                                        style="
+                                            text-shadow: 0px -1.5px 0px
+                                                #0000001a;
+                                        "
+                                    >
+                                        Boshlash
+                                        <svg
+                                            width="39"
+                                            height="20"
+                                            viewBox="0 0 39 20"
+                                            fill="none"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                        >
+                                            <path
+                                                d="M5 9.24993C4.58579 9.24993 4.25 9.58572 4.25 9.99993C4.25 10.4141 4.58578 10.7499 5 10.7499L5 9.99993L5 9.24993ZM34.0303 10.5303C34.3232 10.2374 34.3232 9.76257 34.0303 9.46967L29.2574 4.69669C28.9645 4.4038 28.4896 4.40379 28.1967 4.69669C27.9038 4.98958 27.9038 5.46445 28.1967 5.75735L32.4393 10L28.1967 14.2426C27.9038 14.5355 27.9038 15.0104 28.1967 15.3033C28.4896 15.5962 28.9645 15.5962 29.2573 15.3033L34.0303 10.5303ZM5 9.99993L5 10.7499L33.5 10.75L33.5 10L33.5 9.25L5 9.24993L5 9.99993Z"
+                                                fill="white"
+                                            />
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="flex flex-col pt-2 pl-6 pb-1">
-                  <h3 class="text-lg font-semibold text-[#0B181E] mb-2">
-                      {{ course.title }}
-                  </h3>
-                  <p class="text-[#747683] text-sm leading-5 mb-4">
-                      Muallif: {{ course.mentor }}
-                  </p>
-                  <div class="w-[512px]">
-                  <div class=" mb-1.5">
-                    <p-progressbar [value]="50">
-                      <ng-template #content let-value>
-                      </ng-template>
-                    </p-progressbar>
-                  </div>
-                  <div class="flex justify-between">
-                    <p class="text-[12px] font-medium">4/18</p>
-                    <p class="text-[12px] font-medium">23% o’zlashtirilgan</p>
-                  </div>
-                </div>
-                  <div
-                      class="text-sm font-medium flex items-end gap-2 grow"
-                  >
-
-                  <div class="flex flex-col items-end justify-end ">
-                      <a
-                          [routerLink]="'/course/view/' + course.id"
-                          class="flex justify-center gap-2.5 w-full py-[11px] px-[22px] bg-[linear-gradient(180deg,_#489FFE_0%,_#017AFF_59.62%,_#0072F0_96.15%)]
-                          border-2 border-[#002C5D25] text-white font-medium rounded-xl cursor-pointer hover:shadow-[0px_0px_10px_#0064D380] hover:-translate-y-1 ease-linear duration-100
-                          shadow-[0px_1px_3px_0px_#0064D380]
-                          "
-                          style="text-shadow: 0px -1.5px 0px #0000001A"
-                      >
-                        Boshlash
-                        <svg width="39" height="20" viewBox="0 0 39 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M5 9.24993C4.58579 9.24993 4.25 9.58572 4.25 9.99993C4.25 10.4141 4.58578 10.7499 5 10.7499L5 9.99993L5 9.24993ZM34.0303 10.5303C34.3232 10.2374 34.3232 9.76257 34.0303 9.46967L29.2574 4.69669C28.9645 4.4038 28.4896 4.40379 28.1967 4.69669C27.9038 4.98958 27.9038 5.46445 28.1967 5.75735L32.4393 10L28.1967 14.2426C27.9038 14.5355 27.9038 15.0104 28.1967 15.3033C28.4896 15.5962 28.9645 15.5962 29.2573 15.3033L34.0303 10.5303ZM5 9.99993L5 10.7499L33.5 10.75L33.5 10L33.5 9.25L5 9.24993L5 9.99993Z" fill="white"/>
-</svg>
-
-                      </a>
-                  </div>
-  
-                  </div>
-                </div>
-              </div>
-  
-              
-          </div>
-        </div>
-      }
+            </div>
+        }
     </div>
 </div>

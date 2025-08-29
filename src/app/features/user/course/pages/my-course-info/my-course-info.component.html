@@ -1,0 +1,177 @@
+<div class="bg-[#F3F5F6]">
+    <div class="max-w-[1175px] mx-auto border-x border-[#0208171A]">
+        <app-common-header
+            [label]="course.title"
+            [backText]="'Kurslarim'"
+            backLink="/my-courses"
+        ></app-common-header>
+    </div>
+</div>
+
+<hr class="border-gray-200" />
+
+<div class="max-w-[1175px] mx-auto border-x border-[#0208171A]">
+    <div class="grid grid-cols-12">
+        <div
+            class="col-start-1 col-end-5 flex flex-col gap-4 border-r border-main-grey-300"
+        >
+            <div class="rounded-xl px-5 py-6">
+                <div
+                    class="w-full max-w-[365px] flex flex-col gap-4 py-4 px-5 bg-[#F4F5F6] rounded-xl border border-[#292E321A]"
+                >
+                    <p class="text-[20px] font-semibold text-black leading-8">
+                        Kurs rejasi
+                    </p>
+                    <hr class="border-[#C4C7CA]" />
+                    <div class="flex gap-4">
+                        <p-metergroup
+                            [value]="value"
+                            orientation="vertical"
+                            labelOrientation="vertical"
+                            [style]="{ height: '100%' }"
+                        >
+                            <ng-template
+                                #meter
+                                let-value
+                                let-class="class"
+                                let-width="size"
+                                let-height="size"
+                            >
+                                <span
+                                    [class]="class"
+                                    [style]="{
+                                        background: '#017AFF',
+                                        width: '100%',
+                                        height: height,
+                                    }"
+                                ></span>
+                            </ng-template>
+                            <ng-template #label></ng-template>
+                        </p-metergroup>
+                        <div class="w-full flex flex-col gap-4">
+                            <div>
+                                <p
+                                    class="text-[#96999C] text-xs font-medium leading-4"
+                                >
+                                    Boshlangan sana
+                                </p>
+                                <p class="font-medium leading-6">
+                                    8-Avgust, 2025
+                                </p>
+                            </div>
+                            <hr class="border-[#C4C7CA]" />
+                            <div class="ml-5 flex flex-col gap-5">
+                                @for (a of [0, 0, 0]; track $index) {
+                                    <div class="flex flex-col gap-[3px]">
+                                        <p
+                                            class="text-[#96999C] text-xs font-medium leading-4"
+                                        >
+                                            Tugallangan
+                                        </p>
+                                        <p
+                                            class="text-[#96999C] font-medium leading-6"
+                                        >
+                                            Welcome
+                                        </p>
+                                    </div>
+                                }
+                            </div>
+                            <hr class="border-[#C4C7CA]" />
+                            <div>
+                                <p
+                                    class="text-[#96999C] text-xs font-medium leading-4"
+                                >
+                                    Tugash sanasi
+                                </p>
+                                <p class="font-medium leading-6">
+                                    10-Oktabr, 2025
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div
+            class="col-start-5 col-end-13 flex flex-col gap-9! p-8 pt-6 rounded-[20px] bg-white"
+        >
+            <div>
+                @for (
+                    module of course.modules;
+                    track module.id;
+                    let i = $index
+                ) {
+                    <div class="mb-9">
+                        <div class="mb-[22px] flex justify-between">
+                            <p class="text-black text-xl font-semibold">
+                                {{ module.title }}
+                            </p>
+                            <div class="flex gap-4">
+                                <app-info-block
+                                    label="{{ course.lessonLength }}"
+                                    iconLink="./src/svg/Videos.svg"
+                                ></app-info-block>
+                                <app-info-block
+                                    label="{{ course.totalTime }}"
+                                    iconLink="./src/svg/clock.svg"
+                                ></app-info-block>
+                            </div>
+                        </div>
+                        <div class="flex flex-col gap-5">
+                            @for (
+                                lesson of module.lessons;
+                                track lesson.id;
+                                let i = $index
+                            ) {
+                                <!-- @if(lesson.isViewed){ -->
+                                <div
+                                    class="grid grid-cols-[32px_1fr] items-center gap-4 py-2 rounded-lg"
+                                >
+                                    @if (true) {
+                                        <svg
+                                            width="32"
+                                            height="32"
+                                            viewBox="0 0 32 32"
+                                            fill="none"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                        >
+                                            <rect
+                                                width="32"
+                                                height="32"
+                                                rx="16"
+                                                fill="#E1E3E5"
+                                            />
+                                            <path
+                                                d="M18.1425 10.4854C18.4267 10.012 19.0411 9.85855 19.5146 10.1427C19.988 10.4268 20.1414 11.0412 19.8573 11.5147L13.9892 21.295C13.5875 21.9644 12.6633 22.0785 12.1112 21.5264L8.29289 17.7071C7.90238 17.3166 7.90237 16.6836 8.29289 16.293C8.68341 15.9026 9.31645 15.9026 9.70695 16.293L12.8007 19.3868L18.1425 10.4854ZM22.1425 10.4854C22.4266 10.012 23.0411 9.8587 23.5146 10.1427C23.9881 10.4268 24.1423 11.0412 23.8583 11.5147L17.9902 21.295C17.5885 21.9643 16.6643 22.0782 16.1122 21.5264L15.371 20.7852C14.9805 20.3947 14.9805 19.7607 15.371 19.3702C15.7615 18.9801 16.3946 18.98 16.7851 19.3702L16.8017 19.3868L22.1425 10.4854Z"
+                                                fill="white"
+                                            />
+                                        </svg>
+                                    }
+                                    <div class="flex justify-between">
+                                        <div class="flex flex-col">
+                                            <p
+                                                class="text-main-grey-900 font-medium leading-6"
+                                            >
+                                                {{ lesson.title }}
+                                            </p>
+                                        </div>
+                                        <div>
+                                            <p
+                                                class="text-[#96999C] text-sm font-medium leading-5"
+                                            >
+                                                {{ lesson.time }}
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                    @if (course.modules.length > i + 1) {
+                        <hr class="mb-9 border-[#E1E3E5]" />
+                    }
+                }
+            </div>
+        </div>
+    </div>
+</div>

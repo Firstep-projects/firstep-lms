@@ -1,188 +1,285 @@
 <div class="bg-[#F3F5F6]">
-  <div class="max-w-[1175px] mx-auto grid grid-cols-1 lg:grid-cols-[4fr_8fr] border-x border-[#0208171A] gap-6">
-    <div class="flex items-center">
-      <!-- @if(back){ -->
-      <div class="p-5">
-        <a class="flex items-center gap-2 text-main-grey-600 text-sm font-medium mr-">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M6.34301 6.34375L17.6567 17.6575M17.6565 6.34375L6.34277 17.6575" stroke="#0E141B"
-              stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-          </svg>
-        </a>
-      </div>
-      <div class="h-full border-l border-main-grey-300 "></div>
-      <div class="p-5 ">
-        <h2 class="text-[28px] font-semibold text-black leading-8 ">{{ course.title }}</h2>
-        <ng-content></ng-content>
-      </div>
-    </div>
-    <div class="border-l border-[#E1E3E5] p-5 flex items-center justify-between">
-      <div class="w-[240px]">
-        <div class=" mb-1.5">
-          <p-progressbar [value]="50">
-            <ng-template #content let-value>
-            </ng-template>
-          </p-progressbar>
+    <div
+        class="max-w-[1175px] mx-auto grid grid-cols-1 lg:grid-cols-[4fr_8fr] border-x border-[#0208171A] gap-6"
+    >
+        <div class="flex items-center">
+            <!-- @if(back){ -->
+            <div class="p-5">
+                <a
+                    class="flex items-center gap-2 text-main-grey-600 text-sm font-medium mr-"
+                >
+                    <svg
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                    >
+                        <path
+                            d="M6.34301 6.34375L17.6567 17.6575M17.6565 6.34375L6.34277 17.6575"
+                            stroke="#0E141B"
+                            stroke-width="1.5"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                        />
+                    </svg>
+                </a>
+            </div>
+            <div class="h-full border-l border-main-grey-300"></div>
+            <div class="p-5">
+                <h2 class="text-[28px] font-semibold text-black leading-8">
+                    {{ course.title }}
+                </h2>
+                <ng-content></ng-content>
+            </div>
         </div>
-        <div class="flex justify-between">
-          <p class="text-[12px] font-medium">4/18</p>
-          <p class="text-[12px] font-medium">23% o’zlashtirilgan</p>
+        <div
+            class="border-l border-[#E1E3E5] p-5 flex items-center justify-between"
+        >
+            <div class="w-[240px]">
+                <div class="mb-1.5">
+                    <p-progressbar [value]="50">
+                        <ng-template #content let-value> </ng-template>
+                    </p-progressbar>
+                </div>
+                <div class="flex justify-between">
+                    <p class="text-[12px] font-medium">4/18</p>
+                    <p class="text-[12px] font-medium">23% o’zlashtirilgan</p>
+                </div>
+            </div>
+            <div class="flex gap-2">
+                <button
+                    class="py-2 px-3 rounded-lg bg-[#017AFF] flex items-center gap-1 cursor-pointer"
+                >
+                    <svg
+                        width="20"
+                        height="20"
+                        viewBox="0 0 20 20"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                    >
+                        <path
+                            d="M12.1425 4.48542C12.4267 4.01204 13.0411 3.85855 13.5146 4.14265C13.988 4.42682 14.1414 5.04121 13.8573 5.51472L7.98918 15.295C7.5875 15.9644 6.66326 16.0785 6.11125 15.5264L2.29289 11.7071C1.90238 11.3166 1.90237 10.6836 2.29289 10.293C2.68341 9.90261 3.31645 9.90256 3.70695 10.293L6.8007 13.3868L12.1425 4.48542ZM16.1425 4.48542C16.4266 4.012 17.0411 3.8587 17.5146 4.14265C17.9881 4.42677 18.1423 5.04117 17.8583 5.51472L11.9902 15.295C11.5885 15.9643 10.6643 16.0782 10.1122 15.5264L9.37101 14.7852C8.9805 14.3947 8.98049 13.7607 9.37101 13.3702C9.76148 12.9801 10.3946 12.98 10.7851 13.3702L10.8017 13.3868L16.1425 4.48542Z"
+                            fill="white"
+                        />
+                    </svg>
+
+                    <p class="text-white text-sm font-medium">O’zlashtirildi</p>
+                </button>
+                <button class="p-2 rounded-lg bg-white cursor-pointer">
+                    <svg
+                        width="20"
+                        height="20"
+                        viewBox="0 0 20 20"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                    >
+                        <path
+                            d="M14.5 10.75C14.9142 10.75 15.25 10.4142 15.25 10C15.25 9.58579 14.9142 9.25 14.5 9.25V10V10.75ZM4.96967 9.46967C4.67678 9.76256 4.67678 10.2374 4.96967 10.5303L9.74264 15.3033C10.0355 15.5962 10.5104 15.5962 10.8033 15.3033C11.0962 15.0104 11.0962 14.5355 10.8033 14.2426L6.56066 10L10.8033 5.75736C11.0962 5.46447 11.0962 4.98959 10.8033 4.6967C10.5104 4.40381 10.0355 4.40381 9.74264 4.6967L4.96967 9.46967ZM14.5 10V9.25H5.5V10V10.75H14.5V10Z"
+                            fill="#96999C"
+                        />
+                    </svg>
+                </button>
+                <button class="p-2 rounded-lg bg-white cursor-pointer">
+                    <svg
+                        width="20"
+                        height="20"
+                        viewBox="0 0 20 20"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                    >
+                        <path
+                            d="M5.5 10.75C5.08579 10.75 4.75 10.4142 4.75 10C4.75 9.58579 5.08579 9.25 5.5 9.25V10V10.75ZM15.0303 9.46967C15.3232 9.76256 15.3232 10.2374 15.0303 10.5303L10.2574 15.3033C9.96447 15.5962 9.48959 15.5962 9.1967 15.3033C8.90381 15.0104 8.90381 14.5355 9.1967 14.2426L13.4393 10L9.1967 5.75736C8.90381 5.46447 8.90381 4.98959 9.1967 4.6967C9.48959 4.40381 9.96447 4.40381 10.2574 4.6967L15.0303 9.46967ZM5.5 10V9.25H14.5V10V10.75H5.5V10Z"
+                            fill="#96999C"
+                        />
+                    </svg>
+                </button>
+            </div>
         </div>
-      </div>
-      <div class="flex gap-2">
-        <button class="py-2 px-3 rounded-lg bg-[#017AFF] flex items-center gap-1 cursor-pointer">
-          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path
-              d="M12.1425 4.48542C12.4267 4.01204 13.0411 3.85855 13.5146 4.14265C13.988 4.42682 14.1414 5.04121 13.8573 5.51472L7.98918 15.295C7.5875 15.9644 6.66326 16.0785 6.11125 15.5264L2.29289 11.7071C1.90238 11.3166 1.90237 10.6836 2.29289 10.293C2.68341 9.90261 3.31645 9.90256 3.70695 10.293L6.8007 13.3868L12.1425 4.48542ZM16.1425 4.48542C16.4266 4.012 17.0411 3.8587 17.5146 4.14265C17.9881 4.42677 18.1423 5.04117 17.8583 5.51472L11.9902 15.295C11.5885 15.9643 10.6643 16.0782 10.1122 15.5264L9.37101 14.7852C8.9805 14.3947 8.98049 13.7607 9.37101 13.3702C9.76148 12.9801 10.3946 12.98 10.7851 13.3702L10.8017 13.3868L16.1425 4.48542Z"
-              fill="white" />
-          </svg>
-
-          <p class="text-white text-sm font-medium">O’zlashtirildi</p>
-        </button>
-        <button class="p-2 rounded-lg bg-white cursor-pointer">
-          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path
-              d="M14.5 10.75C14.9142 10.75 15.25 10.4142 15.25 10C15.25 9.58579 14.9142 9.25 14.5 9.25V10V10.75ZM4.96967 9.46967C4.67678 9.76256 4.67678 10.2374 4.96967 10.5303L9.74264 15.3033C10.0355 15.5962 10.5104 15.5962 10.8033 15.3033C11.0962 15.0104 11.0962 14.5355 10.8033 14.2426L6.56066 10L10.8033 5.75736C11.0962 5.46447 11.0962 4.98959 10.8033 4.6967C10.5104 4.40381 10.0355 4.40381 9.74264 4.6967L4.96967 9.46967ZM14.5 10V9.25H5.5V10V10.75H14.5V10Z"
-              fill="#96999C" />
-          </svg>
-
-        </button>
-        <button class="p-2 rounded-lg bg-white cursor-pointer">
-          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path
-              d="M5.5 10.75C5.08579 10.75 4.75 10.4142 4.75 10C4.75 9.58579 5.08579 9.25 5.5 9.25V10V10.75ZM15.0303 9.46967C15.3232 9.76256 15.3232 10.2374 15.0303 10.5303L10.2574 15.3033C9.96447 15.5962 9.48959 15.5962 9.1967 15.3033C8.90381 15.0104 8.90381 14.5355 9.1967 14.2426L13.4393 10L9.1967 5.75736C8.90381 5.46447 8.90381 4.98959 9.1967 4.6967C9.48959 4.40381 9.96447 4.40381 10.2574 4.6967L15.0303 9.46967ZM5.5 10V9.25H14.5V10V10.75H5.5V10Z"
-              fill="#96999C" />
-          </svg>
-
-        </button>
-      </div>
     </div>
-
-  </div>
 </div>
 
-
 <div class="max-w-[1175px] mx-auto border-x border-[#0208171A]">
-  <div class="mx-auto grid grid-cols-1 lg:grid-cols-[4fr_8fr] gap-6">
-    <aside>
-      <div class="bg-white pl-5">
-        <p-accordion value="0" [multiple]="true">
-          @for (module of course.modules; track module.id; let i = $index) {
-          <p-accordion-panel [value]="i">
-            <p-accordion-header>
-              <div class="flex flex-col">
-                <p class="text-black font-semibold">{{ module.title }}</p>
-              </div>
-            </p-accordion-header>
-            <p-accordion-content>
-              <div class="flex flex-col gap-5 ">
-                @for (lesson of module.lessons; track lesson.id; let i=$index) {
-                <!-- @if(lesson.isViewed){ -->
-                <div
-                  class="grid grid-cols-[32px_1fr] items-center gap-4 py-2 pl-4 cursor-pointer rounded-lg hover:bg-blue-50 transition"
-                  [class.bg-[#F4F5F6]]="lesson.id === selectedLesson.id" (click)="selectVideo(lesson)">
-                  @if(true){
-                  <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <rect width="32" height="32" rx="16" fill="#E1E3E5" />
-                    <path
-                      d="M18.1425 10.4854C18.4267 10.012 19.0411 9.85855 19.5146 10.1427C19.988 10.4268 20.1414 11.0412 19.8573 11.5147L13.9892 21.295C13.5875 21.9644 12.6633 22.0785 12.1112 21.5264L8.29289 17.7071C7.90238 17.3166 7.90237 16.6836 8.29289 16.293C8.68341 15.9026 9.31645 15.9026 9.70695 16.293L12.8007 19.3868L18.1425 10.4854ZM22.1425 10.4854C22.4266 10.012 23.0411 9.8587 23.5146 10.1427C23.9881 10.4268 24.1423 11.0412 23.8583 11.5147L17.9902 21.295C17.5885 21.9643 16.6643 22.0782 16.1122 21.5264L15.371 20.7852C14.9805 20.3947 14.9805 19.7607 15.371 19.3702C15.7615 18.9801 16.3946 18.98 16.7851 19.3702L16.8017 19.3868L22.1425 10.4854Z"
-                      fill="white" />
-                  </svg>
-                  }
-                  <div class="flex flex-col">
-                    <p class="text-main-grey-900 font-medium leading-6">
-                      {{ lesson.title }}
-                    </p>
-                    <p class="text-[#96999C] text-sm font-medium leading-5">
-                      {{lesson.time}}
-                    </p>
-                  </div>
-                </div>
+    <div class="mx-auto grid grid-cols-1 lg:grid-cols-[4fr_8fr] gap-6">
+        <aside>
+            <div class="bg-white pl-5">
+                <p-accordion value="0" [multiple]="true">
+                    @for (
+                        module of course.modules;
+                        track module.id;
+                        let i = $index
+                    ) {
+                        <p-accordion-panel [value]="i">
+                            <p-accordion-header>
+                                <div class="flex flex-col">
+                                    <p class="text-black font-semibold">
+                                        {{ module.title }}
+                                    </p>
+                                </div>
+                            </p-accordion-header>
+                            <p-accordion-content>
+                                <div class="flex flex-col gap-5">
+                                    @for (
+                                        lesson of module.lessons;
+                                        track lesson.id;
+                                        let i = $index
+                                    ) {
+                                        <!-- @if(lesson.isViewed){ -->
+                                        <div
+                                            class="grid grid-cols-[32px_1fr] items-center gap-4 py-2 pl-4 cursor-pointer rounded-lg hover:bg-blue-50 transition"
+                                            [class.bg-[#F4F5F6]]="
+                                                lesson.id === selectedLesson.id
+                                            "
+                                            (click)="selectVideo(lesson)"
+                                        >
+                                            @if (true) {
+                                                <svg
+                                                    width="32"
+                                                    height="32"
+                                                    viewBox="0 0 32 32"
+                                                    fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg"
+                                                >
+                                                    <rect
+                                                        width="32"
+                                                        height="32"
+                                                        rx="16"
+                                                        fill="#E1E3E5"
+                                                    />
+                                                    <path
+                                                        d="M18.1425 10.4854C18.4267 10.012 19.0411 9.85855 19.5146 10.1427C19.988 10.4268 20.1414 11.0412 19.8573 11.5147L13.9892 21.295C13.5875 21.9644 12.6633 22.0785 12.1112 21.5264L8.29289 17.7071C7.90238 17.3166 7.90237 16.6836 8.29289 16.293C8.68341 15.9026 9.31645 15.9026 9.70695 16.293L12.8007 19.3868L18.1425 10.4854ZM22.1425 10.4854C22.4266 10.012 23.0411 9.8587 23.5146 10.1427C23.9881 10.4268 24.1423 11.0412 23.8583 11.5147L17.9902 21.295C17.5885 21.9643 16.6643 22.0782 16.1122 21.5264L15.371 20.7852C14.9805 20.3947 14.9805 19.7607 15.371 19.3702C15.7615 18.9801 16.3946 18.98 16.7851 19.3702L16.8017 19.3868L22.1425 10.4854Z"
+                                                        fill="white"
+                                                    />
+                                                </svg>
+                                            }
+                                            <div class="flex flex-col">
+                                                <p
+                                                    class="text-main-grey-900 font-medium leading-6"
+                                                >
+                                                    {{ lesson.title }}
+                                                </p>
+                                                <p
+                                                    class="text-[#96999C] text-sm font-medium leading-5"
+                                                >
+                                                    {{ lesson.time }}
+                                                </p>
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+                            </p-accordion-content>
+                        </p-accordion-panel>
+                    }
+                </p-accordion>
+            </div>
+        </aside>
+
+        <section class="flex flex-col border-l border-[#E1E3E5]">
+            <div class="pt-6 pl-5 pb-4 text-sm flex items-center">
+                @for (title of breadcrumbs; track $index) {
+                    @if ($index !== breadcrumbs.length - 1) {
+                        <span
+                            class="text-[#96999C] font-medium flex items-center"
+                        >
+                            {{ title }}
+                            <svg
+                                width="24"
+                                height="24"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                            >
+                                <path
+                                    d="M12.1718 11.9998L9.34277 9.17184L10.7568 7.75684L14.9998 11.9998L10.7568 16.2428L9.34277 14.8278L12.1718 11.9998Z"
+                                    fill="#96999C"
+                                />
+                            </svg>
+                        </span>
+                    } @else {
+                        {{ title }}
+                    }
                 }
-              </div>
-            </p-accordion-content>
-          </p-accordion-panel>
-          }
-        </p-accordion>
-      </div>
-    </aside>
-
-    <section class="flex flex-col border-l border-[#E1E3E5]">
-      <div class="pt-6 pl-5 pb-4 text-sm flex items-center">
-        @for(title of breadcrumbs; track $index){
-        @if($index !== breadcrumbs.length - 1) {
-        <span class="text-[#96999C] font-medium flex items-center">
-          {{ title }}
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path
-              d="M12.1718 11.9998L9.34277 9.17184L10.7568 7.75684L14.9998 11.9998L10.7568 16.2428L9.34277 14.8278L12.1718 11.9998Z"
-              fill="#96999C" />
-          </svg>
-        </span>
-        } @else {
-        {{ title }}
-        }
-        }
-      </div>
-      @if(!isSolcveTest){
-      <div class="bg-black w-full max-h-[452px] rounded-xl overflow-hidden shadow-lg mb-6 flex-1">
-        @if (selectedLesson.isYoutube) {
-        <iframe class="w-full h-[452px]" [src]="selectedLesson.videoUrl | appSafeUrl" frameborder="0" allowfullscreen>
-        </iframe>
-        } @else {
-        <app-custom-video-player [videoSrc]="selectedLesson.videoUrl"></app-custom-video-player>
-        }
-      </div>
-
-      <div class="bg-white rounded-xl shadow-md p-6">
-        <h3 class="text-2xl font-bold mb-2">
-          {{ selectedLesson.title }}
-        </h3>
-        <!-- <p class="text-gray-700 mb-4">
-                      {{ selectedLesson.description }}
-                  </p>
-
-                  <h4 class="text-lg font-semibold mb-2">Homework</h4>
-                  <ul class="list-disc pl-6 text-gray-700 space-y-1">
-                      <li *ngFor="let task of selectedVideo.homework">
-                          {{ task }}
-                      </li>
-                  </ul> -->
-      </div>
-      }@else{
-      <div class="bg-white rounded-xl shadow-md p-6">
-        <h3 class="text-2xl font-bold mb-4">Модуль тесты</h3>
-        <form>
-          <div class="mb-6">
-            <div class="font-semibold mb-2">
-              {{ currentTestIndex + 1 }}. {{ testModule.tests[currentTestIndex]?.question }}
             </div>
-            <div class="space-y-2">
-              <label *ngFor="let option of testModule.tests[currentTestIndex]?.options"
-                class="flex items-center gap-2 cursor-pointer">
-                <input type="radio" [name]="'test-' + currentTestIndex" [value]="option.name"
-                  [(ngModel)]="answers[currentTestIndex]" class="accent-blue-500" />
-                <span>{{ option.name }}</span>
-              </label>
-            </div>
-          </div>
-          <div class="flex justify-between mt-4">
-            <button type="button" class="bg-gray-200 text-gray-700 px-4 py-2 rounded-xl font-medium"
-              (click)="prevTest()" [disabled]="currentTestIndex === 0">
-              ← Влево
-            </button>
-            <button type="button" class="bg-gray-200 text-gray-700 px-4 py-2 rounded-xl font-medium"
-              (click)="nextTest()" [disabled]="currentTestIndex === testModule.tests.length - 1">
-              Вправо →
-            </button>
-          </div>
-          <button type="button" class="bg-blue-500 text-white px-6 py-2 rounded-xl font-medium mt-4 float-right"
-            (click)="submitAnswers()">
-            Отправить ответы
-          </button>
-        </form>
-      </div>
-      }
-    </section>
-  </div>
+            @if (!isSolcveTest) {
+                <div
+                    class="bg-black w-full max-h-[452px] rounded-xl overflow-hidden shadow-lg mb-6 flex-1"
+                >
+                    @if (selectedLesson.isYoutube) {
+                        <iframe
+                            class="w-full h-[452px]"
+                            [src]="selectedLesson.videoUrl | appSafeUrl"
+                            frameborder="0"
+                            allowfullscreen
+                        >
+                        </iframe>
+                    } @else {
+                        <app-custom-video-player
+                            [videoSrc]="selectedLesson.videoUrl"
+                        ></app-custom-video-player>
+                    }
+                </div>
+            } @else {
+                <div class="bg-white rounded-xl shadow-md p-6">
+                    <h3 class="text-2xl font-bold mb-4">Модуль тесты</h3>
+                    <form>
+                        <div class="mb-6">
+                            <div class="font-semibold mb-2">
+                                {{ currentTestIndex + 1 }}.
+                                {{
+                                    testModule.tests[currentTestIndex]!.question
+                                }}
+                            </div>
+                            <div class="space-y-2">
+                                <label
+                                    *ngFor="
+                                        let option of testModule.tests[
+                                            currentTestIndex
+                                        ]?.options
+                                    "
+                                    class="flex items-center gap-2 cursor-pointer"
+                                >
+                                    <input
+                                        type="radio"
+                                        [name]="'test-' + currentTestIndex"
+                                        [value]="option.name"
+                                        [(ngModel)]="answers[currentTestIndex]"
+                                        class="accent-blue-500"
+                                    />
+                                    <span>{{ option.name }}</span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="flex justify-between mt-4">
+                            <button
+                                type="button"
+                                class="bg-gray-200 text-gray-700 px-4 py-2 rounded-xl font-medium"
+                                (click)="prevTest()"
+                                [disabled]="currentTestIndex === 0"
+                            >
+                                ← Влево
+                            </button>
+                            <button
+                                type="button"
+                                class="bg-gray-200 text-gray-700 px-4 py-2 rounded-xl font-medium"
+                                (click)="nextTest()"
+                                [disabled]="
+                                    currentTestIndex ===
+                                    testModule.tests.length - 1
+                                "
+                            >
+                                Вправо →
+                            </button>
+                        </div>
+                        <button
+                            type="button"
+                            class="bg-blue-500 text-white px-6 py-2 rounded-xl font-medium mt-4 float-right"
+                            (click)="submitAnswers()"
+                        >
+                            Отправить ответы
+                        </button>
+                    </form>
+                </div>
+            }
+        </section>
+    </div>
 </div>

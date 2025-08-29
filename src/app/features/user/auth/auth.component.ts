@@ -46,7 +46,6 @@ export class AuthComponent {
                 new FormControl('', Validators.required),
             );
         }
-        console.log(this.loginForm);
     }
 
     onInput(event: Event, index: number) {

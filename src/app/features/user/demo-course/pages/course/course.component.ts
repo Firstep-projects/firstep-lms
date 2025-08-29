@@ -5,7 +5,7 @@ import { SafeUrlPipe } from '../../../../../shared/pipes/safe-url.pipe';
 
 @Component({
     selector: 'app-course',
-    imports: [NgFor, CustomVideoPlayerComponent, SafeUrlPipe],
+    imports: [NgFor, CustomVideoPlayerComponent],
     templateUrl: './course.component.html',
     styleUrl: './course.component.css',
 })

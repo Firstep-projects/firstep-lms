@@ -11,67 +11,39 @@
             </p>
         </div>
 
-        <div class="max-w-200">
+        <div class="max-w-200 mb-[60px]">
             <p-accordion value="0">
-                <p-accordion-panel value="0">
-                    <p-accordion-header>
-                        
-                        <ng-template pTemplate="header">
-                            <div class="flex justify-between items-center w-full">
-                                <span>Header I</span>
-                                <span class="pi pi-chevron-down"></span>
-                            </div>
+                @for(a of [0,0,0]; track i; let i= $index){
+                    <p-accordion-panel value="{{i}}">
+                        <p-accordion-header>
+                            <ng-template #toggleicon let-active="active">
+                                @if (active) {
+                                    <i class="pi pi-minus"></i>
+                                } @else {
+                                    <i class="pi pi-plus"></i>
+                                }
                             </ng-template>
-                    </p-accordion-header>
-                    <p-accordion-content>
-                        <p class="m-0">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing
-                            elit, sed do eiusmod tempor incididunt ut labore et
-                            dolore magna aliqua. Ut enim ad minim veniam, quis
-                            nostrud exercitation ullamco laboris nisi ut aliquip
-                            ex ea commodo consequat. Duis aute irure dolor in
-                            reprehenderit in voluptate velit esse cillum dolore
-                            eu fugiat nulla pariatur. Excepteur sint occaecat
-                            cupidatat non proident, sunt in culpa qui officia
-                            deserunt mollit anim id est laborum.
-                        </p>
-                    </p-accordion-content>
-                </p-accordion-panel>
-
-                <p-accordion-panel value="1">
-                    <p-accordion-header>Header II</p-accordion-header>
-                    <p-accordion-content>
-                        <p class="m-0">
-                            Sed ut perspiciatis unde omnis iste natus error sit
-                            voluptatem accusantium doloremque laudantium, totam
-                            rem aperiam, eaque ipsa quae ab illo inventore
-                            veritatis et quasi architecto beatae vitae dicta
-                            sunt explicabo. Nemo enim ipsam voluptatem quia
-                            voluptas sit aspernatur aut odit aut fugit, sed quia
-                            consequuntur magni dolores eos qui ratione
-                            voluptatem sequi nesciunt. Consectetur, adipisci
-                            velit, sed quia non numquam eius modi.
-                        </p>
-                    </p-accordion-content>
-                </p-accordion-panel>
-
-                <p-accordion-panel value="2">
-                    <p-accordion-header>Header III</p-accordion-header>
-                    <p-accordion-content>
-                        <p class="m-0">
-                            Sed ut perspiciatis unde omnis iste natus error sit
-                            voluptatem accusantium doloremque laudantium, totam
-                            rem aperiam, eaque ipsa quae ab illo inventore
-                            veritatis et quasi architecto beatae vitae dicta
-                            sunt explicabo. Nemo enim ipsam voluptatem quia
-                            voluptas sit aspernatur aut odit aut fugit, sed quia
-                            consequuntur magni dolores eos qui ratione
-                            voluptatem sequi nesciunt. Consectetur, adipisci
-                            velit, sed quia non numquam eius modi.
-                        </p>
-                    </p-accordion-content>
-                </p-accordion-panel>
+                            <span class="flex items-center gap-2 w-full">
+                                <span class="font-bold whitespace-nowrap"
+                                    >Kurslar pullikmi yoki bepul?</span
+                                >
+                            </span>
+                        </p-accordion-header>
+                        <p-accordion-content>
+                            <p class="m-0">
+                                Platformamizda har xil darajadagi foydalanuvchilar uchun mo‘ljallangan keng turdagi kurslar mavjud. Dasturlash, dizayn, biznes, xorijiy tillar, marketing va boshqa yo‘nalishlarda kurslar mavjud.
+                            </p>
+                        </p-accordion-content>
+                    </p-accordion-panel>
+                }
             </p-accordion>
+        </div>
+        
+        <div class="flex flex-col items-center gap-4">
+            <p class="text-2xl leading-6 font-semibold">
+                Yana savollar bormi?
+            </p>
+            <p class="text-center">Agar sizda yana savollar bo‘lsa,<br> bizning texnik yordam jamoamiz bilan <span class="-blue-500 underline">bog‘laning.</span></p>
         </div>
     </div>
 </div>
