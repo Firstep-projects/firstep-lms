@@ -23,7 +23,7 @@
                   </svg>
                   <p class="font-semibold text-[#0B181E] gap-2">Kurslar</p>
               </a>
-              <div class="flex items-center gap-2.5 ml-10 cursor-not-allowed">
+              <div class="flex items-center gap-2.5 ml-10">
                   <!-- <span class="icon-progress text-xl text-[#282B32]!"></span>  ICONMOON-->
                   <svg
                       width="20"
@@ -75,7 +75,9 @@
 
                   <p class="font-semibold text-[#0B181E] gap-2">Progres</p>
               </div>
-              <div class="flex items-center gap-2.5 ml-10 cursor-not-allowed">
+              <a 
+              routerLink="/faq"
+              class="flex items-center gap-2.5 ml-10">
                   <svg
                       width="20"
                       height="20"
@@ -104,7 +106,7 @@
                   </svg>
 
                   <p class="font-semibold text-[#0B181E] gap-2">FAQ</p>
-              </div>
+              </a>
               <div class="h-3.5 w-0.5 ml-10 border-r border-[#0208171A]"></div>
               <div class="relative inline-block text-left w-7 h-7 ml-5">
                       <button
@@ -119,7 +121,7 @@
                       </button>
 
                   @if (isMenuOpen) {
-                      <div
+                      <div appClickOutside (clickOutside)="toggleBlock()"
                           class="absolute right-0 mt-2 p-1 min-w-64 rounded-xl border border-[#1119221A] shadow-[0px_0px_20px_#4747474d] bg-main-grey-100 z-50"
                       >
                           <div class="bg-white rounded-lg border border-[#1119221A]">
@@ -141,7 +143,7 @@
                             <ul class="px-2 py-1.5">
                                 <li>
                                     <a
-                                        class="flex items-center gap-1 px-2 py-1.5 hover:bg-main-grey-100 rounded-md space-x-2 cursor-not-allowed"
+                                        class="flex items-center gap-1 px-2 py-1.5 hover:bg-main-grey-100 rounded-md space-x-2 cursor-pointer"
                                     >
                                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                           <path d="M17 6L10 2L3 6V14L10 18L17 14V6Z" fill="white"/>
@@ -155,7 +157,8 @@
                                 </li>
                                 <li>
                                     <a
-                                        class="flex items-center gap-1 mt-1.5 px-2 py-1.5 hover:bg-main-grey-100 rounded-md space-x-2 cursor-not-allowed"
+                                        routerLink="my-courses"
+                                        class="flex items-center gap-1 mt-1.5 px-2 py-1.5 hover:bg-main-grey-100 rounded-md space-x-2 cursor-pointer"
                                     >
                                         <svg
                                             width="20"
@@ -191,7 +194,7 @@
                             </ul>
                           </div>
                           <a
-                              class="flex items-center gap-1 px-4 py-3 hover:bg-gray-100 rounded-b-xl space-x-2 cursor-not-allowed"
+                              class="flex items-center gap-1 px-4 py-3 hover:bg-gray-100 rounded-b-xl space-x-2 cursor-pointer"
                           >
                               <svg
                                   width="20"

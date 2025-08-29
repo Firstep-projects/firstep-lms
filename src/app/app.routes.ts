@@ -47,6 +47,20 @@ export const routes: Routes = [
         component: LayoutComponent,
         children: [
             {
+                path: 'faq',
+                loadComponent: () =>
+                    import(
+                        './features/user/faq/faq.component'
+                    ),
+            },
+            {
+                path: 'my-courses',
+                loadComponent: () =>
+                    import(
+                        './features/user/course/pages/my-courses/my-courses.component'
+                    ),
+            },
+            {
                 path: 'courses',
                 loadComponent: () =>
                     import(
