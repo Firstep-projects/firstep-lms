@@ -1,12 +1,17 @@
 import { Routes } from '@angular/router';
 import { LayoutComponent } from './layout/layout/layout.component';
 import { DemoLayoutComponent } from './layout/demo-layout/demo-layout.component';
+import { AuthComponent } from './features/user/auth/auth.component';
 
 export const routes: Routes = [
     {
         path: '',
         pathMatch: 'full',
-        redirectTo: '/courses',
+        redirectTo: '/login',
+    },
+    {
+        path: 'login',
+        component: AuthComponent,
     },
     {
         path: 'kimman',
