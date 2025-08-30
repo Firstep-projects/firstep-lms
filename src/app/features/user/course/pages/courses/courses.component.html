@@ -11,7 +11,7 @@
             class="flex flex-col bg-main-grey-100 rounded-2xl overflow-hidden border border-[#1119221A] px-1 pt-1
             shadow-[0px_4px_8px_0px_#0208171A] shadow-[0px_1px_3px_0px_#0208171A] shadow-[inset_0px_-1px_0px_0px_#00000012]"
         >
-            <div class="rounded-xl overflow-hidden bg-white border border-[#1119221A]">
+            <div class="grow rounded-xl overflow-hidden bg-white border border-[#1119221A]">
               <div class="">
                 <img
                     [src]="course.image"
@@ -36,11 +36,13 @@
               </div>
             </div>
 
-            <div class="flex flex-col grow justify-end py-5 px-2">
+            <div class="flex flex-col justify-end py-5 px-2">
                 <a
                     [routerLink]="'/course/view/' + course.id"
                     class="flex justify-center w-full py-[11px] bg-[linear-gradient(180deg,_#489FFE_0%,_#017AFF_59.62%,_#0072F0_96.15%)]
-                    border-2 border-[#002C5D25] text-white font-medium rounded-xl cursor-pointer shadow-[inset_0px_3px_1px_0px_#FFFFFF33] shadow-[0px_1px_3px_0px_#0064D380]"
+                    border-2 border-[#002C5D25] text-white font-medium rounded-xl cursor-pointer hover:shadow-[0px_0px_10px_#0064D380] hover:-translate-y-1 ease-linear duration-100
+                     shadow-[0px_1px_3px_0px_#0064D380]
+                    "
                     style="text-shadow: 0px -1.5px 0px #0000001A"
                 >
                   Batafsil

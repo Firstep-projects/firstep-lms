@@ -52,6 +52,32 @@ export const routes: Routes = [
         component: LayoutComponent,
         children: [
             {
+                path: 'profile',
+                loadComponent: () =>
+                    import(
+                        './features/user/profile/pages/profile/profile.component'
+                    ),
+            },
+            {
+                path: 'faq',
+                loadComponent: () =>
+                    import('./features/user/faq/faq.component'),
+            },
+            {
+                path: 'my-course-info/:id',
+                loadComponent: () =>
+                    import(
+                        './features/user/course/pages/my-course-info/my-course-info.component'
+                    ),
+            },
+            {
+                path: 'my-courses',
+                loadComponent: () =>
+                    import(
+                        './features/user/course/pages/my-courses/my-courses.component'
+                    ),
+            },
+            {
                 path: 'courses',
                 loadComponent: () =>
                     import(
@@ -65,13 +91,11 @@ export const routes: Routes = [
                         './features/user/course/pages/course-view/course-view.component'
                     ),
             },
-            {
-                path: 'course/:id',
-                loadComponent: () =>
-                    import(
-                        './features/user/course/pages/course/course.component'
-                    ),
-            },
         ],
+    },
+    {
+        path: 'course/:id',
+        loadComponent: () =>
+            import('./features/user/course/pages/course/course.component'),
     },
 ];

@@ -1,0 +1,49 @@
+<div class="bg-[#F3F5F6]">
+    <div class="max-w-[1175px] mx-auto border-x border-[#0208171A]">
+        <app-common-header label="FAQ"></app-common-header>
+    </div>
+</div>
+<div class="max-w-[1175px] mx-auto border-x border-[#0208171A] px-5 py-6">
+    <div class="flex flex-col items-center justify-center gap-[50px] pt-9">
+        <div class="mb-[50px]">
+            <p class="text-2xl leading-6 font-semibold">
+                Ko’p Beriladigan Savollar:
+            </p>
+        </div>
+
+        <div class="max-w-200 mb-[60px]">
+            <p-accordion value="0">
+                @for(a of [0,0,0]; track i; let i= $index){
+                    <p-accordion-panel value="{{i}}">
+                        <p-accordion-header>
+                            <ng-template #toggleicon let-active="active">
+                                @if (active) {
+                                    <i class="pi pi-minus"></i>
+                                } @else {
+                                    <i class="pi pi-plus"></i>
+                                }
+                            </ng-template>
+                            <span class="flex items-center gap-2 w-full">
+                                <span class="font-bold whitespace-nowrap"
+                                    >Kurslar pullikmi yoki bepul?</span
+                                >
+                            </span>
+                        </p-accordion-header>
+                        <p-accordion-content>
+                            <p class="m-0">
+                                Platformamizda har xil darajadagi foydalanuvchilar uchun mo‘ljallangan keng turdagi kurslar mavjud. Dasturlash, dizayn, biznes, xorijiy tillar, marketing va boshqa yo‘nalishlarda kurslar mavjud.
+                            </p>
+                        </p-accordion-content>
+                    </p-accordion-panel>
+                }
+            </p-accordion>
+        </div>
+        
+        <div class="flex flex-col items-center gap-4">
+            <p class="text-2xl leading-6 font-semibold">
+                Yana savollar bormi?
+            </p>
+            <p class="text-center">Agar sizda yana savollar bo‘lsa,<br> bizning texnik yordam jamoamiz bilan <span class="-blue-500 underline">bog‘laning.</span></p>
+        </div>
+    </div>
+</div>

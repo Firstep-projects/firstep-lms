@@ -1,16 +1,30 @@
-<div class="flex items-center" [class]="styleClass">
-    @if(back){
-      <div class="p-5 border-r border-main-grey-300">
-        <a [routerLink]="backLink" class="flex items-center gap-2 text-main-grey-600 text-sm font-medium mr-">
-          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M14.5 10.75C14.9142 10.75 15.25 10.4142 15.25 10C15.25 9.58579 14.9142 9.25 14.5 9.25V10.75ZM4.96967 9.46967C4.67678 9.76256 4.67678 10.2374 4.96967 10.5303L9.74264 15.3033C10.0355 15.5962 10.5104 15.5962 10.8033 15.3033C11.0962 15.0104 11.0962 14.5355 10.8033 14.2426L6.56066 10L10.8033 5.75736C11.0962 5.46447 11.0962 4.98959 10.8033 4.6967C10.5104 4.40381 10.0355 4.40381 9.74264 4.6967L4.96967 9.46967ZM14.5 10V9.25H5.5V10V10.75H14.5V10Z" fill="#686D73"/>
-          </svg>
-          Kurslar
-        </a>
-      </div>
+<div class="flex items-center" [class]="styleClass()">
+    @if (backLink()) {
+        <div class="p-5 border-r border-main-grey-300">
+            <a
+                [routerLink]="backLink() + ''"
+                class="flex items-center gap-2 text-main-grey-600 text-sm font-medium mr-"
+            >
+                <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 20 20"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                >
+                    <path
+                        d="M14.5 10.75C14.9142 10.75 15.25 10.4142 15.25 10C15.25 9.58579 14.9142 9.25 14.5 9.25V10.75ZM4.96967 9.46967C4.67678 9.76256 4.67678 10.2374 4.96967 10.5303L9.74264 15.3033C10.0355 15.5962 10.5104 15.5962 10.8033 15.3033C11.0962 15.0104 11.0962 14.5355 10.8033 14.2426L6.56066 10L10.8033 5.75736C11.0962 5.46447 11.0962 4.98959 10.8033 4.6967C10.5104 4.40381 10.0355 4.40381 9.74264 4.6967L4.96967 9.46967ZM14.5 10V9.25H5.5V10V10.75H14.5V10Z"
+                        fill="#686D73"
+                    />
+                </svg>
+                {{ backText() }}
+            </a>
+        </div>
     }
     <div class="p-5">
-      <h2 class="text-[28px] font-semibold text-black leading-8 ">{{ label }}</h2>
-      <ng-content></ng-content>
+        <h2 class="text-[28px] font-semibold text-black leading-8">
+            {{ label() }}
+        </h2>
+        <ng-content></ng-content>
     </div>
 </div>

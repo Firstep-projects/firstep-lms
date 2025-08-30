@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, input, Input, Output } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 @Component({
@@ -8,8 +8,8 @@ import { RouterLink } from '@angular/router';
     styleUrl: './common-header.component.css',
 })
 export class CommonHeaderComponent {
-    @Input() label: string = '';
-    @Input() back: boolean = false;
-    @Input() backLink: string = "/courses";
-    @Input() styleClass: string = "";
+    label = input.required();
+    backText = input();
+    backLink = input();
+    styleClass = input();
 }

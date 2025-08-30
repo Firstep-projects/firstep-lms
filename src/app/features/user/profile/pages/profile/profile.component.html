@@ -1,0 +1,117 @@
+<div class="bg-[#F3F5F6]">
+    <div class="max-w-[1175px] mx-auto border-x border-[#0208171A]">
+        <app-common-header label="Profil"></app-common-header>
+    </div>
+</div>
+<hr class="border-gray-200" />
+<div class="max-w-[1175px] mx-auto border-x border-[#0208171A] px-8 py-8">
+    <div class="flex flex-col gap-10">
+        <div class="flex items-start justify-between">
+            <div class="flex gap-4">
+                <img
+                    src="./src/imgs/profile-img.png"
+                    alt=""
+                    width="64"
+                    height="64"
+                />
+                <div class="flex flex-col">
+                    <div class="flex gap-4">
+                        <p class="text-7 font-semibold text-black leading-8">
+                            Sardor Abdujalolov
+                        </p>
+                        <div
+                            class="flex items-center gap-2 px-2 py-1 rounded-md bg-[#F4F5F6] border border-[#E1E3E5]"
+                        >
+                            <p
+                                class="text-[#326801] text-xs font-medium leading-4"
+                            >
+                                3
+                            </p>
+                            <img src="./src/svg/rubin.svg" alt="" />
+                        </div>
+                    </div>
+                    <p class="text-[#96999C] font-medium leading-6">
+                        &#64;sardor23
+                    </p>
+                </div>
+            </div>
+            <div class="flex gap-2">
+                <div
+                    class="p-2 rounded-lg border border-[#0E141B1A] shadow-[0_0_2px_#0E141B1A]"
+                >
+                    <img src="./src/svg/github.svg" alt="" />
+                </div>
+                <div
+                    class="p-2 rounded-lg border border-[#0E141B1A] shadow-[0_0_2px_#0E141B1A]"
+                >
+                    <img src="./src/svg/facebook.svg" alt="" />
+                </div>
+            </div>
+        </div>
+        <div class="flex flex-col items-start gap-5">
+            <div>
+                <p class="text-xl font-semibold text-black leading-8">
+                    Profil faolligi
+                </p>
+            </div>
+            <div
+                class="py-3 px-3 border border-[#0E141B1A] rounded-2xl shadow-[0_0_3px_#0E141B1A]"
+            >
+                <div class="ml-[30px] grid grid-cols-12 justify-center mb-4">
+                    @for (month of monthes; track $index) {
+                        <div class="flex justify-center">
+                            <p class="text-[#42474D] text-[10px] font-semibold">
+                                {{ month }}
+                            </p>
+                        </div>
+                    }
+                </div>
+                <div
+                    class="grid grid-rows-7 grid-flow-col-dense gap-1 items-center mb-5"
+                >
+                    @for (week of weeks; track $index) {
+                        <div class="w-[30px]">
+                            <p class="text-[#42474D] text-[10px] font-semibold">
+                                {{ week }}
+                            </p>
+                        </div>
+                    }
+                    @for (day of date; track i; let i = $index) {
+                        <div
+                            [title]="day.day | date"
+                            class="w-4 h-4 rounded-sm {{
+                                getColor(day.activeCount)
+                            }}"
+                        ></div>
+                    }
+                </div>
+                <div class="flex justify-between">
+                    <p class="text-xs text-[#96999C] font-semibold leading-4">
+                        2025-yil uchun faolliklar:
+                        <span class="text-black">123</span>
+                    </p>
+
+                    <div class="w-[154px]">
+                        <div class="w-full flex justify-between mb-1">
+                            <p
+                                class="text-[#C4C7CA] text-[10px] font-medium leading-2.5"
+                            >
+                                kam
+                            </p>
+                            <p
+                                class="t6ext-black text-[10px] font-medium leading-2.5"
+                            >
+                                ko’p
+                            </p>
+                        </div>
+                        <div class="w-full grid grid-cols-4 gap-[1px]">
+                            @for (a of [0, 0, 0, 0]; track i; let i = $index) {
+                                <div class="h-1 {{ getColor(i) }}"></div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
