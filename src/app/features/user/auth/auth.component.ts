@@ -1,4 +1,11 @@
-import { Component, ElementRef, QueryList, ViewChildren } from '@angular/core';
+import {
+    Component,
+    DestroyRef,
+    ElementRef,
+    inject,
+    QueryList,
+    ViewChildren,
+} from '@angular/core';
 import {
     FormGroup,
     FormBuilder,
@@ -12,6 +19,8 @@ import {
     AuthService,
     LoginRequest,
 } from '../../../shared/services/auth.service';
+import { timer } from 'rxjs';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
     selector: 'app-auth',
@@ -21,40 +30,51 @@ import {
 })
 export class AuthComponent {
     loginForm: FormGroup;
-    loading = false;
     @ViewChildren('otpInput') otpInputs!: QueryList<
         ElementRef<HTMLInputElement>
     >;
+    private destroyRef = inject(DestroyRef);
 
     constructor(
         private formBuilder: FormBuilder,
-        private authService: AuthService,
         private router: Router,
     ) {
         this.loginForm = this.formBuilder.group({});
 
-        if (this.authService.isAuthenticated()) {
-            this.router.navigate(['/courses']);
-        }
-        this.addPasswordControl();
-    }
-
-    addPasswordControl() {
         for (let i = 1; i <= 6; i++) {
             this.loginForm.addControl(
-                'password-' + i,
-                new FormControl('', Validators.required),
+                `password-${i}`,
+                new FormControl('', [
+                    Validators.required,
+                    Validators.minLength(1),
+                    Validators.maxLength(1),
+                    Validators.pattern('[0-9]'),
+                ]),
             );
         }
     }
 
     onInput(event: Event, index: number) {
         const input = event.target as HTMLInputElement;
+
         if (input.value.length === 1 && index < this.otpInputs.length - 1) {
             this.otpInputs.get(index + 1)?.nativeElement.focus();
         }
         if (input.value.length === 0 && index > 0) {
             this.otpInputs.get(index - 1)?.nativeElement.focus();
+        }
+
+        if (this.loginForm.valid) {
+            this.otpInputs.map((c) => {
+                let inp = c.nativeElement;
+                inp.style.transition = '1s';
+                inp.style.border = '1px solid #25fe25';
+            });
+            timer(1500)
+                .pipe(takeUntilDestroyed(this.destroyRef))
+                .subscribe(() => {
+                    this.router.navigate(['/courses']);
+                });
         }
     }
 

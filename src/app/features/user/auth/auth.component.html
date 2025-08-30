@@ -54,13 +54,12 @@
                                 <div>
                                     <input
                                         #otpInput
-                                        type="number"
+                                        type="text"
                                         [formControlName]="
                                             'password-' + (i + 1)
                                         "
                                         maxlength="1"
                                         [max]="1"
-                                        [ariaValueMax]="2"
                                         placeholder="0"
                                         (input)="onInput($event, i)"
                                         class="w-12 h-12 text-center rounded-xl bg-white shadow-[0px_1px_3px_0px_#2F2B431A] outline-none border border-[#0E141B1A] focus:border-blue-400 transition-all duration-200 placeholder:text-gray-400"
