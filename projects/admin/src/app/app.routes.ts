@@ -6,6 +6,10 @@ import { AdminGuard } from './features/guards/admin.guard';
 import { NotFoundComponent } from './shared/components/not-found/not-found.component';
 import { UnauthorizedComponent } from './shared/components/unauthorized/unauthorized.component';
 import { ForbiddenComponent } from './shared/components/forbidden/forbidden.component';
+import { TestService } from './features/components/test/test.service';
+import { CourseService } from './features/components/test/courses/course.service';
+import { TestComponent } from './features/components/test/test.component';
+import { CategoryService } from './features/components/test/category/category.service';
 
 export const routes: Routes = [
     { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -134,6 +138,16 @@ export const routes: Routes = [
                 ],
             },
         ],
+    },
+    {
+        path: 'courses',
+        component: TestComponent,
+        providers: [{ provide: TestService, useClass: CourseService }],
+    },
+    {
+        path: 'categories',
+        component: TestComponent,
+        providers: [{ provide: TestService, useClass: CategoryService }],
     },
     { path: '401', component: UnauthorizedComponent },
     { path: 'unauthorized', redirectTo: '/401' },
