@@ -5,11 +5,6 @@ import { AuthComponent } from './features/user/auth/auth.component';
 
 export const routes: Routes = [
     {
-        path: '',
-        pathMatch: 'full',
-        redirectTo: '/login',
-    },
-    {
         path: 'login',
         component: AuthComponent,
     },
@@ -51,6 +46,11 @@ export const routes: Routes = [
         path: '',
         component: LayoutComponent,
         children: [
+            {
+                path: '',
+                pathMatch: 'full',
+                redirectTo: '/courses',
+            },
             {
                 path: 'profile',
                 loadComponent: () =>
