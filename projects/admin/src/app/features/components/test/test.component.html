@@ -82,12 +82,66 @@
                     </td>
                     @for (col of columns; track $index) {
                         <td>
-                            {{
-                                col.apiName
-                                    | getDeepValue: rowData
-                                    | bamTranslateNameAsync
-                                    | async
-                            }}
+                            @switch (col.type) {
+                                @case ('img') {
+                                    <img
+                                        [src]="
+                                            'http://167.86.71.210:4002/api/' +
+                                            (col.apiName
+                                                | getDeepValue: rowData)
+                                        "
+                                        [alt]="col.title"
+                                        class="w-10 h-10 rounded-lg object-cover"
+                                    />
+                                }
+                                @case ('translate') {
+                                    {{
+                                        col.apiName
+                                            | getDeepValue: rowData
+                                            | bamTranslateNameAsync
+                                            | async
+                                    }}
+                                }
+                                @case ('date') {
+                                    {{
+                                        col.apiName
+                                            | getDeepValue: rowData
+                                            | date: 'dd.MM.yyyy'
+                                    }}
+                                }
+                                @case ('actions') {
+                                    <div
+                                        class="flex justify-start items-center gap-2"
+                                    >
+                                        <a
+                                            [routerLink]="
+                                                'edit/' +
+                                                (col.apiName
+                                                    | getDeepValue: rowData)
+                                            "
+                                            class="px-3 py-2 bg-blue-500 rounded-lg cursor-pointer hover:bg-blue-600 transition-colors"
+                                            title="Редактировать"
+                                        >
+                                            <span
+                                                class="pi pi-pencil text-white"
+                                            ></span>
+                                        </a>
+                                        <!-- <button
+                                            class="px-3 py-2 bg-red-500 rounded-lg cursor-pointer hover:bg-red-600 transition-colors"
+                                            (click)="deleteData(course)"
+                                            [disabled]="loading"
+                                            title="Удалить"
+                                        >
+                                            <span
+                                                class="pi pi-trash text-white"
+                                            ></span>
+                                        </button> -->
+                                    </div>
+                                }
+                                @default {
+                                    {{ col.apiName | getDeepValue: rowData }}
+                                }
+                            }
                         </td>
                     }
                 </tr>

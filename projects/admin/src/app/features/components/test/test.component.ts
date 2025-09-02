@@ -4,12 +4,20 @@ import { Table, TableLazyLoadEvent, TableModule } from 'primeng/table';
 import { TableListParams } from './model/table.model';
 import { takeUntil } from 'rxjs';
 import { GetDeepValuePipe } from './pipes/getDeepValue.pipe';
-import { AsyncPipe } from '@angular/common';
+import { AsyncPipe, DatePipe } from '@angular/common';
 import { TranslateNameAsyncPipe } from './pipes/translate-name-async.pipe';
+import { RouterLink } from '@angular/router';
 
 @Component({
     selector: 'app-auth',
-    imports: [TableModule, GetDeepValuePipe, AsyncPipe, TranslateNameAsyncPipe],
+    imports: [
+        TableModule,
+        GetDeepValuePipe,
+        AsyncPipe,
+        TranslateNameAsyncPipe,
+        DatePipe,
+        RouterLink,
+    ],
     templateUrl: './test.component.html',
     styleUrl: './test.component.css',
 })

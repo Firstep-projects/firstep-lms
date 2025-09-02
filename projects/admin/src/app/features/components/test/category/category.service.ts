@@ -14,7 +14,6 @@ export class CategoryService extends BaseCategoryService implements ITest {
         let httpParams = new HttpParams();
 
         if (params) {
-            // Параметры пагинации
             if (params.Skip !== undefined) {
                 httpParams = httpParams.set('Skip', params.Skip.toString());
             }
@@ -22,7 +21,6 @@ export class CategoryService extends BaseCategoryService implements ITest {
                 httpParams = httpParams.set('Take', params.Take.toString());
             }
 
-            // Поиск по названию и описанию
             if (params.search && params.search.trim()) {
                 const searchTerm = params.search.trim();
                 const filteringExpressions = {
@@ -36,7 +34,6 @@ export class CategoryService extends BaseCategoryService implements ITest {
                 );
             }
 
-            // Фильтрация через JSON
             if (params.FilteringExpressionsJson) {
                 httpParams = httpParams.set(
                     'FilteringExpressionsJson',
@@ -44,7 +41,6 @@ export class CategoryService extends BaseCategoryService implements ITest {
                 );
             }
 
-            // Сортировка через JSON
             if (params.SortingExpressionsJson) {
                 httpParams = httpParams.set(
                     'SortingExpressionsJson',
@@ -52,7 +48,6 @@ export class CategoryService extends BaseCategoryService implements ITest {
                 );
             }
 
-            // Альтернативно через массивы (если API поддерживает)
             if (params.FilteringExpressions?.length) {
                 params.FilteringExpressions.forEach((filter, index) => {
                     httpParams = httpParams.set(

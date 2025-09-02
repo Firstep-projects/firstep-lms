@@ -15,16 +15,16 @@ export class TranslateNameAsyncPipe implements PipeTransform {
     private $transloco = inject(TranslocoService);
 
     transform(value: TranslateName | undefined) {
-        if (value)
+        if (value && typeof value !== 'string')
             return this.$transloco.langChanges$.pipe(
                 map((lang) => {
                     return value[
-                        `name${toTitleCase(lang as 'uz' | 'ru')}` as keyof TranslateName
+                        `${toTitleCase(lang as 'uz' | 'ru')}`.toLocaleLowerCase() as keyof TranslateName
                     ];
                 }),
             );
 
-        return of('-');
+        return of(value);
     }
 }
 

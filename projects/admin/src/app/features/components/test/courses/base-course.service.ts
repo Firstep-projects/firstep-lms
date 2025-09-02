@@ -4,9 +4,6 @@ import { TableColumn } from '../model/table.model';
 @Injectable()
 export abstract class BaseUserService {
     columns: TableColumn[] = [
-        // {
-        //     field: 'id',
-        // },
         {
             field: 'Title',
             apiName: 'title',
@@ -17,12 +14,22 @@ export abstract class BaseUserService {
         },
         {
             field: 'Author',
+            apiName: 'author.name',
         },
-        // {
-        //     field: 'passportSN'
-        // },
-        // {
-        //     field: 'pinfl'
-        // }
+        {
+            field: 'Category',
+            apiName: 'category.title',
+            type: 'translate',
+        },
+        {
+            field: 'Created',
+            apiName: 'createdAt',
+            type: 'date',
+        },
+        {
+            field: 'Created',
+            apiName: 'id',
+            type: 'actions',
+        },
     ];
 }

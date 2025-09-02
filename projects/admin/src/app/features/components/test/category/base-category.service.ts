@@ -4,25 +4,29 @@ import { TableColumn } from '../model/table.model';
 @Injectable()
 export abstract class BaseCategoryService {
     columns: TableColumn[] = [
-        // {
-        //     field: 'id',
-        // },
+        {
+            field: 'Img',
+            apiName: 'imageLink',
+            type: 'img',
+        },
         {
             field: 'Title',
-            apiName: 'title.uz',
+            apiName: 'title',
+            type: 'translate',
         },
         {
             field: 'Description',
-            apiName: 'description.uz',
+            apiName: 'description',
+            type: 'translate',
         },
-        // {
-        //     field: 'fathersName',
-        // },
-        // {
-        //     field: 'passportSN'
-        // },
-        // {
-        //     field: 'pinfl'
-        // }
+        {
+            field: 'Created',
+            apiName: 'createdAt',
+            type: 'date',
+        },
+        {
+            field: 'Action',
+            type: 'actions',
+        },
     ];
 }

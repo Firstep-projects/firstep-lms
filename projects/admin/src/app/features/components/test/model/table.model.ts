@@ -23,4 +23,6 @@ export interface SortExpression {
 export interface TableColumn {
     field: string;
     apiName?: string;
+    type?: ApiType;
 }
+type ApiType = 'img' | 'date' | 'translate' | 'actions';
