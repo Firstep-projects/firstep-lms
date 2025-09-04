@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "eco-tizim-lms": {
+    "firstep-lms": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -29,7 +29,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/eco-tizim-lms",
+            "outputPath": "dist/firstep-lms",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -76,10 +76,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "eco-tizim-lms:build:production"
+              "buildTarget": "firstep-lms:build:production"
             },
             "development": {
-              "buildTarget": "eco-tizim-lms:build:development"
+              "buildTarget": "firstep-lms:build:development"
             }
           },
           "defaultConfiguration": "development"
