@@ -6,7 +6,8 @@
             <!-- @if(back){ -->
             <div class="p-5">
                 <a
-                    class="flex items-center gap-2 text-main-grey-600 text-sm font-medium mr-"
+                    class="flex items-center gap-2 text-main-grey-600 text-sm font-medium cursor-pointer"
+                    (click)="goBack()"
                 >
                     <svg
                         width="24"
@@ -165,6 +166,11 @@
                                                 </p>
                                             </div>
                                         </div>
+                                    } @empty {
+                                        <p class="text-gray-500">
+                                            Darslar hali mavjud emas. Tez orada
+                                            sizni darslar bilan xursand qilamiz!
+                                        </p>
                                     }
                                 </div>
                             </p-accordion-content>

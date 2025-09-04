@@ -1,4 +1,4 @@
-import { NgFor } from '@angular/common';
+import { Location, NgFor } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { SafeUrlPipe } from '../../../../../shared/pipes/safe-url.pipe';
 import CustomVideoPlayerComponent from '../../../../../shared/components/custom-video-player-component/custom-video-player.component';
@@ -29,6 +29,7 @@ import { ProgressBar } from 'primeng/progressbar';
 export default class CourseComponent {
     private activatedRoute: ActivatedRoute = inject(ActivatedRoute);
     private router: Router = inject(Router);
+    private location = inject(Location);
 
     selectedLesson!: ILesson;
     course!: ICourse;
@@ -91,5 +92,9 @@ export default class CourseComponent {
         // Здесь обработка ответов
         console.log('Ответы:', this.answers);
         // Можно добавить логику проверки и вывода результата
+    }
+
+    goBack() {
+        this.location.back();
     }
 }
