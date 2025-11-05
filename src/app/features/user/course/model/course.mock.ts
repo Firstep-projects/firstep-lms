@@ -1,3 +1,5 @@
+import { TagEnum } from "../components/course-tag/course-tag.component";
+
 export interface ILesson {
     id: number;
     title: string;
@@ -36,14 +38,14 @@ export interface ICourse {
     mentor: string;
     totalTime: string;
     mentorAvatar?: string;
+    tag: TagEnum
 }
 
 export const MockCourses: ICourse[] = [
     {
         id: 5,
         title: 'Frontendga kirish: HTML, CSS, JavaScript',
-        description:
-            'Qisqa videolar yordamida HTML, CSS va JavaScript asoslarini o‘rganing',
+        description: 'Qisqa videolar yordamida HTML, CSS va JavaScript asoslarini o‘rganing',
         category: 'Frontend',
         lessonLength: 9,
         image: './frontendga-kirish/cover.png',
@@ -107,14 +109,13 @@ export const MockCourses: ICourse[] = [
                 tests: [],
             },
         ],
-        fullDescription:
-            'Ushbu kurs Frontend dasturlashga qiziqqan boshlovchilar uchun mo‘ljallangan bo‘lib, qisqa videolar orqali HTML, CSS va JavaScript asoslarini o‘rgatadi. Kurs 3 ta asosiy moduldan iborat: Websayt va HTML asoslari, CSS asoslari, va JavaScript asoslari. Har bir modulda video darslar mavjud bo‘lib, ular orqali siz web-saytlar yaratishning asosiy tushunchalari bilan tanishasiz. Kurs mentor Odilbek Utamuratov tomonidan tayyorlangan bo‘lib, umumiy davomiyligi 20 daqiqa. Tez, qulay va interaktiv tarzda Frontend dasturlash asoslarini o‘rganing.',
+        fullDescription: 'Ushbu kurs Frontend dasturlashga qiziqqan boshlovchilar uchun mo‘ljallangan bo‘lib, qisqa videolar orqali HTML, CSS va JavaScript asoslarini o‘rgatadi. Kurs 3 ta asosiy moduldan iborat: Websayt va HTML asoslari, CSS asoslari, va JavaScript asoslari. Har bir modulda video darslar mavjud bo‘lib, ular orqali siz web-saytlar yaratishning asosiy tushunchalari bilan tanishasiz. Kurs mentor Odilbek Utamuratov tomonidan tayyorlangan bo‘lib, umumiy davomiyligi 20 daqiqa. Tez, qulay va interaktiv tarzda Frontend dasturlash asoslarini o‘rganing.',
+        tag: TagEnum.NEW
     },
     {
         id: 1,
         title: '100 soniya ichida IT',
-        description:
-            'IT haqida 100 soniyadan iborat sodda videolar asosida bilimlaringizni boyiting',
+        description: 'IT haqida 100 soniyadan iborat sodda videolar asosida bilimlaringizni boyiting',
         category: 'IT',
         lessonLength: 9,
         image: './src/imgs/100 soniya ichida.png',
@@ -161,8 +162,7 @@ export const MockCourses: ICourse[] = [
                 ],
                 tests: [
                     {
-                        question:
-                            'Quyidagilardan qaysi biri algoritmni to‘g‘ri ta’riflaydi?',
+                        question: 'Quyidagilardan qaysi biri algoritmni to‘g‘ri ta’riflaydi?',
                         options: [
                             {
                                 name: 'Internet tarmog‘i orqali ma’lumot uzatish',
@@ -183,8 +183,7 @@ export const MockCourses: ICourse[] = [
                         ],
                     },
                     {
-                        question:
-                            'Ikkilik qidiruv algoritmi qanday shartda ishlaydi?',
+                        question: 'Ikkilik qidiruv algoritmi qanday shartda ishlaydi?',
                         options: [
                             {
                                 name: 'Ma’lumotlar tartibsiz joylashgan bo‘lsa',
@@ -205,8 +204,7 @@ export const MockCourses: ICourse[] = [
                         ],
                     },
                     {
-                        question:
-                            'Ikkita sonni almashtirish algoritmida qanday amallar bajariladi?',
+                        question: 'Ikkita sonni almashtirish algoritmida qanday amallar bajariladi?',
                         options: [
                             {
                                 name: 'Faqat ko‘paytirish va bo‘lish',
@@ -307,8 +305,7 @@ export const MockCourses: ICourse[] = [
                         ],
                     },
                     {
-                        question:
-                            'Qaysi biri dasturchining vazifasiga kirmaydi?',
+                        question: 'Qaysi biri dasturchining vazifasiga kirmaydi?',
                         options: [
                             { name: 'Kod yozish', isRight: false },
                             { name: 'Veb sayt yaratish', isRight: false },
@@ -335,8 +332,7 @@ export const MockCourses: ICourse[] = [
                         ],
                     },
                     {
-                        question:
-                            'Qaysi dasturlash tili backend uchun keng qo‘llaniladi?',
+                        question: 'Qaysi dasturlash tili backend uchun keng qo‘llaniladi?',
                         options: [
                             { name: 'HTML', isRight: false },
                             { name: 'CSS', isRight: false },
@@ -415,8 +411,7 @@ export const MockCourses: ICourse[] = [
                         ],
                     },
                     {
-                        question:
-                            'Qaysi biri foydalanuvchanlikka ta’sir qiladi?',
+                        question: 'Qaysi biri foydalanuvchanlikka ta’sir qiladi?',
                         options: [
                             { name: 'Faqat tarmoq tezligi', isRight: false },
                             { name: 'Foydalanuvchi interfeysi', isRight: true },
@@ -466,14 +461,13 @@ export const MockCourses: ICourse[] = [
                 ],
             },
         ],
-        fullDescription:
-            "Bu kurs IT sohasiga qiziqqan boshlovchilar uchun mo‘ljallangan bo‘lib, 100 soniyadan iborat qisqa va sodda videolar orqali asosiy tushunchalarni o‘rgatadi. Kurs 3 ta asosiy moduldan iborat: Ma'lumotlar tuzilmasi, Dasturlash va Xavfsizlik. Har bir modulda video darslar va ularni mustahkamlash uchun testlar mavjud. Siz algoritmlar, dasturlash tillari, vebsaytlar, xavfsizlik konsepsiyalari kabi muhim mavzular bilan tanishasiz. Kurs mentor Odilbek Utamuratov tomonidan tayyorlangan bo‘lib, umumiy davomiyligi 20 daqiqa. Tez, qulay va interaktiv tarzda IT asoslarini o‘rganing.",
+        fullDescription: "Bu kurs IT sohasiga qiziqqan boshlovchilar uchun mo‘ljallangan bo‘lib, 100 soniyadan iborat qisqa va sodda videolar orqali asosiy tushunchalarni o‘rgatadi. Kurs 3 ta asosiy moduldan iborat: Ma'lumotlar tuzilmasi, Dasturlash va Xavfsizlik. Har bir modulda video darslar va ularni mustahkamlash uchun testlar mavjud. Siz algoritmlar, dasturlash tillari, vebsaytlar, xavfsizlik konsepsiyalari kabi muhim mavzular bilan tanishasiz. Kurs mentor Odilbek Utamuratov tomonidan tayyorlangan bo‘lib, umumiy davomiyligi 20 daqiqa. Tez, qulay va interaktiv tarzda IT asoslarini o‘rganing.",
+        tag: TagEnum.TOP
     },
     {
         id: 2,
         title: 'Angular Fundamentals',
-        description:
-            'Kurs davomida siz Angular yordamida zamonaviy, tezkor va samarali veb-ilovalar yaratishni o‘rganasiz',
+        description: 'Kurs davomida siz Angular yordamida zamonaviy, tezkor va samarali veb-ilovalar yaratishni o‘rganasiz',
         category: 'Dasturlash',
         lessonLength: 16,
         image: './src/imgs/angular.png',
@@ -494,32 +488,28 @@ export const MockCourses: ICourse[] = [
                         title: "Angular haqida boshlang'ich tushunchalar 1 dars",
                         time: '44 minut',
                         isYoutube: true,
-                        videoUrl:
-                            'https://www.youtube.com/embed/MPduddgZqQs?si=2cKxlfgVBF3F63nj',
+                        videoUrl: 'https://www.youtube.com/embed/MPduddgZqQs?si=2cKxlfgVBF3F63nj',
                     },
                     {
                         id: 2,
                         title: "Angular haqida boshlang'ich tushunchalar 2 dars",
                         time: '59 minut',
                         isYoutube: true,
-                        videoUrl:
-                            'https://www.youtube.com/embed/k-R9PycvbPk?si=pPFExflsGBudGxMV',
+                        videoUrl: 'https://www.youtube.com/embed/k-R9PycvbPk?si=pPFExflsGBudGxMV',
                     },
                     {
                         id: 3,
                         title: 'Angular | Service tushunchasi, Event binding, Routing va Navigation 1 dars',
                         time: '38 minut',
                         isYoutube: true,
-                        videoUrl:
-                            'https://www.youtube.com/embed/BmbfeYhlSxo?si=SnFq98BuTV3kV8Nd',
+                        videoUrl: 'https://www.youtube.com/embed/BmbfeYhlSxo?si=SnFq98BuTV3kV8Nd',
                     },
                     {
                         id: 4,
                         title: 'Angular | Service tushunchasi, Event binding, Routing va Navigation 2 dars',
                         time: '1 soat 9 minut',
                         isYoutube: true,
-                        videoUrl:
-                            'https://www.youtube.com/embed/BdMAdgvKE6E?si=mIC5MdSYAekyfkFt',
+                        videoUrl: 'https://www.youtube.com/embed/BdMAdgvKE6E?si=mIC5MdSYAekyfkFt',
                     },
                 ],
                 tests: [
@@ -603,32 +593,28 @@ export const MockCourses: ICourse[] = [
                         title: 'Angular Forms, Json server, Fetch, Git & Github',
                         time: '57 minut',
                         isYoutube: true,
-                        videoUrl:
-                            'https://www.youtube.com/embed/JCeJVsKyxH8?si=b0g_43iTxWin2z7g" title="YouTube video player',
+                        videoUrl: 'https://www.youtube.com/embed/JCeJVsKyxH8?si=b0g_43iTxWin2z7g" title="YouTube video player',
                     },
                     {
                         id: 6,
                         title: 'Angular Routing: redirectTo & wildCard, VSCode extentions for Angular',
                         time: '24 minut',
                         isYoutube: true,
-                        videoUrl:
-                            'https://www.youtube.com/embed/pE18Hb1Z8iM?si=Gg8IlHNL3JlG32mW',
+                        videoUrl: 'https://www.youtube.com/embed/pE18Hb1Z8iM?si=Gg8IlHNL3JlG32mW',
                     },
                     {
                         id: 7,
                         title: 'Eager loading vs Lazy loading',
                         time: '48 minut',
                         isYoutube: true,
-                        videoUrl:
-                            'https://www.youtube.com/embed/hypS5kG_g9g?si=OxeqtXPD0MTodrsI',
+                        videoUrl: 'https://www.youtube.com/embed/hypS5kG_g9g?si=OxeqtXPD0MTodrsI',
                     },
                     {
                         id: 8,
                         title: 'Ng Zorro UI kutubxonasi va Swagger tushunchasi',
                         time: '54 minut',
                         isYoutube: true,
-                        videoUrl:
-                            'https://www.youtube.com/embed/8TxAlvQP1CE?si=wNhN44tAQq3qP9UI',
+                        videoUrl: 'https://www.youtube.com/embed/8TxAlvQP1CE?si=wNhN44tAQq3qP9UI',
                     },
                 ],
                 tests: [
@@ -663,8 +649,7 @@ export const MockCourses: ICourse[] = [
                         ],
                     },
                     {
-                        question:
-                            'Formalarni boshqarishda Reactive Form nima beradi?',
+                        question: 'Formalarni boshqarishda Reactive Form nima beradi?',
                         options: [
                             {
                                 name: 'Faqat CSS bilan ishlaydi',
@@ -719,32 +704,28 @@ export const MockCourses: ICourse[] = [
                         title: 'CRUD (HttpClient orqali get request)',
                         time: '39 minut',
                         isYoutube: true,
-                        videoUrl:
-                            'https://www.youtube.com/embed/zdeKBICn_6M?si=kthNk8kUNDByo7QN',
+                        videoUrl: 'https://www.youtube.com/embed/zdeKBICn_6M?si=kthNk8kUNDByo7QN',
                     },
                     {
                         id: 10,
                         title: 'CRUD (httpClient orqali post request, reactive forms bilan ishlash)',
                         time: '1 soat 19 minut',
                         isYoutube: true,
-                        videoUrl:
-                            'https://www.youtube.com/embed/LXKyrUHCCSU?si=EVm4wa0UmjKzfXbg',
+                        videoUrl: 'https://www.youtube.com/embed/LXKyrUHCCSU?si=EVm4wa0UmjKzfXbg',
                     },
                     {
                         id: 11,
                         title: 'CRUD (Delete & Update)',
                         time: '59 minut',
                         isYoutube: true,
-                        videoUrl:
-                            'https://www.youtube.com/embed/oZk-TCsSJ-g?si=q3YujtPosynp56KH',
+                        videoUrl: 'https://www.youtube.com/embed/oZk-TCsSJ-g?si=q3YujtPosynp56KH',
                     },
                     {
                         id: 12,
                         title: 'Components | #Property binding and #Event binding',
                         time: '39 minut',
                         isYoutube: true,
-                        videoUrl:
-                            'https://www.youtube.com/embed/UfeaMEd6MCM?si=u8DpOzR_CZVx_aVo',
+                        videoUrl: 'https://www.youtube.com/embed/UfeaMEd6MCM?si=u8DpOzR_CZVx_aVo',
                     },
                 ],
                 tests: [
@@ -828,32 +809,28 @@ export const MockCourses: ICourse[] = [
                         title: 'Components | #two way binding',
                         time: '35 minut',
                         isYoutube: true,
-                        videoUrl:
-                            'https://www.youtube.com/embed/EJ3E1VuDTbg?si=3zSlvlTtnu2-2ZK4',
+                        videoUrl: 'https://www.youtube.com/embed/EJ3E1VuDTbg?si=3zSlvlTtnu2-2ZK4',
                     },
                     {
                         id: 14,
                         title: 'Template expressions ,Pipes',
                         time: '55 minut',
                         isYoutube: true,
-                        videoUrl:
-                            'https://www.youtube.com/embed/LrA-rppM2XM?si=BwkhVPGGXMf-FUQs',
+                        videoUrl: 'https://www.youtube.com/embed/LrA-rppM2XM?si=BwkhVPGGXMf-FUQs',
                     },
                     {
                         id: 15,
                         title: 'Angular.io, Best practices',
                         time: '51 minut',
                         isYoutube: true,
-                        videoUrl:
-                            'https://www.youtube.com/embed/XHZGkyadOj8?si=cF-vvLr5fs5vMoZY',
+                        videoUrl: 'https://www.youtube.com/embed/XHZGkyadOj8?si=cF-vvLr5fs5vMoZY',
                     },
                     {
                         id: 16,
                         title: 'Angular [style] , ngTemplate & ngContent',
                         time: '48 minut',
                         isYoutube: true,
-                        videoUrl:
-                            'https://www.youtube.com/embed/t_bKRgDedHM?si=WK7SDmgE4IuYc0eh',
+                        videoUrl: 'https://www.youtube.com/embed/t_bKRgDedHM?si=WK7SDmgE4IuYc0eh',
                     },
                 ],
                 tests: [
@@ -923,14 +900,13 @@ export const MockCourses: ICourse[] = [
                 ],
             },
         ],
-        fullDescription:
-            'Ushbu kurs Angular framework’iga oid barcha muhim asoslarni o‘rganmoqchi bo‘lganlar uchun mo‘ljallangan. Kurs to‘rtta asosiy modulga bo‘lingan bo‘lib, ular orqali siz Angular’ning boshlang‘ich tushunchalaridan boshlab, routing, componentlar, CRUD amallar, reactive forms, lazy loading, two-way binding, va Angular’da ishlatiladigan ilg‘or konseptlargacha chuqur o‘rganasiz. Har bir modulda video darsliklar bilan birga nazariyani mustahkamlovchi testlar ham mavjud. Kurs mentor Odilbek Utamuratov tomonidan tayyorlangan va amaliyotga asoslangan. Ushbu kursni tugatganingizdan so‘ng, siz Angular yordamida zamonaviy va professional veb-ilovalarni yaratish ko‘nikmalariga ega bo‘lasiz.',
+        fullDescription: 'Ushbu kurs Angular framework’iga oid barcha muhim asoslarni o‘rganmoqchi bo‘lganlar uchun mo‘ljallangan. Kurs to‘rtta asosiy modulga bo‘lingan bo‘lib, ular orqali siz Angular’ning boshlang‘ich tushunchalaridan boshlab, routing, componentlar, CRUD amallar, reactive forms, lazy loading, two-way binding, va Angular’da ishlatiladigan ilg‘or konseptlargacha chuqur o‘rganasiz. Har bir modulda video darsliklar bilan birga nazariyani mustahkamlovchi testlar ham mavjud. Kurs mentor Odilbek Utamuratov tomonidan tayyorlangan va amaliyotga asoslangan. Ushbu kursni tugatganingizdan so‘ng, siz Angular yordamida zamonaviy va professional veb-ilovalarni yaratish ko‘nikmalariga ega bo‘lasiz.',
+        tag: TagEnum.DISCOUNT
     },
     {
         id: 3,
         title: 'CSS Asosolari',
-        description:
-            'Kurs davomida siz zamonaviy, tezkor va samarali veb-ilovalar yaratishni o‘rganasiz',
+        description: 'Kurs davomida siz zamonaviy, tezkor va samarali veb-ilovalar yaratishni o‘rganasiz',
         category: 'Dasturlash',
         lessonLength: 14,
         image: './src/imgs/html.png',
@@ -951,40 +927,35 @@ export const MockCourses: ICourse[] = [
                         title: 'CSS | 1. Kirish',
                         time: '9 minut',
                         isYoutube: true,
-                        videoUrl:
-                            'https://www.youtube.com/embed/KPPhQ0F-SDY?si=QaROEeWDUdZSNTzx',
+                        videoUrl: 'https://www.youtube.com/embed/KPPhQ0F-SDY?si=QaROEeWDUdZSNTzx',
                     },
                     {
                         id: 2,
                         title: 'CSS | 2. CSS haqida. Kurs loyihasi',
                         time: '8 minut',
                         isYoutube: true,
-                        videoUrl:
-                            'https://www.youtube.com/embed/U7Mq0paFXlA?si=NN7eSpT-P1EM_DPp',
+                        videoUrl: 'https://www.youtube.com/embed/U7Mq0paFXlA?si=NN7eSpT-P1EM_DPp',
                     },
                     {
                         id: 3,
                         title: 'CSS | 3. HTML hujjat va CSS. Loyiha strukturasi',
                         time: '10 minut',
                         isYoutube: true,
-                        videoUrl:
-                            'https://www.youtube.com/embed/0nz5wXX_ppw?si=MevRGxvzVhFIVZ8a',
+                        videoUrl: 'https://www.youtube.com/embed/0nz5wXX_ppw?si=MevRGxvzVhFIVZ8a',
                     },
                     {
                         id: 4,
                         title: 'CSS | 4. Selectors (Tanlab oluvchilar)',
                         time: '10 minut',
                         isYoutube: true,
-                        videoUrl:
-                            'https://www.youtube.com/embed/0UsPKt4gU9I?si=TkayTPbXI9hacIha',
+                        videoUrl: 'https://www.youtube.com/embed/0UsPKt4gU9I?si=TkayTPbXI9hacIha',
                     },
                     {
                         id: 5,
                         title: 'CSS | 5. Comments (Izohlar)',
                         time: '7 minut',
                         isYoutube: true,
-                        videoUrl:
-                            'https://www.youtube.com/embed/qxQhz9RW3YE?si=U-ScWHKtL8q_I6aS',
+                        videoUrl: 'https://www.youtube.com/embed/qxQhz9RW3YE?si=U-ScWHKtL8q_I6aS',
                     },
                 ],
                 tests: [
@@ -1025,8 +996,7 @@ export const MockCourses: ICourse[] = [
                         ],
                     },
                     {
-                        question:
-                            "Quyidagilardan qaysi biri to'g'ri CSS selektor?",
+                        question: "Quyidagilardan qaysi biri to'g'ri CSS selektor?",
                         options: [
                             { name: '.className', isRight: true },
                             { name: '#className', isRight: false },
@@ -1048,40 +1018,35 @@ export const MockCourses: ICourse[] = [
                         title: "CSS | 6. Specificity (O'ziga xoslik)",
                         time: '14 minut',
                         isYoutube: true,
-                        videoUrl:
-                            'https://www.youtube.com/embed/7k4QXZ0fbc0?si=9Dt4FiG6toTVbOfq',
+                        videoUrl: 'https://www.youtube.com/embed/7k4QXZ0fbc0?si=9Dt4FiG6toTVbOfq',
                     },
                     {
                         id: 7,
                         title: 'CSS | 7. Inheritance (Meros olish)',
                         time: '10 minut',
                         isYoutube: true,
-                        videoUrl:
-                            'https://www.youtube.com/embed/Q2hfLLQhjsc?si=7HqP87j-HlmTwjQM',
+                        videoUrl: 'https://www.youtube.com/embed/Q2hfLLQhjsc?si=7HqP87j-HlmTwjQM',
                     },
                     {
                         id: 8,
                         title: 'CSS | 8. Combinators (Kombinatorlar)',
                         time: '22 minut',
                         isYoutube: true,
-                        videoUrl:
-                            'https://www.youtube.com/embed/p_IuBg43k6k?si=FQZ0EK38FOcTRF4o',
+                        videoUrl: 'https://www.youtube.com/embed/p_IuBg43k6k?si=FQZ0EK38FOcTRF4o',
                     },
                     {
                         id: 9,
                         title: 'CSS | 9. "Class"lar va qo\'shma (combined) selektorlar',
                         time: '11 minut',
                         isYoutube: true,
-                        videoUrl:
-                            'https://www.youtube.com/embed/uvefHirWsG4?si=PZ7RNRuieEGcHCXu',
+                        videoUrl: 'https://www.youtube.com/embed/uvefHirWsG4?si=PZ7RNRuieEGcHCXu',
                     },
                     {
                         id: 10,
                         title: 'CSS | 10. Class yoki ID. "!important" haqida',
                         time: '7 minut',
                         isYoutube: true,
-                        videoUrl:
-                            'https://www.youtube.com/embed/OymOhpWz0hU?si=GBFyo_SblVd1qASD',
+                        videoUrl: 'https://www.youtube.com/embed/OymOhpWz0hU?si=GBFyo_SblVd1qASD',
                     },
                 ],
                 tests: [
@@ -1098,8 +1063,7 @@ export const MockCourses: ICourse[] = [
                         ],
                     },
                     {
-                        question:
-                            'Meros olish (inheritance) qaysi holatda ishlaydi?',
+                        question: 'Meros olish (inheritance) qaysi holatda ishlaydi?',
                         options: [
                             {
                                 name: "Matnga tegishli stil bo'lsa",
@@ -1166,32 +1130,28 @@ export const MockCourses: ICourse[] = [
                         title: 'CSS | 11. CSS asoslari yordamida loyihani yaxshilash',
                         time: '13 minut',
                         isYoutube: true,
-                        videoUrl:
-                            'https://www.youtube.com/embed/3CymgP8fUUY?si=LoJ3zipF2vO9juVu',
+                        videoUrl: 'https://www.youtube.com/embed/3CymgP8fUUY?si=LoJ3zipF2vO9juVu',
                     },
                     {
                         id: 12,
                         title: 'CSS | 12. Box model (Quti modeli). Margin, Padding, Border',
                         time: '10 minut',
                         isYoutube: true,
-                        videoUrl:
-                            'https://www.youtube.com/embed/WKUqpFVQnj8?si=Wc1N7qhtifsnnlg_',
+                        videoUrl: 'https://www.youtube.com/embed/WKUqpFVQnj8?si=Wc1N7qhtifsnnlg_',
                     },
                     {
                         id: 13,
                         title: 'CSS | 13. Margin collapsing. Shorthands (Qisqartmalar)',
                         time: '13 minut',
                         isYoutube: true,
-                        videoUrl:
-                            'https://www.youtube.com/embed/u2yKLRL3chY?si=qYhrmW0z3WRBgh0X',
+                        videoUrl: 'https://www.youtube.com/embed/u2yKLRL3chY?si=qYhrmW0z3WRBgh0X',
                     },
                     {
                         id: 14,
                         title: 'CSS | 14. Height (balandlik), Width (kenglik). Max / Min - height / width',
                         time: '21 minut',
                         isYoutube: true,
-                        videoUrl:
-                            'https://www.youtube.com/embed/1j2jyuzpvGs?si=MaMzkF-RWLdI5jpV',
+                        videoUrl: 'https://www.youtube.com/embed/1j2jyuzpvGs?si=MaMzkF-RWLdI5jpV',
                     },
                 ],
                 tests: [
@@ -1276,14 +1236,13 @@ export const MockCourses: ICourse[] = [
                 ],
             },
         ],
-        fullDescription:
-            'Ushbu kurs CSS (Cascading Style Sheets) asoslarini o‘rganmoqchi bo‘lganlar uchun mo‘ljallangan. Siz CSS orqali veb-sahifalarni qanday bezatish, tartibga solish va ular bilan interaktiv ishlashni bosqichma-bosqich o‘rganasiz. Kurs uchta moduldan iborat bo‘lib, ularda CSS’ning tanlab oluvchilari (selectors), meros olish (inheritance), box model, combinatorlar, max/min width va height, margin collapsing kabi asosiy va muhim tushunchalar qamrab olingan. Har bir dars amaliy misollar bilan boyitilgan va testlar orqali bilimlar mustahkamlanadi. Kursni muvaffaqiyatli yakunlaganingizdan so‘ng, siz veb-dizayn va layout yaratish bo‘yicha kuchli poydevorga ega bo‘lasiz.',
+        fullDescription: 'Ushbu kurs CSS (Cascading Style Sheets) asoslarini o‘rganmoqchi bo‘lganlar uchun mo‘ljallangan. Siz CSS orqali veb-sahifalarni qanday bezatish, tartibga solish va ular bilan interaktiv ishlashni bosqichma-bosqich o‘rganasiz. Kurs uchta moduldan iborat bo‘lib, ularda CSS’ning tanlab oluvchilari (selectors), meros olish (inheritance), box model, combinatorlar, max/min width va height, margin collapsing kabi asosiy va muhim tushunchalar qamrab olingan. Har bir dars amaliy misollar bilan boyitilgan va testlar orqali bilimlar mustahkamlanadi. Kursni muvaffaqiyatli yakunlaganingizdan so‘ng, siz veb-dizayn va layout yaratish bo‘yicha kuchli poydevorga ega bo‘lasiz.',
+        tag: TagEnum.DELIVER_QUICKLY
     },
     {
         id: 4,
         title: 'Veb-dizayn',
-        description:
-            'Kurs davomida siz dizayn yordamida zamonaviy, tezkor va samarali veb-ilovalar yaratishni o‘rganasiz',
+        description: 'Kurs davomida siz dizayn yordamida zamonaviy, tezkor va samarali veb-ilovalar yaratishni o‘rganasiz',
         category: 'Dizayn',
         lessonLength: 14,
         image: './src/imgs/UI.png',
@@ -1304,32 +1263,28 @@ export const MockCourses: ICourse[] = [
                         title: 'Veb-dizayn kursi. Kirish',
                         time: '2 minut',
                         isYoutube: true,
-                        videoUrl:
-                            'https://www.youtube.com/embed/WgxaAqZjkVo?si=Ok8ApGJl4u9qFVTv',
+                        videoUrl: 'https://www.youtube.com/embed/WgxaAqZjkVo?si=Ok8ApGJl4u9qFVTv',
                     },
                     {
                         id: 2,
                         title: 'Veb-dizayn. 1-dars. Veb-dizayn qanday soha?',
                         time: '8 minut',
                         isYoutube: true,
-                        videoUrl:
-                            'https://www.youtube.com/embed/JgVyxM8cv5I?si=cakk-3Pm1teXzxn7',
+                        videoUrl: 'https://www.youtube.com/embed/JgVyxM8cv5I?si=cakk-3Pm1teXzxn7',
                     },
                     {
                         id: 3,
                         title: 'Veb-dizayn. 2- dars. Dizayn va uning vazifasi',
                         time: '11 minut',
                         isYoutube: true,
-                        videoUrl:
-                            'https://www.youtube.com/embed/7gGPfHRT_CQ?si=OUD_VIm4BtxNfYkG',
+                        videoUrl: 'https://www.youtube.com/embed/7gGPfHRT_CQ?si=OUD_VIm4BtxNfYkG',
                     },
                     {
                         id: 4,
                         title: 'Veb-dizayn. 3- dars. Veb dizayner kim? Uning vazifasi nimadan iborat?',
                         time: '8 minut',
                         isYoutube: true,
-                        videoUrl:
-                            'https://www.youtube.com/embed/_jo64PNSQfw?si=O7chqk-RSfKd_pxH',
+                        videoUrl: 'https://www.youtube.com/embed/_jo64PNSQfw?si=O7chqk-RSfKd_pxH',
                     },
                 ],
                 tests: [
@@ -1394,8 +1349,7 @@ export const MockCourses: ICourse[] = [
                         ],
                     },
                     {
-                        question:
-                            'UI dizayn foydalanuvchiga qanday yordam beradi?',
+                        question: 'UI dizayn foydalanuvchiga qanday yordam beradi?',
                         options: [
                             {
                                 name: 'Interfeysdan qulay foydalanishni taʼminlaydi',
@@ -1429,24 +1383,21 @@ export const MockCourses: ICourse[] = [
                         title: 'Veb-dizayn. 4- dars. Veb dizaynerning qobiliyatlari',
                         time: '13 minut',
                         isYoutube: true,
-                        videoUrl:
-                            'https://www.youtube.com/embed/cJKShWw0Wdo?si=JeNLuKoDdpf5f9f4',
+                        videoUrl: 'https://www.youtube.com/embed/cJKShWw0Wdo?si=JeNLuKoDdpf5f9f4',
                     },
                     {
                         id: 6,
                         title: "Veb-dizayn. 5- dars. Veb-sayt qanday bo'lishi kerak?",
                         time: '9 minut',
                         isYoutube: true,
-                        videoUrl:
-                            'https://www.youtube.com/embed/aCI75Q88gkQ?si=l13T525Oxu8A4Jhv',
+                        videoUrl: 'https://www.youtube.com/embed/aCI75Q88gkQ?si=l13T525Oxu8A4Jhv',
                     },
                     {
                         id: 7,
                         title: 'Veb-dizayn. 6- dars. Foydalanuvchi psixologiyasi',
                         time: '7 minut',
                         isYoutube: true,
-                        videoUrl:
-                            'https://www.youtube.com/embed/BpAmmlcbTbc?si=z8VcCAIy_-CUBRe0',
+                        videoUrl: 'https://www.youtube.com/embed/BpAmmlcbTbc?si=z8VcCAIy_-CUBRe0',
                     },
                 ],
                 tests: [
@@ -1472,8 +1423,7 @@ export const MockCourses: ICourse[] = [
                         ],
                     },
                     {
-                        question:
-                            'Foydalanuvchi psixologiyasi UX dizaynda nima uchun kerak?',
+                        question: 'Foydalanuvchi psixologiyasi UX dizaynda nima uchun kerak?',
                         options: [
                             {
                                 name: 'Tugmalar va navigatsiyani qulay joylashtirish uchun',
@@ -1537,56 +1487,49 @@ export const MockCourses: ICourse[] = [
                         title: 'Veb-dizayn. 7- dars. Veb dizayn dasturlari va imkoniyatlari',
                         time: '10 minut',
                         isYoutube: true,
-                        videoUrl:
-                            'https://www.youtube.com/embed/ZGee8k7t2D8?si=Cv-DTbIbYB0M7IXD',
+                        videoUrl: 'https://www.youtube.com/embed/ZGee8k7t2D8?si=Cv-DTbIbYB0M7IXD',
                     },
                     {
                         id: 9,
                         title: "Veb-dizayn. 8- dars. Figma dasturini o'rnatish va ro'yxatdan o'tish",
                         time: '8 minut',
                         isYoutube: true,
-                        videoUrl:
-                            'https://www.youtube.com/embed/QTGaXskIfyw?si=n8vYAmoy8VzslPBA',
+                        videoUrl: 'https://www.youtube.com/embed/QTGaXskIfyw?si=n8vYAmoy8VzslPBA',
                     },
                     {
                         id: 10,
                         title: 'Veb-dizayn. 9- dars. Figma dasturining interfeys imkoniyatlari',
                         time: '18 minut',
                         isYoutube: true,
-                        videoUrl:
-                            'https://www.youtube.com/embed/x83dadqrZVw?si=AKGzAWa_Dm8EBhWb',
+                        videoUrl: 'https://www.youtube.com/embed/x83dadqrZVw?si=AKGzAWa_Dm8EBhWb',
                     },
                     {
                         id: 11,
                         title: "Veb-dizayn. 10- dars. Figma o'quvchi tarifiga ega bo'lish",
                         time: '9 minut',
                         isYoutube: true,
-                        videoUrl:
-                            'https://www.youtube.com/embed/Fx_ziTp0MtY?si=h7boSOrqBwdg0zz1',
+                        videoUrl: 'https://www.youtube.com/embed/Fx_ziTp0MtY?si=h7boSOrqBwdg0zz1',
                     },
                     {
                         id: 12,
                         title: 'Veb-dizayn. 11- dars. Figma dizayn muhiti va instrumentlari',
                         time: '28 minut',
                         isYoutube: true,
-                        videoUrl:
-                            'https://www.youtube.com/embed/moI7-SuScGY?si=cuiNRh3JkOtY6lNF',
+                        videoUrl: 'https://www.youtube.com/embed/moI7-SuScGY?si=cuiNRh3JkOtY6lNF',
                     },
                     {
                         id: 13,
                         title: 'Veb-dizayn. 12- dars. Komponentlar, stillar va variant bilan ishlash',
                         time: '34 minut',
                         isYoutube: true,
-                        videoUrl:
-                            'https://www.youtube.com/embed/moI7-SuScGY?si=cuiNRh3JkOtY6lNF',
+                        videoUrl: 'https://www.youtube.com/embed/moI7-SuScGY?si=cuiNRh3JkOtY6lNF',
                     },
                     {
                         id: 14,
                         title: 'Veb-dizayn. 13- dars. Figma dasturida amaliyot qilish',
                         time: '54 minut',
                         isYoutube: true,
-                        videoUrl:
-                            'https://www.youtube.com/embed/ffuhn3n4S9U?si=5CprT8YcFud-YFGV',
+                        videoUrl: 'https://www.youtube.com/embed/ffuhn3n4S9U?si=5CprT8YcFud-YFGV',
                     },
                 ],
                 tests: [
@@ -1665,7 +1608,7 @@ export const MockCourses: ICourse[] = [
                 ],
             },
         ],
-        fullDescription:
-            'Ushbu kurs veb-dizayn sohasiga kirishni istaganlar uchun tayyorlangan. Kurs uchta asosiy moduldan iborat bo‘lib, UI (User Interface) va UX (User Experience) asoslari, foydalanuvchi psixologiyasi, dizayn tamoyillari va dizayn jarayonlarini qamrab oladi. Siz Figma dasturidan qanday foydalanishni, interfeys yaratish, komponentlar bilan ishlash, va veb-dizaynning amaliy jihatlarini bosqichma-bosqich o‘rganasiz. Har bir modul video darslar va testlar bilan boyitilgan. Kurs yakunida siz foydalanuvchi uchun qulay va chiroyli interfeyslar yaratish ko‘nikmalariga ega bo‘lasiz hamda real loyihalarda dizayner sifatida ishlashga tayyor bo‘lasiz.',
+        fullDescription: 'Ushbu kurs veb-dizayn sohasiga kirishni istaganlar uchun tayyorlangan. Kurs uchta asosiy moduldan iborat bo‘lib, UI (User Interface) va UX (User Experience) asoslari, foydalanuvchi psixologiyasi, dizayn tamoyillari va dizayn jarayonlarini qamrab oladi. Siz Figma dasturidan qanday foydalanishni, interfeys yaratish, komponentlar bilan ishlash, va veb-dizaynning amaliy jihatlarini bosqichma-bosqich o‘rganasiz. Har bir modul video darslar va testlar bilan boyitilgan. Kurs yakunida siz foydalanuvchi uchun qulay va chiroyli interfeyslar yaratish ko‘nikmalariga ega bo‘lasiz hamda real loyihalarda dizayner sifatida ishlashga tayyor bo‘lasiz.',
+        tag: TagEnum.NEW
     },
 ];

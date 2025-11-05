@@ -12,12 +12,15 @@
             shadow-[0px_4px_8px_0px_#0208171A] shadow-[0px_1px_3px_0px_#0208171A] shadow-[inset_0px_-1px_0px_0px_#00000012]"
         >
             <div class="grow rounded-xl overflow-hidden bg-white border border-[#1119221A]">
-              <div class="">
+              <div class="relative">
                 <img
                     [src]="course.image"
                     alt="{{ course.title }}"
                     class="h-[228px] w-full object-cover"
                 />
+                <div class="absolute bottom-3 left-5">
+                    <app-course-tag [tag]="course.tag"></app-course-tag>
+                </div>
               </div>
               <div class="py-5 pl-4 pr-2">
                 <h3 class="text-lg font-semibold text-[#0B181E] mb-2">

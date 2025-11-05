@@ -1,8 +1,8 @@
 <div class="bg-[#F3F5F6]">
     <div class="max-w-[1175px] mx-auto border-x border-[#0208171A]">
-        <div class="flex items-center justify-between p-5 pb-15">
+        <div class="flex items-center justify-between p-5 pb-6">
             <a routerLink="/" class="flex gap-2 items-center">
-                <img src="./src/imgs/logo.png" class="h-6.5" alt="" />
+                <img src="./src/imgs/logo.svg" class="h-6.5" alt="" />
             </a>
 
             <div class="relative flex items-center h-7">
@@ -10,8 +10,9 @@
                     routerLink="/courses"
                     class="flex items-center gap-2.5 ml-10 cursor-pointer"
                 >
-                    <!-- <span class="icon-books text-xl text-[#3FC0DB]!"></span>    ICONMOON-->
-                    <svg
+                    <!-- <span class="icon-books text-xl text-[#3FC0DB]!"></span>    ICONMOON -->
+                     <span class="pi pi-book" routerLinkActive="active-icon"></span>
+                    <!-- <svg
                         width="20.000000"
                         height="20.000000"
                         viewBox="0 0 20 20"
@@ -62,12 +63,13 @@
                                 stroke-width="1.500000"
                             />
                         </g>
-                    </svg>
+                    </svg> -->
                     <p class="font-semibold text-[#0B181E] gap-2">Kurslar</p>
                 </a>
-                <div class="flex items-center gap-2.5 ml-10">
+                <a routerLink="/profile" class="flex items-center gap-2.5 ml-10">
                     <!-- <span class="icon-progress text-xl text-[#282B32]!"></span>  ICONMOON-->
-                    <svg
+                     <span class="pi pi-chart-bar" routerLinkActive="active-icon"></span>
+                    <!-- <svg
                         width="20"
                         height="20"
                         viewBox="0 0 20 20"
@@ -113,12 +115,13 @@
                             stroke-width="1.5"
                             stroke-linecap="round"
                         />
-                    </svg>
+                    </svg> -->
 
                     <p class="font-semibold text-[#0B181E] gap-2">Progres</p>
-                </div>
+                </a>
                 <a routerLink="/faq" class="flex items-center gap-2.5 ml-10">
-                    <svg
+                    <span class="pi pi-question-circle" routerLinkActive="active-icon"></span>
+                    <!-- <svg
                         width="20"
                         height="20"
                         viewBox="0 0 20 20"
@@ -143,7 +146,7 @@
                             d="M9.74542 10.6461C9.33322 10.6461 9.10542 10.3532 9.10542 9.95729V9.85424C9.10542 9.18169 9.44169 8.73695 10.1197 8.33559C10.7922 7.92881 11.02 7.63051 11.02 7.10983C11.02 6.51864 10.559 6.10644 9.89186 6.10644C9.28983 6.10644 8.88847 6.40475 8.71492 6.95254C8.59559 7.28881 8.39492 7.42441 8.09661 7.42441C7.72237 7.42441 7.5 7.19661 7.5 6.83322C7.5 6.6 7.54881 6.39932 7.65186 6.19322C7.98814 5.45559 8.83424 5 9.95153 5C11.4214 5 12.4302 5.83525 12.4302 7.06102C12.4302 7.89085 12.018 8.46034 11.2803 8.89966C10.5698 9.31186 10.3963 9.5722 10.3529 10.0658C10.2986 10.4237 10.1142 10.6461 9.74542 10.6461ZM9.75627 13C9.31695 13 8.96441 12.6583 8.96441 12.2298C8.96441 11.8014 9.31695 11.4651 9.75627 11.4651C10.1956 11.4651 10.5427 11.8014 10.5427 12.2298C10.5427 12.6583 10.1956 13 9.75627 13Z"
                             fill="#282B32"
                         />
-                    </svg>
+                    </svg> -->
 
                     <p class="font-semibold text-[#0B181E] gap-2">FAQ</p>
                 </a>
@@ -194,7 +197,8 @@
                                         <a
                                             class="flex items-center gap-1 px-2 py-1.5 hover:bg-main-grey-100 rounded-md space-x-2 cursor-pointer"
                                         >
-                                            <svg
+                                        <span class="pi pi-cog"></span>
+                                            <!-- <svg
                                                 width="20"
                                                 height="20"
                                                 viewBox="0 0 20 20"
@@ -213,7 +217,7 @@
                                                     d="M8.49681 1.70372C9.42659 1.16542 10.5732 1.16542 11.503 1.70372L16.4197 4.55021C17.3461 5.08657 17.9166 6.07597 17.9166 7.14649V12.8538C17.9166 13.9244 17.3461 14.9138 16.4197 15.4501L11.503 18.2966C10.5732 18.8349 9.42659 18.8349 8.49681 18.2966L3.58014 15.4501C2.65369 14.9138 2.08325 13.9244 2.08325 12.8538V7.14649C2.08325 6.07597 2.65369 5.08658 3.58014 4.55021L8.49681 1.70372ZM10.7515 3.19442C10.2866 2.92528 9.71326 2.92528 9.24838 3.19442L4.49838 5.94436C4.03514 6.21254 3.74992 6.70724 3.74992 7.2425V12.7578C3.74992 13.2931 4.03514 13.7878 4.49838 14.056L9.24838 16.8059C9.71326 17.075 10.2866 17.075 10.7515 16.8059L15.5015 14.056C15.9647 13.7878 16.2499 13.2931 16.2499 12.7578V7.2425C16.2499 6.70724 15.9647 6.21254 15.5015 5.94436L10.7515 3.19442ZM9.99992 13.3335C9.11586 13.3335 8.26802 12.9823 7.6429 12.3572C7.01777 11.7321 6.66658 10.8842 6.66658 10.0002C6.66658 9.11611 7.01777 8.26826 7.6429 7.64314C8.26802 7.01802 9.11586 6.66683 9.99992 6.66683C10.884 6.66683 11.7318 7.01802 12.3569 7.64314C12.9821 8.26826 13.3333 9.11611 13.3333 10.0002C13.3333 10.8842 12.9821 11.7321 12.3569 12.3572C11.7318 12.9823 10.884 13.3335 9.99992 13.3335ZM9.99992 11.6668C10.4419 11.6668 10.8659 11.4912 11.1784 11.1787C11.491 10.8661 11.6666 10.4422 11.6666 10.0002C11.6666 9.55814 11.491 9.13421 11.1784 8.82165C10.8659 8.50909 10.4419 8.3335 9.99992 8.3335C9.55789 8.3335 9.13397 8.50909 8.82141 8.82165C8.50885 9.13421 8.33325 9.55814 8.33325 10.0002C8.33325 10.4422 8.50885 10.8661 8.82141 11.1787C9.13397 11.4912 9.55789 11.6668 9.99992 11.6668Z"
                                                     fill="#017AFF"
                                                 />
-                                            </svg>
+                                            </svg> -->
 
                                             <p class="font-medium">
                                                 Sozlamalar
@@ -225,7 +229,8 @@
                                             routerLink="my-courses"
                                             class="flex items-center gap-1 mt-1.5 px-2 py-1.5 hover:bg-main-grey-100 rounded-md space-x-2 cursor-pointer"
                                         >
-                                            <svg
+                                        <span class="pi pi-book" routerLinkActive="active-icon"></span>
+                                            <!-- <svg
                                                 width="20"
                                                 height="20"
                                                 viewBox="0 0 20 20"
@@ -251,7 +256,7 @@
                                                     stroke="#282B32"
                                                     stroke-width="1.5"
                                                 />
-                                            </svg>
+                                            </svg> -->
 
                                             <p class="font-medium">Kurslarim</p>
                                         </a>
@@ -262,7 +267,8 @@
                                 routerLink="/login"
                                 class="flex items-center gap-1 px-4 py-3 hover:bg-gray-100 rounded-b-xl space-x-2 cursor-pointer"
                             >
-                                <svg
+                            <span class="pi pi-sign-out"></span>
+                                <!-- <svg
                                     width="20"
                                     height="20"
                                     viewBox="0 0 20 20"
@@ -279,7 +285,7 @@
                                         d="M5.00576 6.63959C5.29866 6.3467 5.77439 6.3467 6.06729 6.63959C6.35993 6.93239 6.35983 7.40727 6.06729 7.70014L4.5165 9.24994H9.9999C10.4141 9.24994 10.7499 9.58573 10.7499 9.99994C10.7498 10.4141 10.4141 10.7499 9.9999 10.7499H4.52041L6.06729 12.2968C6.35981 12.5897 6.35995 13.0646 6.06729 13.3574C5.77439 13.6503 5.29866 13.6503 5.00576 13.3574L2.24795 10.5996C1.91637 10.2677 1.91637 9.72928 2.24795 9.3974L5.00576 6.63959Z"
                                         fill="#282B32"
                                     />
-                                </svg>
+                                </svg> -->
 
                                 <p class="text-[#292E32] font-medium">
                                     Chiqish

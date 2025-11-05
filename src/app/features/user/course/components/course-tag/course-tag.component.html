@@ -1,0 +1,9 @@
+<div class="flex items-center gap-2 rounded-[50px] px-[14px]" [ngClass]="{
+    'bg-[#2C0605] text-[#CB2D2C]': tag() == TagEnum.TOP,
+    'bg-[#462200] text-[#FA791A]': tag() == TagEnum.NEW,
+    'bg-[#281531] text-[#9B68FF]': tag() == TagEnum.DISCOUNT,
+    'bg-[#E4DD35] text-[#000000]': tag() == TagEnum.DELIVER_QUICKLY,
+}">
+    <span class="pi pi-heart-fill"></span>
+    <p class="text-lg font-semibold leading-[30px]">popular</p>
+</div>

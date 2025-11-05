@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 import { ClickOutsideDirective } from '../../directives/click-outside.directive';
 
 @Component({
     selector: 'app-header',
-    imports: [RouterLink, ClickOutsideDirective],
+    imports: [RouterLink, ClickOutsideDirective, RouterLinkActive],
     templateUrl: './header.component.html',
     styleUrl: './header.component.css',
 })

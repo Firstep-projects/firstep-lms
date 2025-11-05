@@ -76,6 +76,46 @@ export default class CourseComponent {
         this.answers = new Array(module.tests.length).fill('');
     }
 
+    prevLesson() {
+        const modules = this.course.modules;
+
+        for (let m = 0; m < modules.length; m++) {
+            const lessons = modules[m].lessons;
+            const i = lessons.indexOf(this.selectedLesson);
+
+            if (i !== -1) {
+                if (i > 0) {
+                    this.selectedLesson = lessons[i - 1];
+                }
+                else if (m > 0) {
+                    const prevModule = modules[m - 1];
+                    this.selectedLesson =
+                        prevModule.lessons[prevModule.lessons.length - 1];
+                }
+                return;
+            }
+        }
+    }
+
+    nextLesson() {
+        const modules = this.course.modules;
+
+        for (let m = 0; m < modules.length; m++) {
+            const lessons = modules[m].lessons;
+            const i = lessons.indexOf(this.selectedLesson);
+
+            if (i !== -1) {
+                if (i < lessons.length - 1) {
+                    this.selectedLesson = lessons[i + 1];
+                }
+                else if (m < modules.length - 1) {
+                    this.selectedLesson = modules[m + 1].lessons[0];
+                }
+                return;
+            }
+        }
+    }
+
     nextTest() {
         if (this.currentTestIndex < this.testModule.tests.length - 1) {
             this.currentTestIndex++;

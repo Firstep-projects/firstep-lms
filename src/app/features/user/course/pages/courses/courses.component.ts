@@ -4,13 +4,15 @@ import { RouterLink } from '@angular/router';
 import { CommonHeaderComponent } from '../../../../../shared/components/common-header/common-header.component';
 import { ICourse, MockCourses } from '../../model/course.mock';
 import { InfoBlockComponent } from '../../../../../shared/components/info-block/info-block.component';
+import { CourseTagComponent, TagEnum } from '../../components/course-tag/course-tag.component';
 
 @Component({
   selector: 'app-courses',
-  imports: [NgFor, RouterLink, CommonHeaderComponent, InfoBlockComponent],
+  imports: [NgFor, RouterLink, CommonHeaderComponent, InfoBlockComponent, CourseTagComponent],
   templateUrl: './courses.component.html',
   styleUrl: './courses.component.css'
 })
 export default class CoursesComponent {
   courses: ICourse[] = MockCourses;
+  TagEnum = TagEnum;
 }

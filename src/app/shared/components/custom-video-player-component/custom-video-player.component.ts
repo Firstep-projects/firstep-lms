@@ -31,7 +31,7 @@ export default class CustomVideoPlayerComponent implements AfterViewInit {
 
   ngAfterViewInit(): void {
     this.videoElement.volume = this.volume;
-    this.startHideTimer();
+    // this.startHideTimer();
   }
 
   togglePlay() {
@@ -81,14 +81,14 @@ export default class CustomVideoPlayerComponent implements AfterViewInit {
   handleMouseMove() {
     this.controlsVisible = true;
     clearTimeout(this.hideTimeout);
-    this.startHideTimer();
+    // this.startHideTimer();
   }
 
-  private startHideTimer() {
-    this.hideTimeout = setTimeout(() => {
-      this.controlsVisible = false;
-    }, 2500); // скрыть через 2.5 секунды
-  }
+  // private startHideTimer() {
+  //   this.hideTimeout = setTimeout(() => {
+  //     this.controlsVisible = false;
+  //   }, 2500); // скрыть через 2.5 секунды
+  // }
 
   formatTime(seconds: number): string {
     const min = Math.floor(seconds / 60);
