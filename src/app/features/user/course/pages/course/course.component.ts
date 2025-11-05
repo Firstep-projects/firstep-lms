@@ -129,9 +129,7 @@ export default class CourseComponent {
     }
 
     submitAnswers() {
-        // Здесь обработка ответов
         console.log('Ответы:', this.answers);
-        // Можно добавить логику проверки и вывода результата
     }
 
     goBack() {

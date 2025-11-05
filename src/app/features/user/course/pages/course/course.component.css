@@ -7,3 +7,6 @@
 ::ng-deep .p-progressbar-value{
   background-color: #017AFF !important;
 }
+::ng-deep .p-accordionheader{
+  padding-left: 0 !important;
+}
